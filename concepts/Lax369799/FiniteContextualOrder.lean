@@ -1,4 +1,5 @@
 import Lax369799.FiniteContexts
+import Mathlib.Data.Quot
 
 /-!
 ---
@@ -31,6 +32,17 @@ abbrev Carrier {A : RankedSet} (F : ClosedProperty A) : RankedSet :=
 
 def quotientMap {A : RankedSet} (F : ClosedProperty A) :
     RankedSystems.RankedMap (FiniteSystem A) (Carrier F) := fun _ => Quot.mk _
+
+def ClassBelow {A : RankedSet} (F : ClosedProperty A) {n : ℕ}
+    (a b : Carrier F n) : Prop :=
+  Quot.liftOn₂ a b (Below F)
+    (fun _ _ _ h => propext ⟨fun g C hc => h.1 C (g C hc), fun g C hc => h.2 C (g C hc)⟩)
+    (fun _ _ _ h => propext ⟨fun g C hc => g C (h.2 C hc), fun g C hc => g C (h.1 C hc)⟩)
+
+axiom class_order {A : RankedSet} (F : ClosedProperty A) (n : ℕ) :
+    (∀ a : Carrier F n, ClassBelow F a a) ∧
+    (∀ a b : Carrier F n, ClassBelow F a b → ClassBelow F b a → a = b) ∧
+    (∀ a b c : Carrier F n, ClassBelow F a b → ClassBelow F b c → ClassBelow F a c)
 
 axiom contextual_congruence {A : RankedSet} (F : ClosedProperty A) (hF : IsoInvariant F)
     {k n : ℕ} (C : Context A k n) (S T : FiniteSystem A k) (h : Below F S T) :

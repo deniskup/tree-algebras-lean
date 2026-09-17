@@ -6,14 +6,14 @@ Local Lax submission **lax-369799**, based on **arXiv:2407.12677v6**.
 
 This is a **concept draft**, not a completed formalization. The principal
 statements and substantial supporting definitions have been written in
-Lean. Fifty-eight supporting statements have proofs using only background
+Lean. Seventy-four supporting statements have proofs using only background
 axioms; three further proofs have explicit unresolved dependencies. The
 two main results remain open. A successful build checks the definitions, statement types, proof
 terms, and Archive format; it does not discharge unproved statement
 obligations. The concepts are not frozen or signed off.
 
 Validation: `lax build tree-algebras --replay` passed on 2026-09-17.
-The current development has 37 concepts and 61 Archive proofs: 58 use
+The current development has 39 concepts and 77 Archive proofs: 74 use
 background axioms only and three have explicit paper-statement dependencies.
 The reverse direction of the logical equivalence is proved, as are all
 six morphism/yield results, the set-algebra order laws, and the repaired
@@ -29,8 +29,10 @@ counterexample is in [audit/FlatteningAssociativity.lean](audit/FlatteningAssoci
 with its mathematical description in [REVIEW_ISSUES.md](REVIEW_ISSUES.md).
 The user authorized choosing a repair. The finite-presentation construction
 now has proved monad laws, context composition, contextual congruence, and
-quotient evaluation and recognition. Its substitution algebra exists; the
-additional order, finiteness, and automata results still need development.
+quotient evaluation and recognition. Its substitution algebra has a partial order, monotone evaluation, and
+binary meet given by disjoint union. Acceptance is an upward-closed meet
+filter, and recognition is proved on the original reachable deterministic
+systems. Rankwise finiteness and the automata results still need development.
 The paper’s full yield-continuity axiom has not been carried over. See
 [REPAIR_PLAN.md](REPAIR_PLAN.md).
 
@@ -72,8 +74,9 @@ The correction preserves the hole’s initial/root marks and self-loops.
 Finite vertex sets are enumerated by `Fin size`. This makes systems a
 ranked set in the same universe as their labels, so iterated systems and
 flattening have ordinary Lean types. Isomorphism invariance removes any
-mathematical dependence on the enumeration. System constructions first
-use a finite presentation, then restrict to its reachable part. Directions
+mathematical dependence on the enumeration. The original system constructions restrict finite presentations to their
+reachable parts. The repaired finite-presentation constructions retain all
+vertices through substitution and restrict only for final yield observation. Directions
 and variables use zero-based indices.
 
 MSO and the modal mu-calculus are syntactic inductive types with explicit

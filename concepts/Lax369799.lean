@@ -15,6 +15,8 @@ import Lax369799.FiniteAcceptance
 import Lax369799.FiniteBisimulationTheorem
 import Lax369799.FiniteContexts
 import Lax369799.FiniteContextualOrder
+import Lax369799.FiniteMorphisms
+import Lax369799.FiniteOrderedAlgebra
 import Lax369799.FinitePresentations
 import Lax369799.FiniteSyntacticAlgebra
 import Lax369799.Flattening

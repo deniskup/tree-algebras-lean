@@ -12,6 +12,10 @@ import Lax369799Proofs.ExtremalContexts
 import Lax369799Proofs.FiniteAcceptance
 import Lax369799Proofs.FiniteContexts
 import Lax369799Proofs.FiniteContextualOrder
+import Lax369799Proofs.FiniteCovers
+import Lax369799Proofs.FiniteMorphisms
+import Lax369799Proofs.FiniteOrderedAlgebra
+import Lax369799Proofs.FiniteSums
 import Lax369799Proofs.FiniteSyntacticAlgebra
 import Lax369799Proofs.Flattening
 import Lax369799Proofs.MainTheorems

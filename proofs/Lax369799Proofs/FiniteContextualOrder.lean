@@ -142,4 +142,32 @@ theorem flatten_monotone {A B : RankedSet} (F : ClosedProperty A) (hF : IsoInvar
       exact fun D hD => step D (ih D hD)
   simpa only [mix, Finset.mem_univ, if_true] using hs Finset.univ
 
+/--
+---
+conclusion: Lax369799.FiniteContextualOrder.class_order
+---
+The contextual preorder descends to a partial order because its symmetric
+part is precisely the relation used to form the quotient.
+-/
+theorem class_order {A : RankedSet} (F : ClosedProperty A) (n : ℕ) :
+    (∀ a : Carrier F n, ClassBelow F a a) ∧
+    (∀ a b : Carrier F n, ClassBelow F a b → ClassBelow F b a → a = b) ∧
+    (∀ a b c : Carrier F n, ClassBelow F a b → ClassBelow F b c → ClassBelow F a c) := by
+  refine ⟨?_, ?_, ?_⟩
+  · intro a
+    induction a using Quot.inductionOn with
+    | h S => exact fun _ => id
+  · intro a b
+    induction a using Quot.inductionOn with
+    | h S =>
+      induction b using Quot.inductionOn with
+      | h T => exact fun h g => Quot.sound ⟨h, g⟩
+  · intro a b c
+    induction a using Quot.inductionOn with
+    | h S =>
+      induction b using Quot.inductionOn with
+      | h T =>
+        induction c using Quot.inductionOn with
+        | h U => exact fun h g C hc => g C (h C hc)
+
 end Lax369799Proofs.FiniteContextualOrder

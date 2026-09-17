@@ -22,7 +22,7 @@ after that point need explicit confirmation.
 | 6.3 | UnfoldAutomata, AlgebraToAutomaton | Finite type sets, parity word condition, runs/branches, recognition statement |
 | 6.4 | BisimAutomata, BisimAutomatonTheorem, ModalMuCalculus, AlgebraToMuCalculus, MuCalculusTheorems, FiniteBisimulationTheorem | Full mu-calculus syntax/semantics, algebra-to-mu statement, standard reverse-direction dependencies, main equivalence |
 
-Fifty-eight statements now have Archive proofs using background axioms
+Seventy-four statements now have Archive proofs using background axioms
 only, including the complete boundary-preserving automaton-property
 argument. Its algebraic decomposition, extremal choice, both Delta
 inequalities, and boundary and unary-piece comparisons are proved.
@@ -30,8 +30,8 @@ Three further proofs expose unresolved dependencies: the algebra-to-mu
 reduction, the main logical equivalence, and syntactic rankwise finiteness.
 Acceptance, yields of sums, and syntactic recognition conditional on a
 syntactic algebra are now ground as well. Both independent source
-diagnostics in `audit/` are kernel-checked. There are 72 declared statements:
-61 have Archive proofs (58 ground and three relative), and 11 have no proof.
+diagnostics in `audit/` are kernel-checked. There are 88 declared statements:
+77 have Archive proofs (74 ground and three relative), and 11 have no proof.
 
 The literal flattening associativity lemma fails with intermediate
 reachability pruning. The user authorized a repair. FinitePresentations, FiniteContexts,

@@ -42,6 +42,35 @@ noncomputable def enumerate {A : RankedSet} {n : ℕ} {V : Type} [Fintype V]
     (G : Presentation A n V) : FiniteSystem A n :=
   ⟨Fintype.card V, reindex G (Fintype.equivFin V)⟩
 
+def sumPresentation {A : RankedSet} {n : ℕ} {V W : Type}
+    (G : Presentation A n V) (H : Presentation A n W) : Presentation A n (V ⊕ W) where
+  label := Sum.elim G.label H.label
+  initial := Sum.elim G.initial H.initial
+  root := Sum.elim G.root H.root
+  edge := fun v d t => match v with
+    | .inl v => ∃ s, G.edge v d s ∧ t = Sum.map Sum.inl id s
+    | .inr w => ∃ s, H.edge w d s ∧ t = Sum.map Sum.inr id s
+  direction_valid := by
+    intro v d t h
+    cases v with
+    | inl v => obtain ⟨s, hs, _⟩ := h; exact G.direction_valid v d s hs
+    | inr w => obtain ⟨s, hs, _⟩ := h; exact H.direction_valid w d s hs
+
+noncomputable def sum {A : RankedSet} {n : ℕ} (S T : FiniteSystem A n) : FiniteSystem A n :=
+  enumerate (sumPresentation S.graph T.graph)
+
+/-- A two-component pattern for disjoint union. -/
+def binary {A : RankedSet} {n : ℕ} (a b : A n) : FiniteSystem A n where
+  size := 2
+  graph := {
+    label := Fin.cases ⟨n, a⟩ (fun _ => ⟨n, b⟩)
+    initial := Set.univ
+    root := ∅
+    edge := fun _ d t => ∃ i : Fin n, d = i.val ∧ t = .inr i
+    direction_valid := by
+      rintro v d t ⟨i, rfl, _⟩
+      exact Fin.cases i.isLt (fun _ => i.isLt) v }
+
 abbrev Inner {A : RankedSet} {n : ℕ} {V : Type}
     (P : Presentation (FiniteSystem A) n V) (v : V) := (P.label v).2
 
@@ -112,5 +141,8 @@ axiom inner_atomic {A : RankedSet} {n : ℕ} (S : FiniteSystem A n) :
 axiom flatten_natural {A B : RankedSet} (f : RankedMap A B) {n : ℕ}
     (S : FiniteSystem (FiniteSystem A) n) :
     relabel f (flatten S) = flatten (relabel (fun _ T => relabel f T) S)
+
+axiom flatten_binary {A : RankedSet} {n : ℕ} (S T : FiniteSystem A n) :
+    Isomorphic (flatten (binary S T)) (sum S T)
 
 end Lax369799.FinitePresentations

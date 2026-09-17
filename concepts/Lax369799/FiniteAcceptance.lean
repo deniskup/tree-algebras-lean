@@ -29,4 +29,11 @@ axiom syntactic_substitution_algebra {A : RankedSet} (L : Algebras.Language A) :
         E.eval n (relabel (quotientMap (Accepting L)) S) =
           quotientMap (Accepting L) n (flatten S)
 
+axiom accepting_sum {A : RankedSet} (L : Algebras.Language A) (S T : FiniteSystem A 0) :
+    Accepting L (sum S T) ↔ Accepting L S ∧ Accepting L T
+
+axiom accepting_system {A : RankedSet} (L : Algebras.Language A)
+    (hL : Algebras.UnfoldInvariantLanguage L) (S : RankedSystems.System A 0) :
+    Accepting L (ofSetSystem S.val) ↔ S ∈ L
+
 end Lax369799.FiniteAcceptance
