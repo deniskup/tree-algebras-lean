@@ -9,6 +9,10 @@ import Lax369799Proofs.DeltaContext
 import Lax369799Proofs.Encoding
 import Lax369799Proofs.Evaluation
 import Lax369799Proofs.ExtremalContexts
+import Lax369799Proofs.FiniteAcceptance
+import Lax369799Proofs.FiniteContexts
+import Lax369799Proofs.FiniteContextualOrder
+import Lax369799Proofs.FiniteSyntacticAlgebra
 import Lax369799Proofs.Flattening
 import Lax369799Proofs.MainTheorems
 import Lax369799Proofs.MorphismTheorems
@@ -25,4 +29,5 @@ import Lax369799Proofs.SumEvaluation
 import Lax369799Proofs.SumYields
 import Lax369799Proofs.SyntacticRecognition
 import Lax369799Proofs.UnfoldEquivalence
+import Lax369799Proofs.UntrimmedFlattening
 import Lax369799Proofs.Yields

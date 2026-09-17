@@ -22,7 +22,7 @@ after that point need explicit confirmation.
 | 6.3 | UnfoldAutomata, AlgebraToAutomaton | Finite type sets, parity word condition, runs/branches, recognition statement |
 | 6.4 | BisimAutomata, BisimAutomatonTheorem, ModalMuCalculus, AlgebraToMuCalculus, MuCalculusTheorems, FiniteBisimulationTheorem | Full mu-calculus syntax/semantics, algebra-to-mu statement, standard reverse-direction dependencies, main equivalence |
 
-Forty-four statements now have Archive proofs using background axioms
+Fifty-eight statements now have Archive proofs using background axioms
 only, including the complete boundary-preserving automaton-property
 argument. Its algebraic decomposition, extremal choice, both Delta
 inequalities, and boundary and unary-piece comparisons are proved.
@@ -30,13 +30,16 @@ Three further proofs expose unresolved dependencies: the algebra-to-mu
 reduction, the main logical equivalence, and syntactic rankwise finiteness.
 Acceptance, yields of sums, and syntactic recognition conditional on a
 syntactic algebra are now ground as well. Both independent source
-diagnostics in `audit/` are kernel-checked. There are 58 declared statements:
-47 have Archive proofs (44 ground and three relative), and 11 have no proof.
+diagnostics in `audit/` are kernel-checked. There are 72 declared statements:
+61 have Archive proofs (58 ground and three relative), and 11 have no proof.
 
 The literal flattening associativity lemma fails with intermediate
-reachability pruning. Resolve the convention documented in REVIEW_ISSUES.md
-before constructing the syntactic algebra; do not assume associativity
-or silently change the class of set-systems.
+reachability pruning. The user authorized a repair. FinitePresentations, FiniteContexts,
+FiniteContextualOrder, FiniteSyntacticAlgebra, and FiniteAcceptance now
+provide an unpruned substitution algebra with proved context and quotient
+laws. The further set-algebra and automata obligations remain; see
+REPAIR_PLAN.md. Do not silently identify this algebra with the original
+record containing the unverified continuity requirement.
 
 ## Work needed before the concept scope is complete
 

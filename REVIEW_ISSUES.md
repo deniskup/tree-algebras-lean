@@ -115,8 +115,11 @@ The associativity claim has not been added as an Archive axiom. Existing
 set-algebra results are conditional on the explicit set-algebra axioms;
 they do not supply the missing syntactic set-algebra construction.
 
-Clarification requested: should unreachable vertices be retained in
-intermediate set-systems, or is some other restriction or convention
-intended? Changing pruning globally would affect the definitions and the
-structural proof route, so this requires a mathematical decision before
-continuing the syntactic-algebra construction.
+The user authorized choosing a repair ("do whatever works"). A separate
+finite-presentation construction now retains all vertices during
+substitution. Its associativity and both unit laws have Lean proofs in
+`proofs/Lax369799Proofs/UntrimmedFlattening.lean`. The existing reachable
+system development has not been silently reinterpreted. The remaining
+work is to establish the appropriate algebra and yield laws for the
+repaired construction; retention alone does not justify carrying over
+continuity unchanged.

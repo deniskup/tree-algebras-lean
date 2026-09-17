@@ -6,14 +6,14 @@ Local Lax submission **lax-369799**, based on **arXiv:2407.12677v6**.
 
 This is a **concept draft**, not a completed formalization. The principal
 statements and substantial supporting definitions have been written in
-Lean. Forty-four supporting statements have proofs using only background
+Lean. Fifty-eight supporting statements have proofs using only background
 axioms; three further proofs have explicit unresolved dependencies. The
 two main results remain open. A successful build checks the definitions, statement types, proof
 terms, and Archive format; it does not discharge unproved statement
 obligations. The concepts are not frozen or signed off.
 
 Validation: `lax build tree-algebras --replay` passed on 2026-09-17.
-The current development has 32 concepts and 47 Archive proofs: 44 use
+The current development has 37 concepts and 61 Archive proofs: 58 use
 background axioms only and three have explicit paper-statement dependencies.
 The reverse direction of the logical equivalence is proved, as are all
 six morphism/yield results, the set-algebra order laws, and the repaired
@@ -23,12 +23,16 @@ and flattening-associativity audits also pass with background axioms only. Lax r
 helper warnings for automatically generated constructor lemmas of the
 presentation-map structure; these generated lemmas are retained intentionally.
 
-A second source issue now needs clarification: intermediate reachability
+A second source issue is under repair: intermediate reachability
 pruning breaks the literal flattening associativity lemma. The checked
 counterexample is in [audit/FlatteningAssociativity.lean](audit/FlatteningAssociativity.lean),
 with its mathematical description in [REVIEW_ISSUES.md](REVIEW_ISSUES.md).
-This affects the construction of the syntactic algebra; the completed
-conditional results do not assert that this algebra exists.
+The user authorized choosing a repair. The finite-presentation construction
+now has proved monad laws, context composition, contextual congruence, and
+quotient evaluation and recognition. Its substitution algebra exists; the
+additional order, finiteness, and automata results still need development.
+The paper’s full yield-continuity axiom has not been carried over. See
+[REPAIR_PLAN.md](REPAIR_PLAN.md).
 
 The intended scope remains both main results of the paper and their
 transitive proof dependencies. Technical constructions and external

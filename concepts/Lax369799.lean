@@ -11,7 +11,12 @@ import Lax369799.ContextDecomposition
 import Lax369799.EncodingTheorems
 import Lax369799.EvaluationTheorems
 import Lax369799.ExtremalContexts
+import Lax369799.FiniteAcceptance
 import Lax369799.FiniteBisimulationTheorem
+import Lax369799.FiniteContexts
+import Lax369799.FiniteContextualOrder
+import Lax369799.FinitePresentations
+import Lax369799.FiniteSyntacticAlgebra
 import Lax369799.Flattening
 import Lax369799.FlatteningTheorems
 import Lax369799.MSORecognition
