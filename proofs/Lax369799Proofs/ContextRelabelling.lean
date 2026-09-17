@@ -48,4 +48,32 @@ theorem plug_system {A : RankedSet} {k n : ℕ}
   rw [hval] at hU
   exact hU
 
+/--
+---
+conclusion: Lax369799.ContextRelabelling.evaluation_congruence
+---
+Relabel the context and use associativity to replace each inserted system
+by its value. Equal values give the same filled context. Unfolding
+invariance of the algebra is not needed.
+-/
+theorem evaluation_congruence {A B : RankedSet} (E : Lax369799.Algebras.Algebra B)
+    (η : RankedMap A B) {k n : ℕ} (C : SetContext A k n) (hC : C.system.Deterministic)
+    (S T : System A k) (U V : System A n)
+    (hU : U.val = plug C S.val) (hV : V.val = plug C T.val)
+    (h : E.eval k (relabelSystem η S) = E.eval k (relabelSystem η T)) :
+    E.eval n (relabelSystem η U) = E.eval n (relabelSystem η V) := by
+  obtain ⟨U', hu, heu⟩ := SystemEvaluation.context_evaluation E (mapContext η C) hC (relabelSystem η S)
+  obtain ⟨V', hv, hev⟩ := SystemEvaluation.context_evaluation E (mapContext η C) hC (relabelSystem η T)
+  have eu : relabelSystem η U = U' := by
+    apply Subtype.ext
+    change relabel η U.val = U'.val
+    rw [hU, relabel_plug, hu]
+    rfl
+  have ev : relabelSystem η V = V' := by
+    apply Subtype.ext
+    change relabel η V.val = V'.val
+    rw [hV, relabel_plug, hv]
+    rfl
+  rw [eu, ev, heu, hev, h]
+
 end Lax369799Proofs.ContextRelabelling

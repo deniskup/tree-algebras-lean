@@ -181,3 +181,36 @@ finite contextual acceptance test and give a rankwise-finite quotient.
 `ReachableFiniteness` also establishes the original reachable syntactic
 rankwise-finiteness theorem, without assuming the original small-profile
 refinement statement. The smaller original bound remains unproved.
+
+
+## Nonlinear substitution and the deterministic-element normal form
+
+The next use of continuity occurs in Section 5's `lemma:det-characterisation`,
+which normalizes a value represented using rank-zero and rank-one labels
+into a sum of unary components, one per output variable. This does not
+follow merely from the unpruned substitution, order, and cover laws proved
+for the repaired contextual algebra.
+
+A nonempty, root-free diagnostic is checked in
+`audit/NonlinearSubstitution.lean`. Let `a` be a binary symbol and let the
+rank-one system `b` be `a(x,x)`. Take a one-vertex outer pattern labelled
+by `b`, whose direction zero has both `x₀` and `x₁` as successors.
+The literal substitution has `a(x₀,x₁)` as a direct resolution: the two
+occurrences of the inner variable can use different outer successors.
+By contrast, the disjoint union `a(x₀,x₀) + a(x₁,x₁)` has no initial yield
+unfold-equivalent to `a(x₀,x₁)`, and it has no root yields.
+The theorem `distribution_fails` proves the failure of yield inclusion,
+using only `propext`, `Classical.choice`, and `Quot.sound`.
+
+Thus retaining unreachable vertices and hole boundary data does not make
+this distribution valid. This example does not refute the abstract
+normal-form lemma for a structure satisfying all of the original
+set-algebra axioms: that lemma explicitly uses continuity. It does show
+why that lemma cannot simply be carried over to the repaired algebra,
+whose continuity is not established. A replacement normal-form argument,
+or a further change to the substitution/choice semantics, is still needed
+to derive the proposed unfold-automaton transitions.
+
+The regularization, rankwise-finiteness, and repaired automaton-property
+proofs do not use this distribution. Their kernel-checked results remain
+valid; the complete algebra-to-automaton theorem remains open.

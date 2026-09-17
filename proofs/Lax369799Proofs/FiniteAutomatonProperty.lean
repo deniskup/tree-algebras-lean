@@ -1,5 +1,6 @@
 import Lax369799.FiniteAutomatonProperty
 import Lax369799Proofs.FiniteDeltaComparison
+import Lax369799Proofs.BoundedProfileRefinement
 
 namespace Lax369799Proofs.FiniteAutomatonProperty
 open Lax369799.RankedSystems (RankedSet)
@@ -51,5 +52,23 @@ theorem automaton_property {A : RankedSet} (L : Lax369799.Algebras.Language A)
       (E.eval 0 (plug (normalContext (plantedBoundary C) (pieceValue E C)) (atomic δ))) at hδ₀
     rw [FiniteNormalForms.algebraic_decomposition E hc C δ] at hδ₀
     exact (FinitePlant.accepting_evaluation_plant L E hE _).mp hδ₀
+
+/--
+---
+conclusion: Lax369799.FiniteAutomatonProperty.recognizable_automaton_property
+---
+Recognition of an unfold-invariant language gives finite contextual sorts.
+Apply the extremal-context argument to the unary sort of this quotient.
+-/
+theorem recognizable_automaton_property {A : RankedSet} (L : Lax369799.Algebras.Language A)
+    (hL : Lax369799.Algebras.UnfoldInvariantLanguage L) (hrec : Lax369799.Algebras.Recognizable L)
+    (E : Algebra (Carrier (Accepting L)))
+    (hE : ∀ n (S : FiniteSystem (FiniteSystem A) n),
+      E.eval n (relabel (quotientMap (Accepting L)) S) = quotientMap (Accepting L) n (flatten S))
+    {k : ℕ} (C : Context (Carrier (Accepting L)) k 0) (a : Carrier (Accepting L) k)
+    (ha : AcceptingClass (Accepting L) (E.eval 0 (plug C (atomic a)))) :
+    ∃ δ, Deterministic E δ ∧ ClassBelow (Accepting L) δ a ∧
+      AcceptingClass (Accepting L) (E.eval 0 (plug C (atomic δ))) :=
+  automaton_property L E hE (BoundedProfileRefinement.finite_carrier_recognizable L hL hrec 1) C a ha
 
 end Lax369799Proofs.FiniteAutomatonProperty

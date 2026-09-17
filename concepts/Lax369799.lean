@@ -14,6 +14,7 @@ import Lax369799.ContextRelabelling
 import Lax369799.ContextSmallification
 import Lax369799.DeterministicNormalForms
 import Lax369799.DeterministicPieces
+import Lax369799.DeterministicSyntacticOrder
 import Lax369799.EncodingTheorems
 import Lax369799.EvaluationTheorems
 import Lax369799.ExtremalContexts
@@ -34,6 +35,7 @@ import Lax369799.FiniteProfiles
 import Lax369799.FiniteSyntacticAlgebra
 import Lax369799.Flattening
 import Lax369799.FlatteningTheorems
+import Lax369799.GeneratedAlgebra
 import Lax369799.MSORecognition
 import Lax369799.ModalMuCalculus
 import Lax369799.MonadicSecondOrder
@@ -42,10 +44,14 @@ import Lax369799.Morphisms
 import Lax369799.MuCalculusTheorems
 import Lax369799.ObservedSubstitution
 import Lax369799.OptimalResolutions
+import Lax369799.PolynomialContexts
+import Lax369799.PolynomialQuotient
+import Lax369799.PolynomialUnfolding
 import Lax369799.PresentationCovers
 import Lax369799.PresentationObservations
 import Lax369799.ProfileSubstitution
 import Lax369799.RankedSystems
+import Lax369799.Regularization
 import Lax369799.Renaming
 import Lax369799.ResolutionCompression
 import Lax369799.Resolutions
@@ -58,6 +64,7 @@ import Lax369799.SetAlgebras
 import Lax369799.SyntacticAlgebraTheorems
 import Lax369799.SyntacticOrder
 import Lax369799.SystemEvaluation
+import Lax369799.SystemSubstitution
 import Lax369799.TransitionEncoding
 import Lax369799.TransitionSystems
 import Lax369799.UnfoldAutomata

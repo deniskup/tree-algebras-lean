@@ -14,6 +14,7 @@ import Lax369799Proofs.DeltaComparison
 import Lax369799Proofs.DeltaContext
 import Lax369799Proofs.DeterministicNormalForms
 import Lax369799Proofs.DeterministicPieces
+import Lax369799Proofs.DeterministicSyntacticOrder
 import Lax369799Proofs.Encoding
 import Lax369799Proofs.Evaluation
 import Lax369799Proofs.ExtremalContexts
@@ -36,6 +37,7 @@ import Lax369799Proofs.FiniteProfiles
 import Lax369799Proofs.FiniteSums
 import Lax369799Proofs.FiniteSyntacticAlgebra
 import Lax369799Proofs.Flattening
+import Lax369799Proofs.GeneratedAlgebra
 import Lax369799Proofs.MainTheorems
 import Lax369799Proofs.MorphismTheorems
 import Lax369799Proofs.MuBisimulation
@@ -45,6 +47,9 @@ import Lax369799Proofs.NormalMonotonicity
 import Lax369799Proofs.ObservedSubstitution
 import Lax369799Proofs.OptimalResolutions
 import Lax369799Proofs.PlantAcceptance
+import Lax369799Proofs.PolynomialContexts
+import Lax369799Proofs.PolynomialQuotient
+import Lax369799Proofs.PolynomialUnfolding
 import Lax369799Proofs.PresentationCovers
 import Lax369799Proofs.PresentationObservations
 import Lax369799Proofs.ProfileSubstitution
@@ -52,6 +57,7 @@ import Lax369799Proofs.Profiles
 import Lax369799Proofs.Pullbacks
 import Lax369799Proofs.RawSystemFlattening
 import Lax369799Proofs.ReachableFiniteness
+import Lax369799Proofs.Regularization
 import Lax369799Proofs.Renaming
 import Lax369799Proofs.ResolutionCompression
 import Lax369799Proofs.ResolutionFactorization
@@ -65,6 +71,7 @@ import Lax369799Proofs.SumEvaluation
 import Lax369799Proofs.SumYields
 import Lax369799Proofs.SyntacticRecognition
 import Lax369799Proofs.SystemEvaluation
+import Lax369799Proofs.SystemSubstitution
 import Lax369799Proofs.UnfoldEquivalence
 import Lax369799Proofs.UntrimmedFlattening
 import Lax369799Proofs.VariableCompression

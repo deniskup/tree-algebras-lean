@@ -23,4 +23,8 @@ axiom refines {A B : RankedSet} (E : Algebra B) (hE : UnfoldInvariant E)
 axiom finite_carrier {A : RankedSet} (L : Language A) (hL : RegularTreeRecognizable L) :
     RankwiseFinite (FiniteContextualOrder.Carrier (FiniteAcceptance.Accepting L))
 
+axiom finite_carrier_recognizable {A : RankedSet} (L : Language A)
+    (hL : UnfoldInvariantLanguage L) (hrec : Recognizable L) :
+    RankwiseFinite (FiniteContextualOrder.Carrier (FiniteAcceptance.Accepting L))
+
 end Lax369799.BoundedProfileRefinement

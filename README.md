@@ -6,20 +6,20 @@ Local Lax submission **lax-369799**, based on **arXiv:2407.12677v6**.
 
 This is a **concept draft**, not a completed formalization. The principal
 statements and substantial supporting definitions have been written in
-Lean. One hundred and forty-three supporting statements have proofs using only background
+Lean. One hundred and sixty-seven supporting statements have proofs using only background
 axioms; two further proofs have explicit unresolved dependencies. The
 two main results remain open. A successful build checks the definitions, statement types, proof
 terms, and Archive format; it does not discharge unproved statement
 obligations. The concepts are not frozen or signed off.
 
 Validation: `lax build tree-algebras --replay` passed on 2026-09-17.
-The current development has 65 concepts and 145 Archive proofs: 143 use
+The current development has 72 concepts and 169 Archive proofs: 167 use
 background axioms only and two have explicit paper-statement dependencies.
 The reverse direction of the logical equivalence is proved, as are all
 six morphism/yield results, the set-algebra order laws, and the repaired
 automaton-property theorem. Ten
 statement obligations have no proof yet. The independent context-decomposition, flattening-associativity,
-and yield-substitution audits also pass with background axioms only. Lax reports three unused
+yield-substitution, and nonlinear-substitution audits also pass with background axioms only. Lax reports three unused
 helper warnings for automatically generated constructor lemmas of the
 presentation-map structure; these generated lemmas are retained intentionally.
 
@@ -34,8 +34,10 @@ binary meet given by disjoint union. Acceptance is an upward-closed meet
 filter, and recognition is proved on the original reachable deterministic
 systems. The boundary-preserving normal form and complete extremal argument now
 prove the automaton property for this quotient when its unary sort is finite,
-without yield continuity. Rankwise finiteness is now proved for languages recognized by a rankwise-finite
-regular-tree algebra. The actual automata and logic constructions still need
+without yield continuity. Rankwise finiteness is now proved for unfold-invariant languages recognized
+by any rankwise-finite algebra. GeneratedAlgebra, PolynomialQuotient, and
+Regularization provide an unfolding-invariant recognizing algebra without
+changing the language. The actual automata and logic constructions still need
 development.
 The paper’s full yield-continuity axiom has not been carried over. See
 [REPAIR_PLAN.md](REPAIR_PLAN.md).

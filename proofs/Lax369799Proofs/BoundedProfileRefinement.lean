@@ -2,6 +2,7 @@ import Lax369799.BoundedProfileRefinement
 import Lax369799Proofs.RootProfileSubstitution
 import Lax369799Proofs.AcceptanceObservations
 import Lax369799Proofs.BoundedProfiles
+import Lax369799Proofs.Regularization
 
 set_option backward.isDefEq.respectTransparency false
 namespace Lax369799Proofs.BoundedProfileRefinement
@@ -108,5 +109,17 @@ theorem finite_carrier {A : RankedSet} (L : Language A) (hL : RegularTreeRecogni
   intro x
   induction x using Quot.inductionOn with
   | h S => exact ⟨Quot.mk _ S, rfl⟩
+
+/--
+---
+conclusion: Lax369799.BoundedProfileRefinement.finite_carrier_recognizable
+---
+Regularize an arbitrary recognizing algebra without changing its language
+or rankwise finiteness, then apply bounded-profile finiteness.
+-/
+theorem finite_carrier_recognizable {A : RankedSet} (L : Language A)
+    (hL : UnfoldInvariantLanguage L) (hrec : Recognizable L) :
+    RankwiseFinite (Lax369799.FiniteContextualOrder.Carrier (Lax369799.FiniteAcceptance.Accepting L)) :=
+  finite_carrier L (Regularization.regular_tree_recognizable L hL hrec)
 
 end Lax369799Proofs.BoundedProfileRefinement

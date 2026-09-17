@@ -36,4 +36,11 @@ axiom plug_system {A : RankedSet} {k n : ℕ}
     (C : SetContext A k n) (hC : C.system.Deterministic) (S : System A k) :
     ∃ U : System A n, U.val = plug C S.val
 
+axiom evaluation_congruence {A B : RankedSet} (E : Algebras.Algebra B)
+    (η : RankedMap A B) {k n : ℕ} (C : SetContext A k n) (hC : C.system.Deterministic)
+    (S T : System A k) (U V : System A n)
+    (hU : U.val = plug C S.val) (hV : V.val = plug C T.val)
+    (h : E.eval k (relabelSystem η S) = E.eval k (relabelSystem η T)) :
+    E.eval n (relabelSystem η U) = E.eval n (relabelSystem η V)
+
 end Lax369799.ContextRelabelling

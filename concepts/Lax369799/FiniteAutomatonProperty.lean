@@ -25,4 +25,14 @@ axiom automaton_property {A : RankedSet} (L : Algebras.Language A)
     ∃ δ, Deterministic E δ ∧ ClassBelow (Accepting L) δ a ∧
       AcceptingClass (Accepting L) (E.eval 0 (plug C (atomic δ)))
 
+axiom recognizable_automaton_property {A : RankedSet} (L : Algebras.Language A)
+    (hL : Algebras.UnfoldInvariantLanguage L) (hrec : Algebras.Recognizable L)
+    (E : Algebra (Carrier (Accepting L)))
+    (hE : ∀ n (S : FiniteSystem (FiniteSystem A) n),
+      E.eval n (relabel (quotientMap (Accepting L)) S) = quotientMap (Accepting L) n (flatten S))
+    {k : ℕ} (C : Context (Carrier (Accepting L)) k 0) (a : Carrier (Accepting L) k)
+    (ha : AcceptingClass (Accepting L) (E.eval 0 (plug C (atomic a)))) :
+    ∃ δ, Deterministic E δ ∧ ClassBelow (Accepting L) δ a ∧
+      AcceptingClass (Accepting L) (E.eval 0 (plug C (atomic δ)))
+
 end Lax369799.FiniteAutomatonProperty

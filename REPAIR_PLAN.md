@@ -28,17 +28,21 @@ reachable development remains separate and has not been silently changed.
   and bounded-profile refinement of contextual equivalence. Root entries in
   unreachable outer components are retained through a separate starting-copy
   construction. Both repaired and original reachable contextual quotients are
-  rankwise finite for regular-tree recognizable languages.
+  rankwise finite for unfold-invariant recognizable languages.
+- Regularization of an arbitrary finite recognizing algebra through its
+  generated subalgebra and the quotient by polynomial acceptance tests.
+  The automaton property therefore applies without an unfolding-invariance
+  assumption on the original recognizing algebra.
 
 The full paper is not yet formalized. The automata and logic constructions
 and their external dependencies remain outstanding.
 
 ## Next obligations
 
-1. The corrected resolution and bounded-profile refinement arguments are
-   complete, with fibre bound |B₁|+1. Relate recognition by an arbitrary
-   rankwise-finite algebra of an unfold-invariant language to recognition by
-   a regular-tree algebra; the existing finiteness theorem assumes the latter.
+1. The corrected resolution, bounded-profile refinement, and regularization
+   arguments are complete, with fibre bound |B₁|+1. Resolve the deterministic
+   normal-form issue caused by nonlinear substitution before using the
+   paper’s unary branch-type construction. See REVIEW_ISSUES.md.
 2. Develop the deterministic-value and regular-word constructions needed
    for the actual unfold-automaton, using verified laws instead of assuming
    the original continuity requirement.
