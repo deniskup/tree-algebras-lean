@@ -1,2 +1,13 @@
-import Lax369799Proofs.PresentationCovers
 import Lax369799Proofs.ContextDecomposition
+import Lax369799Proofs.MainTheorems
+import Lax369799Proofs.MorphismTheorems
+import Lax369799Proofs.MuCalculus
+import Lax369799Proofs.PresentationCovers
+import Lax369799Proofs.MuToMSO
+import Lax369799Proofs.MuBisimulation
+import Lax369799Proofs.Encoding
+import Lax369799Proofs.SetAlgebraTheorems
+import Lax369799Proofs.Pullbacks
+import Lax369799Proofs.UnfoldEquivalence
+import Lax369799Proofs.Yields
+import Lax369799Proofs.Flattening

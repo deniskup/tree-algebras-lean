@@ -22,11 +22,17 @@ after that point need explicit confirmation.
 | 6.3 | UnfoldAutomata, AlgebraToAutomaton | Finite type sets, parity word condition, runs/branches, recognition statement |
 | 6.4 | BisimAutomata, BisimAutomatonTheorem, ModalMuCalculus, AlgebraToMuCalculus, MuCalculusTheorems, FiniteBisimulationTheorem | Full mu-calculus syntax/semantics, algebra-to-mu statement, standard reverse-direction dependencies, main equivalence |
 
-Four supporting statements have Archive proofs with background axioms only:
-reachable restriction of a cover, absence of hole labels in the pieces,
-the corrected decomposition cover, and its unfold-equivalence consequence.
-The original 34 statement obligations remain open. The independent source
-diagnostic in `audit/` is also kernel-checked.
+Seventeen statements now have Archive proofs with background axioms only:
+all six morphism/yield results; flattening preserves systems and
+flatten-resolutions give direct resolutions; all three mu-calculus
+statements; exact transition-system encoding; low-rank determinism; and
+four corrected-decomposition/cover results. Three further proofs expose
+explicit dependencies: the order laws depend on the meet laws, the
+algebra-to-mu reduction depends on the bisim-automaton results, and the
+main logical equivalence depends on its forward-direction ingredients.
+Of the 38 current statement obligations, 18 have no proof yet and three
+have proofs with unresolved dependencies. The independent source diagnostic
+in `audit/` is also kernel-checked.
 
 ## Work needed before the concept scope is complete
 
