@@ -3,6 +3,8 @@ import Lax369799.AlgebraToMuCalculus
 import Lax369799.Algebras
 import Lax369799.AutomatonProperty
 import Lax369799.AutomatonPropertyTheorem
+import Lax369799.BisimAutomata
+import Lax369799.BisimAutomatonTheorem
 import Lax369799.EncodingTheorems
 import Lax369799.FiniteBisimulationTheorem
 import Lax369799.Flattening

@@ -20,7 +20,7 @@ after that point need explicit confirmation.
 | 6.1 | TransitionSystems, TransitionEncoding, EncodingTheorems | Usual bisimulation, ranked decoding, generated ranked bisimilarity, encoding and equivalence statements |
 | 6.2 | MonadicSecondOrder, MSORecognition | Full MSO syntax/semantics and the recognition statement |
 | 6.3 | UnfoldAutomata, AlgebraToAutomaton | Finite type sets, parity word condition, runs/branches, recognition statement |
-| 6.4 | ModalMuCalculus, AlgebraToMuCalculus, MuCalculusTheorems, FiniteBisimulationTheorem | Full mu-calculus syntax/semantics, algebra-to-mu statement, standard reverse-direction dependencies, main equivalence |
+| 6.4 | BisimAutomata, BisimAutomatonTheorem, ModalMuCalculus, AlgebraToMuCalculus, MuCalculusTheorems, FiniteBisimulationTheorem | Full mu-calculus syntax/semantics, algebra-to-mu statement, standard reverse-direction dependencies, main equivalence |
 
 All Archive statement declarations are currently open. The only independent
 mathematical proof written so far is the local source diagnostic in `audit/`.
@@ -34,8 +34,10 @@ mathematical proof written so far is the local source diagnostic in `audit/`.
    its determinism and the two inequalities.
 3. Add the smallification and optimal flatten-resolution interfaces from
    Section 4.3. Existing small-profile statements do not replace these proofs.
-4. Add the bisim-automaton duplication condition, the compression construction,
-   and the modal parity acceptance-game translation from Section 6.4.
+4. Develop the compression construction and the modal parity acceptance-game
+   translation from Section 6.4. The duplication condition and the two
+   top-level bisim-automaton statements are present, but their construction
+   and game interfaces are not yet defined.
 5. Formalize the regular-word acceptance facts, Ramsey factorisation and
    finite parity-game facts used in Sections 6.3–6.4; expose substantial
    dependencies as separate concepts rather than opaque assumptions.

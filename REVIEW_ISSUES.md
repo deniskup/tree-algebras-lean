@@ -36,7 +36,9 @@ hole is initial, whether it is a root, and the directions of any edges from
 the hole to itself. The reconstruction must restore these three kinds of
 boundary data. Merely requiring positive hole rank is insufficient: an
 initial unary hole with a self-loop has the same loss of boundary data.
-The effect on the extremal-context argument must also be checked; no
+The audit also checks the looping-hole example for every rank k, including
+k ≥ 2 as used by the extremal-context argument. The effect on that argument
+must also be checked; no
 corrected decomposition theorem has yet been declared or assumed.
 
 The literal decomposition lemma has deliberately not been added as an

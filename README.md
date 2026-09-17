@@ -10,6 +10,10 @@ Lean. The proof package is empty. A successful build checks the definitions,
 statement types, and Archive format; it does not discharge the declared
 axioms. The concepts are not frozen or signed off.
 
+Validation: `lax build tree-algebras --replay` passed on 2026-09-17:
+26 concepts, 34 open statements, and 0 Archive proofs. The independent
+context-decomposition audit also passes with background axioms only.
+
 The intended scope remains both main results of the paper and their
 transitive proof dependencies. Technical constructions and external
 automata/game-theoretic dependencies still need development. See
