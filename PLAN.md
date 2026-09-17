@@ -22,7 +22,7 @@ after that point need explicit confirmation.
 | 6.3 | UnfoldAutomata, AlgebraToAutomaton | Finite type sets, parity word condition, runs/branches, recognition statement |
 | 6.4 | BisimAutomata, BisimAutomatonTheorem, ModalMuCalculus, AlgebraToMuCalculus, MuCalculusTheorems, FiniteBisimulationTheorem | Full mu-calculus syntax/semantics, algebra-to-mu statement, standard reverse-direction dependencies, main equivalence |
 
-One hundred and five statements now have Archive proofs using background axioms
+One hundred and six statements now have Archive proofs using background axioms
 only, including the complete boundary-preserving automaton-property
 argument. Its algebraic decomposition, extremal choice, both Delta
 inequalities, and boundary and unary-piece comparisons are proved.
@@ -31,7 +31,7 @@ reduction, the main logical equivalence, and syntactic rankwise finiteness.
 Acceptance, yields of sums, and syntactic recognition conditional on a
 syntactic algebra are now ground as well. All three independent source
 diagnostics in `audit/` are kernel-checked. There are 119 declared statements:
-108 have Archive proofs (105 ground and three relative), and 11 have no proof.
+109 have Archive proofs (106 ground and three relative), and 10 have no proof.
 
 The literal flattening associativity lemma fails with intermediate
 reachability pruning. The user authorized a repair. FinitePresentations, FiniteContexts,
@@ -68,7 +68,7 @@ record containing the unverified continuity requirement.
 
 ## Proof route after interface review
 
-1. Structural system lemmas: morphisms, pullbacks, flattening, resolutions,
+1. Structural system lemmas: morphisms, pullbacks, flattening, resolutions (including the proved deterministic resolution factorization),
    context congruence, continuity of yields.
 2. Algebraic lemmas: meet/order laws, syntactic set-algebra construction and
    recognition, small-profile bounds, and syntactic rankwise finiteness.

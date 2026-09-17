@@ -39,6 +39,7 @@ import Lax369799Proofs.PresentationCovers
 import Lax369799Proofs.Profiles
 import Lax369799Proofs.Pullbacks
 import Lax369799Proofs.Renaming
+import Lax369799Proofs.ResolutionFactorization
 import Lax369799Proofs.SetAlgebraTheorems
 import Lax369799Proofs.SumCovers
 import Lax369799Proofs.SumEvaluation
