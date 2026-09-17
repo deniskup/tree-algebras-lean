@@ -83,7 +83,7 @@ private theorem resolution_exists {A : RankedSet} {n : ℕ} (S : SetSystem A n)
       simpa only [Sum.map_id_id, id_eq, chosen] using hh }
   exact ⟨⟨trim G, det⟩, ⟨project m⟩⟩
 
-private theorem lift_resolution {A : RankedSet} {n : ℕ} {S T : SetSystem A n}
+theorem lift_resolution {A : RankedSet} {n : ℕ} {S T : SetSystem A n}
     (f : Morphism S T) (hf : f.LocallySurjective) (D : System A n)
     (a : Morphism D.val T) :
     ∃ E : System A n, Nonempty (Morphism E.val S) ∧ UnfoldsTo D.val E.val := by

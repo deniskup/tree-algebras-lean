@@ -175,5 +175,9 @@ preserves both optional observations and loop flags, with fibre bound
 `Nat.card (B 1) + 1`. `FiniteProfiles.bounded_profile_finite` proves that this
 modified bound still gives finitely many profiles. Evaluation preservation under this compression is now proved in
 `ContinuationCompression`, including the recognising-alphabet version.
-The resulting optimal flatten-resolution and profile-refinement theorems
-remain to be proved.
+`OptimalResolutions` now proves bounded optimal flatten-resolution.
+`BoundedProfileRefinement` proves that these modified profiles refine every
+finite contextual acceptance test and give a rankwise-finite quotient.
+`ReachableFiniteness` also establishes the original reachable syntactic
+rankwise-finiteness theorem, without assuming the original small-profile
+refinement statement. The smaller original bound remains unproved.

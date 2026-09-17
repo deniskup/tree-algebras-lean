@@ -6,15 +6,15 @@ Local Lax submission **lax-369799**, based on **arXiv:2407.12677v6**.
 
 This is a **concept draft**, not a completed formalization. The principal
 statements and substantial supporting definitions have been written in
-Lean. One hundred and twenty-four supporting statements have proofs using only background
-axioms; three further proofs have explicit unresolved dependencies. The
+Lean. One hundred and forty-three supporting statements have proofs using only background
+axioms; two further proofs have explicit unresolved dependencies. The
 two main results remain open. A successful build checks the definitions, statement types, proof
 terms, and Archive format; it does not discharge unproved statement
 obligations. The concepts are not frozen or signed off.
 
 Validation: `lax build tree-algebras --replay` passed on 2026-09-17.
-The current development has 55 concepts and 127 Archive proofs: 124 use
-background axioms only and three have explicit paper-statement dependencies.
+The current development has 65 concepts and 145 Archive proofs: 143 use
+background axioms only and two have explicit paper-statement dependencies.
 The reverse direction of the logical equivalence is proved, as are all
 six morphism/yield results, the set-algebra order laws, and the repaired
 automaton-property theorem. Ten
@@ -34,8 +34,9 @@ binary meet given by disjoint union. Acceptance is an upward-closed meet
 filter, and recognition is proved on the original reachable deterministic
 systems. The boundary-preserving normal form and complete extremal argument now
 prove the automaton property for this quotient when its unary sort is finite,
-without yield continuity. Rankwise finiteness and the actual automata and
-logic constructions still need development.
+without yield continuity. Rankwise finiteness is now proved for languages recognized by a rankwise-finite
+regular-tree algebra. The actual automata and logic constructions still need
+development.
 The paper’s full yield-continuity axiom has not been carried over. See
 [REPAIR_PLAN.md](REPAIR_PLAN.md).
 

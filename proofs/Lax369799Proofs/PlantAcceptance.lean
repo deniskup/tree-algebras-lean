@@ -107,7 +107,7 @@ private theorem system_ne_plant {A : RankedSet} {n : ℕ} (S T : System A n) :
   rw [he] at hh
   exact hh
 
-private theorem accepting_iff {A : RankedSet} (L : Language A) (S : SetSystem A 0) :
+theorem accepting_iff {A : RankedSet} (L : Language A) (S : SetSystem A 0) :
     Accepting L S ↔ ∀ U, InitYield S U ∨ InitYield (uproot S) U → U ∈ L := by
   constructor
   · intro h U hu

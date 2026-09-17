@@ -89,29 +89,4 @@ theorem small_profile_finite {A B : RankedSet} (hB : RankwiseFinite B)
       intro h
       exact Quot.sound ((code_eq_iff ρ S T).mp h)
 
-/--
----
-conclusion: Lax369799.SyntacticAlgebraTheorems.syntactic_rankwise_finite
-assumptions:
-  - Lax369799.SyntacticAlgebraTheorems.small_profile_refines
----
-The syntactic quotient is a surjective image of the finite quotient by
-small initial and root profiles.
--/
-theorem syntactic_rankwise_finite {A : RankedSet} (L : Lax369799.Algebras.Language A)
-    (hL : Lax369799.Algebras.RegularTreeRecognizable L) :
-    RankwiseFinite (Lax369799.SyntacticOrder.SyntacticCarrier L) := by
-  obtain ⟨B, E, η, F, hB, hE, hrec⟩ := hL
-  let ρ := fun n U => E.eval n (relabelSystem η U)
-  intro n
-  let : Finite (Quot (@SmallProfileEquivalent A B ρ n)) := small_profile_finite hB ρ n
-  let f : Quot (@SmallProfileEquivalent A B ρ n) → Lax369799.SyntacticOrder.SyntacticCarrier L n :=
-    Quot.lift (Lax369799.SyntacticOrder.syntacticMap L n) (by
-      intro S T h
-      exact Quot.sound (Lax369799.SyntacticAlgebraTheorems.small_profile_refines E hB hE η F L hrec S T h))
-  apply Finite.of_surjective f
-  intro q
-  induction q using Quot.inductionOn with
-  | h S => exact ⟨Quot.mk _ S, rfl⟩
-
 end Lax369799Proofs.Profiles

@@ -1,3 +1,4 @@
+import Lax369799.AcceptanceObservations
 import Lax369799.AcceptanceTheorems
 import Lax369799.AlgebraToAutomaton
 import Lax369799.AlgebraToMuCalculus
@@ -7,6 +8,7 @@ import Lax369799.AutomatonProperty
 import Lax369799.AutomatonPropertyTheorem
 import Lax369799.BisimAutomata
 import Lax369799.BisimAutomatonTheorem
+import Lax369799.BoundedProfileRefinement
 import Lax369799.ContextDecomposition
 import Lax369799.ContextRelabelling
 import Lax369799.ContextSmallification
@@ -38,11 +40,19 @@ import Lax369799.MonadicSecondOrder
 import Lax369799.MorphismTheorems
 import Lax369799.Morphisms
 import Lax369799.MuCalculusTheorems
+import Lax369799.ObservedSubstitution
+import Lax369799.OptimalResolutions
 import Lax369799.PresentationCovers
+import Lax369799.PresentationObservations
+import Lax369799.ProfileSubstitution
 import Lax369799.RankedSystems
 import Lax369799.Renaming
 import Lax369799.ResolutionCompression
 import Lax369799.Resolutions
+import Lax369799.RootExpansion
+import Lax369799.RootObservations
+import Lax369799.RootProfileSubstitution
+import Lax369799.RootlessFlattening
 import Lax369799.SetAlgebraTheorems
 import Lax369799.SetAlgebras
 import Lax369799.SyntacticAlgebraTheorems

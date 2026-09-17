@@ -1,4 +1,5 @@
 import Lax369799.ContextRelabelling
+import Lax369799.ContextSmallification
 
 /-!
 ---
@@ -36,5 +37,18 @@ axiom deterministic {A : RankedSet} {n : ℕ} (S : System A n) (v : S.val.Vertex
 
 axiom fill_vertex {A : RankedSet} {n : ℕ} (S : System A n) (v : S.val.Vertex) :
     relabel (fillLetter (S.val.graph.label v).2) (atVertex S v).system = S.val
+
+axiom smallification {A : RankedSet} (E : Algebras.Algebra A) (hE : Algebras.UnfoldInvariant E)
+    [Finite (A 1)] (S : System A 0) (v : S.val.Vertex) {n : ℕ}
+    (σ : Fin (S.val.graph.label v).1 → Fin n) :
+    ∃ (m' : ℕ) (τ : Fin (S.val.graph.label v).1 → Fin m')
+      (sectionMap : Fin m' → Fin (S.val.graph.label v).1),
+      (∀ j, τ (sectionMap j) = j) ∧
+      (∀ i, σ (sectionMap (τ i)) = σ i) ∧
+      (∀ j, Nat.card {i // σ (sectionMap i) = j} ≤ Nat.card (A 1) + 1) ∧
+      ∃ T : System A 0,
+        T.val = relabel (fillLetter (E.eval _
+          (Renaming.renameSystem (sectionMap ∘ τ) (atomicSystem (S.val.graph.label v).2))))
+          (atVertex S v).system ∧ E.eval 0 S = E.eval 0 T
 
 end Lax369799.VertexContexts

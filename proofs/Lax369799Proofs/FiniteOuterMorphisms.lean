@@ -31,8 +31,10 @@ private theorem cast_edge {A : RankedSet} {a b : Symbol (FiniteSystem A)} (h : a
   cases h
   cases t <;> exact ht
 
-private def flattenMap {A : RankedSet} {n : ℕ} {S T : FiniteSystem (FiniteSystem A) n}
-    (f : Morphism S T) : Map (flattenPresentation S.graph) (flattenPresentation T.graph) where
+private def flattenMap {A : RankedSet} {n : ℕ} {V W : Type}
+    {S : Lax369799.RankedSystems.Presentation (FiniteSystem A) n V}
+    {T : Lax369799.RankedSystems.Presentation (FiniteSystem A) n W}
+    (f : Map S T) : Map (flattenPresentation S) (flattenPresentation T) where
   toFun := fun v => ⟨f.toFun v.1, castVertex (f.label v.1).symm v.2⟩
   label := fun v => cast_label (f.label v.1).symm v.2
   initial := fun v h => ⟨f.initial v.1 h.1, cast_initial (f.label v.1).symm h.2⟩
@@ -54,10 +56,13 @@ private theorem cast_roundtrip {A : RankedSet} {a b : Symbol (FiniteSystem A)} (
   cases h
   rfl
 
-private def flattenCoverRaw {A : RankedSet} {n : ℕ} {S T : FiniteSystem (FiniteSystem A) n}
-    (f : Lax369799.PresentationCovers.Cover S.graph T.graph) (hf : Function.Surjective f.toFun) :
-    Lax369799.PresentationCovers.Cover (flattenPresentation S.graph) (flattenPresentation T.graph) := by
-  let m : Morphism S T := ⟨f.toFun, f.initial, f.root, f.label, f.edge⟩
+private def flattenCoverSupported {A : RankedSet} {n : ℕ} {V W : Type}
+    {S : Lax369799.RankedSystems.Presentation (FiniteSystem A) n V}
+    {T : Lax369799.RankedSystems.Presentation (FiniteSystem A) n W}
+    (f : Lax369799.PresentationCovers.Cover S T)
+    (hf : ∀ w (u : (Inner T w).Vertex), (Inner T w).graph.root u → ∃ v, f.toFun v = w) :
+    Lax369799.PresentationCovers.Cover (flattenPresentation S) (flattenPresentation T) := by
+  let m : Map S T := ⟨f.toFun, f.initial, f.root, f.label, f.edge⟩
   let g := flattenMap m
   refine {
     toFun := g.toFun
@@ -73,16 +78,16 @@ private def flattenCoverRaw {A : RankedSet} {n : ℕ} {S T : FiniteSystem (Finit
     refine ⟨⟨v, castVertex (f.label v) u⟩, ⟨hv, cast_initial (f.label v) hu⟩, ?_⟩
     exact congrArg (Sigma.mk (f.toFun v)) (cast_roundtrip (f.label v) u)
   · rintro ⟨w, u⟩ (hu | ⟨hw, hu⟩)
-    · obtain ⟨v, rfl⟩ := hf w
+    · obtain ⟨v, rfl⟩ := hf w u hu
       refine ⟨⟨v, castVertex (f.label v) u⟩, Or.inl (cast_root (f.label v) hu), ?_⟩
       exact congrArg (Sigma.mk (f.toFun v)) (cast_roundtrip (f.label v) u)
     · obtain ⟨v, hv, rfl⟩ := f.root_lift w hw
       refine ⟨⟨v, castVertex (f.label v) u⟩, Or.inr ⟨hv, cast_initial (f.label v) hu⟩, ?_⟩
       exact congrArg (Sigma.mk (f.toFun v)) (cast_roundtrip (f.label v) u)
   · intro v d t ht
-    have back {s} (hs : (Inner T.graph (f.toFun v.1)).graph.edge
+    have back {s} (hs : (Inner T (f.toFun v.1)).graph.edge
         (castVertex (f.label v.1).symm v.2) d s) :
-        (Inner S.graph v.1).graph.edge v.2 d
+        (Inner S v.1).graph.edge v.2 d
           (Sum.map (castVertex (f.label v.1)) (Fin.cast (congrArg Sigma.fst (f.label v.1))) s) := by
       have hh := cast_edge (f.label v.1) hs
       simpa only [cast_roundtrip] using hh
@@ -111,11 +116,32 @@ private def flattenCoverRaw {A : RankedSet} {n : ℕ} {S T : FiniteSystem (Finit
 noncomputable def flattenCover {A : RankedSet} {n : ℕ} {S T : FiniteSystem (FiniteSystem A) n}
     (f : Lax369799.PresentationCovers.Cover S.graph T.graph) (hf : Function.Surjective f.toFun) :
     Lax369799.PresentationCovers.Cover (flatten S).graph (flatten T).graph :=
-  FiniteCovers.enumerateCover (flattenCoverRaw f hf)
+  FiniteCovers.enumerateCover (flattenCoverSupported f (fun w _ _ => hf w))
+
+def flattenCoverRootlessRaw {A : RankedSet} {n : ℕ} {V W : Type}
+    {S : Lax369799.RankedSystems.Presentation (FiniteSystem A) n V}
+    {T : Lax369799.RankedSystems.Presentation (FiniteSystem A) n W}
+    (f : Lax369799.PresentationCovers.Cover S T)
+    (h : ∀ w, (Inner T w).graph.root = ∅) :
+    Lax369799.PresentationCovers.Cover (flattenPresentation S) (flattenPresentation T) :=
+  flattenCoverSupported f (by
+    intro w u hu
+    rw [h w] at hu
+    exact False.elim hu)
+
+noncomputable def flattenCoverRootless {A : RankedSet} {n : ℕ}
+    {S T : FiniteSystem (FiniteSystem A) n}
+    (f : Lax369799.PresentationCovers.Cover S.graph T.graph)
+    (h : ∀ w, (Inner T.graph w).graph.root = ∅) :
+    Lax369799.PresentationCovers.Cover (flatten S).graph (flatten T).graph :=
+  FiniteCovers.enumerateCover (flattenCoverSupported f (by
+    intro w u hu
+    rw [h w] at hu
+    exact False.elim hu))
 
 noncomputable def flattenMorphism {A : RankedSet} {n : ℕ} {S T : FiniteSystem (FiniteSystem A) n}
     (f : Morphism S T) : Morphism (flatten S) (flatten T) :=
-  FiniteMorphisms.enumerateMap (flattenMap f)
+  FiniteMorphisms.enumerateMap (flattenMap (FiniteMorphisms.asMap f))
 
 def relabelMorphism {A B : RankedSet} (g : Lax369799.RankedSystems.RankedMap A B)
     {n : ℕ} {S T : FiniteSystem A n} (f : Morphism S T) : Morphism (relabel g S) (relabel g T) where

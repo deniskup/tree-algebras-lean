@@ -24,18 +24,21 @@ reachable development remains separate and has not been silently changed.
   automaton property for the contextual quotient when its unary sort is
   finite. No yield-continuity axiom is used in this argument.
 
-The full paper is not yet formalized. Rankwise finiteness, the automata and
-logic constructions, and their external dependencies remain outstanding.
+- Bounded optimal flatten-resolutions, initial and root observation transfer,
+  and bounded-profile refinement of contextual equivalence. Root entries in
+  unreachable outer components are retained through a separate starting-copy
+  construction. Both repaired and original reachable contextual quotients are
+  rankwise finite for regular-tree recognizable languages.
+
+The full paper is not yet formalized. The automata and logic constructions
+and their external dependencies remain outstanding.
 
 ## Next obligations
 
-1. Complete the resolution and small-profile refinement arguments to prove
-   finiteness of the contextual quotient. Finite variable compression and
-   variable-renaming laws are now available. Bounded small-profile quotients
-   are finite also for unpruned presentations, and every contextual class
-   has a reachable representative. Refinement of contextual equivalence
-   by those bounded profiles still needs proof. Treat empty unary pieces and
-   direct hole loops carefully in context smallification.
+1. The corrected resolution and bounded-profile refinement arguments are
+   complete, with fibre bound |B₁|+1. Relate recognition by an arbitrary
+   rankwise-finite algebra of an unfold-invariant language to recognition by
+   a regular-tree algebra; the existing finiteness theorem assumes the latter.
 2. Develop the deterministic-value and regular-word constructions needed
    for the actual unfold-automaton, using verified laws instead of assuming
    the original continuity requirement.
