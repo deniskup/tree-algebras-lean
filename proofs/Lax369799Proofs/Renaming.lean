@@ -82,4 +82,19 @@ theorem rename_morphism {A : RankedSet} {m n : ℕ} (σ : Fin m → Fin n)
   obtain ⟨u, hu, rfl⟩ := hf.2.2 v d s hs
   exact ⟨Sum.map id σ u, ⟨u, hu, rfl⟩, by cases u <;> rfl⟩
 
+/--
+---
+conclusion: Lax369799.Renaming.resolution_factor
+---
+The composed variable map is the original map, so the same vertex
+morphism witnesses the resolution after factoring the renaming.
+-/
+theorem resolution_factor {A : RankedSet} {m m' n : ℕ} (S : SetSystem A n) (T : System A m)
+    (σ : Fin m → Fin n) (τ : Fin m → Fin m') (σ' : Fin m' → Fin n)
+    (hσ : ∀ i, σ' (τ i) = σ i) (h : IsResolution S T σ) :
+    IsResolution S (Lax369799.Renaming.renameSystem τ T) σ' := by
+  change Nonempty (Morphism (rename σ' (rename τ T.val)) S)
+  rw [rename_composition, show σ' ∘ τ = σ from funext hσ]
+  exact h
+
 end Lax369799Proofs.Renaming

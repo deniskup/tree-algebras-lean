@@ -8,6 +8,8 @@ import Lax369799.AutomatonPropertyTheorem
 import Lax369799.BisimAutomata
 import Lax369799.BisimAutomatonTheorem
 import Lax369799.ContextDecomposition
+import Lax369799.ContextRelabelling
+import Lax369799.ContextSmallification
 import Lax369799.DeterministicNormalForms
 import Lax369799.DeterministicPieces
 import Lax369799.EncodingTheorems
@@ -39,6 +41,7 @@ import Lax369799.MuCalculusTheorems
 import Lax369799.PresentationCovers
 import Lax369799.RankedSystems
 import Lax369799.Renaming
+import Lax369799.ResolutionCompression
 import Lax369799.Resolutions
 import Lax369799.SetAlgebraTheorems
 import Lax369799.SetAlgebras
@@ -49,3 +52,4 @@ import Lax369799.TransitionEncoding
 import Lax369799.TransitionSystems
 import Lax369799.UnfoldAutomata
 import Lax369799.VariableCompression
+import Lax369799.VertexContexts

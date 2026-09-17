@@ -66,7 +66,7 @@ noncomputable def position {A : RankedSet} {k : ℕ} (C : SetContext A k 0) (a :
     (v : (j : Fin (k + 2)) × (label (atomicSystem a) (continuation C) j).2.val.Vertex) :
     C.system.Vertex := componentPosition C a v.1 v.2
 
-private theorem cast_label {A : RankedSet} {b c : Symbol (System A)} (h : b = c)
+theorem cast_label {A : RankedSet} {b c : Symbol (System A)} (h : b = c)
     (w : b.2.val.Vertex) :
     c.2.val.graph.label (cast (congrArg (fun q : Symbol (System A) => q.2.val.Vertex) h) w) =
       b.2.val.graph.label w := by
@@ -119,7 +119,7 @@ private theorem cast_initial {A : RankedSet} {b c : Symbol (System A)} (h : b = 
   cases h
   rfl
 
-private theorem cast_internal {A : RankedSet} {b c : Symbol (System A)} (h : b = c)
+theorem cast_internal {A : RankedSet} {b c : Symbol (System A)} (h : b = c)
     (w u : b.2.val.Vertex) (d : ℕ) :
     c.2.val.graph.edge (cast (congrArg (fun q : Symbol (System A) => q.2.val.Vertex) h) w) d
       (.inl (cast (congrArg (fun q : Symbol (System A) => q.2.val.Vertex) h) u)) ↔
@@ -175,7 +175,7 @@ private theorem slot_initial {A : RankedSet} {k : ℕ} (C : SetContext A k 0)
     | zero => exact Or.inl ⟨rfl, (DeterministicPieces.continuation_boundary C hC).1.mp hc⟩
     | succ d => exact Or.inr ⟨d, rfl, (DeterministicPieces.continuation_boundary C hC).2 d |>.mp hc⟩
 
-private theorem cast_exit {A : RankedSet} {b c : Symbol (System A)} (h : b = c)
+theorem cast_exit {A : RankedSet} {b c : Symbol (System A)} (h : b = c)
     (w : b.2.val.Vertex) (i : Fin b.1) (d : ℕ) :
     c.2.val.graph.edge (cast (congrArg (fun q : Symbol (System A) => q.2.val.Vertex) h) w) d
       (.inr (cast (congrArg (fun q : Symbol (System A) => Fin q.1) h) i)) ↔
@@ -197,7 +197,7 @@ private theorem hole_successor {A : RankedSet} {k : ℕ} (C : SetContext A k 0)
     subst e
     exact hh
 
-private theorem cast_variable_value {A : RankedSet} {b c : Symbol (System A)} (h : b = c)
+theorem cast_variable_value {A : RankedSet} {b c : Symbol (System A)} (h : b = c)
     (i : Fin b.1) : (cast (congrArg (fun q : Symbol (System A) => Fin q.1) h) i).val = i.val := by
   cases h
   rfl
@@ -284,7 +284,7 @@ noncomputable def reconstruction {A : RankedSet} {k : ℕ} (C : SetContext A k 0
       · exact component_exit C hC a v.1 v.2 d i hi w.1 hw w.2 hw'
       · exact Fin.elim0 j
 
-private def compose {A : RankedSet} {n : ℕ} {V W X : Type}
+def compose {A : RankedSet} {n : ℕ} {V W X : Type}
     {G : Presentation A n V} {H : Presentation A n W} {I : Presentation A n X}
     (f : Map G H) (g : Map H I) : Map G I where
   toFun := g.toFun ∘ f.toFun
@@ -324,7 +324,7 @@ private theorem label_map {A B : RankedSet} (η : RankedMap A B) {k : ℕ}
     generalize P i = o
     cases o <;> rfl
 
-private theorem next_map {A B : RankedSet} (η : RankedMap A B) {k : ℕ}
+theorem next_map {A B : RankedSet} (η : RankedMap A B) {k : ℕ}
     (a : A k) (P : Fin (k + 1) → Option (A 1)) (v : Fin (k + 2)) (d : ℕ) :
     next (η k a) (fun i => (P i).map (η 1)) v d = next a P v d := by
   induction v using Fin.cases with

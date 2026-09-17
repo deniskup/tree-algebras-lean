@@ -5,6 +5,8 @@ import Lax369799Proofs.AutomatonProperty
 import Lax369799Proofs.BoundedProfiles
 import Lax369799Proofs.ContextCongruence
 import Lax369799Proofs.ContextDecomposition
+import Lax369799Proofs.ContextRelabelling
+import Lax369799Proofs.ContinuationCompression
 import Lax369799Proofs.DeltaComparison
 import Lax369799Proofs.DeltaContext
 import Lax369799Proofs.DeterministicNormalForms
@@ -42,6 +44,7 @@ import Lax369799Proofs.PresentationCovers
 import Lax369799Proofs.Profiles
 import Lax369799Proofs.Pullbacks
 import Lax369799Proofs.Renaming
+import Lax369799Proofs.ResolutionCompression
 import Lax369799Proofs.ResolutionFactorization
 import Lax369799Proofs.SetAlgebraTheorems
 import Lax369799Proofs.SumCovers
@@ -52,4 +55,5 @@ import Lax369799Proofs.SystemEvaluation
 import Lax369799Proofs.UnfoldEquivalence
 import Lax369799Proofs.UntrimmedFlattening
 import Lax369799Proofs.VariableCompression
+import Lax369799Proofs.VertexContexts
 import Lax369799Proofs.Yields

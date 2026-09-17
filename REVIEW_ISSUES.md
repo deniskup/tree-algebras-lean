@@ -173,6 +173,7 @@ every other continuation produces a deterministic unary system. The optional
 continuation keeps the identity case separate. The checked compression lemma
 preserves both optional observations and loop flags, with fibre bound
 `Nat.card (B 1) + 1`. `FiniteProfiles.bounded_profile_finite` proves that this
-modified bound still gives finitely many profiles. Evaluation preservation
-under this compression, and the resulting profile-refinement theorem,
+modified bound still gives finitely many profiles. Evaluation preservation under this compression is now proved in
+`ContinuationCompression`, including the recognising-alphabet version.
+The resulting optimal flatten-resolution and profile-refinement theorems
 remain to be proved.

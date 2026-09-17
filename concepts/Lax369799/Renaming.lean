@@ -35,4 +35,9 @@ axiom rename_morphism {A : RankedSet} {m n : ℕ} (σ : Fin m → Fin n)
     ∃ g : Morphism (rename σ S) (rename σ T), g.toFun = f.toFun ∧
       (f.LocallySurjective → g.LocallySurjective)
 
+axiom resolution_factor {A : RankedSet} {m m' n : ℕ} (S : SetSystem A n) (T : System A m)
+    (σ : Fin m → Fin n) (τ : Fin m → Fin m') (σ' : Fin m' → Fin n)
+    (hσ : ∀ i, σ' (τ i) = σ i) (h : IsResolution S T σ) :
+    IsResolution S (renameSystem τ T) σ'
+
 end Lax369799.Renaming
