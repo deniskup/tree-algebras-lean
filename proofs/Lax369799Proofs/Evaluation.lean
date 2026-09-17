@@ -72,4 +72,29 @@ theorem context_monotone {A : RankedSet} (E : SetAlgebra A) {k n : ℕ}
   rw [h] at hm
   exact hm
 
+/--
+---
+conclusion: Lax369799.EvaluationTheorems.relabel_monotone
+---
+Replace every label by the sum of its two proposed values. The right
+summand embeds into this pattern; evaluation of each sum is its smaller
+value by hypothesis. Associativity gives simultaneous monotonicity.
+-/
+theorem relabel_monotone {A B : RankedSet} (E : SetAlgebra A)
+    (f g : RankedMap B A) (h : ∀ r b, Below E (f r b) (g r b))
+    {n : ℕ} (S : SetSystem B n) :
+    Below E (E.eval n (relabel f S)) (E.eval n (relabel g S)) := by
+  let F : RankedMap B (SetSystem A) := fun r b => sum (atomic (f r b)) (atomic (g r b))
+  let G : RankedMap B (SetSystem A) := fun r b => atomic (g r b)
+  have hm := E.morphism n (flatten (relabel G S)) (flatten (relabel F S))
+    ⟨ContextCongruence.flatten_label_morphism S G F
+      (fun r b => includeRight (atomic (f r b)) (atomic (g r b)))⟩
+  rw [← E.associative, ← E.associative] at hm
+  change Below E (E.eval n (relabel (fun r b => E.eval r (F r b)) S))
+    (E.eval n (relabel (fun r b => E.eval r (G r b)) S)) at hm
+  have hF : (fun r b => E.eval r (F r b)) = f := funext (fun r => funext (fun b => h r b))
+  have hG : (fun r b => E.eval r (G r b)) = g := funext (fun r => funext (fun b => E.unit r (g r b)))
+  rw [hF, hG] at hm
+  exact hm
+
 end Lax369799Proofs.Evaluation

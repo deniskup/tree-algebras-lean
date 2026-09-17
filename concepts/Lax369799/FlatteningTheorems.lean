@@ -15,6 +15,9 @@ of Sections 2.6–2.9.
 namespace Lax369799.FlatteningTheorems
 open RankedSystems Morphisms Flattening Resolutions
 
+axiom atomic_flatten_cover {A : RankedSet} {n : ℕ} (S : SetSystem A n) :
+  UnfoldsTo S (flatten (relabel (fun _ a => atomic a) S))
+
 axiom flatten_system {A : RankedSet} {n : ℕ} (S : System (System A) n) :
   ∃ T : System A n, SystemFlattening S T
 

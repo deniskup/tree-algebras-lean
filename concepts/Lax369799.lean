@@ -1,5 +1,6 @@
 import Lax369799.AlgebraToAutomaton
 import Lax369799.AlgebraToMuCalculus
+import Lax369799.AlgebraicDecomposition
 import Lax369799.Algebras
 import Lax369799.AutomatonProperty
 import Lax369799.AutomatonPropertyTheorem

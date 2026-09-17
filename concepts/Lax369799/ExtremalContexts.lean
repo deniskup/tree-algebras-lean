@@ -125,14 +125,45 @@ abbrev Data (A : RankedSet) (k : ℕ) := Boundary k × (Fin (k + 1) → A 1)
 def DataBelow {A : RankedSet} (E : SetAlgebra A) {k : ℕ} (x y : Data A k) : Prop :=
   (y.1.root → x.1.root) ∧ y.1.loops ⊆ x.1.loops ∧ ∀ i, Below E (x.2 i) (y.2 i)
 
+noncomputable def value {A : RankedSet} (E : SetAlgebra A) {k : ℕ}
+    (a : A k) (x : Data A k) : A 0 :=
+  E.eval 0 (plug (normalContext x.1 x.2) (atomic a))
+
 def Accepts {A : RankedSet} (E : SetAlgebra A) (f : A 0) {k : ℕ}
+    (a : A k) (x : Data A k) : Prop := Below E f (value E a x)
+
+def IsExtremal {A : RankedSet} (E : SetAlgebra A) (f : A 0) {k : ℕ}
     (a : A k) (x : Data A k) : Prop :=
-  Below E f (E.eval 0 (plug (normalContext x.1 x.2) (atomic a)))
+  Accepts E f a x ∧ ∀ y, DataBelow E y x → Accepts E f a y → DataBelow E x y
 
 /-- Finite minimization over boundary data as well as the unary pieces. -/
 axiom extremal_choice {A : RankedSet} (E : SetAlgebra A) (hA : RankwiseFinite A)
     (f : A 0) {k : ℕ} (a : A k) (x : Data A k) (hx : Accepts E f a x) :
     ∃ y : Data A k, DataBelow E y x ∧ Accepts E f a y ∧
       ∀ z : Data A k, DataBelow E z y → Accepts E f a z → DataBelow E y z
+
+axiom data_monotone {A : RankedSet} (E : SetAlgebra A) {k : ℕ}
+    (x y : Data A k) (h : DataBelow E x y) (a : A k) :
+    Below E (E.eval 0 (plug (normalContext x.1 x.2) (atomic a)))
+      (E.eval 0 (plug (normalContext y.1 y.2) (atomic a)))
+
+axiom delta_in_context {A : RankedSet} (E : SetAlgebra A) {k : ℕ}
+    (x : Data A k) (a : A k) :
+    Below E (value E a x) (value E (E.eval k (delta x.1 x.2 a)) x)
+
+axiom delta_boundary_comparison {A : RankedSet} (E : SetAlgebra A) (f : A 0)
+    {k : ℕ} (hk : 1 ≤ k) (x y : Data A k) (a : A k)
+    (hx : IsExtremal E f a x) (hy : Accepts E f (E.eval k (delta x.1 x.2 a)) y) :
+    (y.1.root → x.1.root) ∧ y.1.loops ⊆ x.1.loops
+
+axiom delta_piece_comparison {A : RankedSet} (E : SetAlgebra A) (f : A 0)
+    {k : ℕ} (hk : 1 ≤ k) (x y : Data A k) (a : A k)
+    (hx : IsExtremal E f a x) (hy : Accepts E f (E.eval k (delta x.1 x.2 a)) y) :
+    ∀ j, Below E (x.2 j) (y.2 j)
+
+axiom delta_below {A : RankedSet} (E : SetAlgebra A) (f : A 0)
+    (hp : PlantInvariant E f) (hs : OrderSeparating E f) {k : ℕ} (hk : 2 ≤ k)
+    (x : Data A k) (a : A k) (hx : IsExtremal E f a x) :
+    Below E (E.eval k (delta x.1 x.2 a)) a
 
 end Lax369799.ExtremalContexts

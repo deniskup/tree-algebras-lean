@@ -54,7 +54,7 @@ theorem order_laws {A : RankedSet} (E : SetAlgebra A) (n : ℕ) :
 
 open Lax369799.Morphisms Lax369799Proofs.MorphismTheorems
 
-private def plantMap {A : RankedSet} {n : ℕ} {S T : SetSystem A n}
+def plantMap {A : RankedSet} {n : ℕ} {S T : SetSystem A n}
     (f : Morphism S T) : Morphism (plant S) (plant T) where
   toFun := f.toFun
   initial := fun _ h => False.elim h
@@ -62,7 +62,7 @@ private def plantMap {A : RankedSet} {n : ℕ} {S T : SetSystem A n}
   label := f.label
   edge := f.edge
 
-private theorem plant_surjective {A : RankedSet} {n : ℕ} {S T : SetSystem A n}
+theorem plant_surjective {A : RankedSet} {n : ℕ} {S T : SetSystem A n}
     (f : Morphism S T) (hf : f.LocallySurjective) : (plantMap f).LocallySurjective := by
   refine ⟨fun _ h => False.elim h, ?_, hf.2.2⟩
   intro w hw

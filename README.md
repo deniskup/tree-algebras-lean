@@ -6,17 +6,18 @@ Local Lax submission **lax-369799**, based on **arXiv:2407.12677v6**.
 
 This is a **concept draft**, not a completed formalization. The principal
 statements and substantial supporting definitions have been written in
-Lean. Twenty-seven supporting statements have proofs using only background
+Lean. Thirty-six supporting statements have proofs using only background
 axioms; three further proofs have explicit unresolved dependencies. The
 two main results remain open. A successful build checks the definitions, statement types, proof
 terms, and Archive format; it does not discharge unproved statement
 obligations. The concepts are not frozen or signed off.
 
 Validation: `lax build tree-algebras --replay` passed on 2026-09-17.
-The current development has 30 concepts and 30 Archive proofs: 27 use
+The current development has 31 concepts and 39 Archive proofs: 36 use
 background axioms only and three have explicit paper-statement dependencies.
 The reverse direction of the logical equivalence is proved, as are all
-six morphism/yield results and the first two flattening results. Thirteen
+six morphism/yield results, the set-algebra order laws, and the repaired
+automaton-property theorem. Twelve
 statement obligations have no proof yet. The independent context-decomposition
 audit also passes with background axioms only. Lax reports three unused
 helper warnings for automatically generated constructor lemmas of the
@@ -27,6 +28,10 @@ transitive proof dependencies. Technical constructions and external
 automata/game-theoretic dependencies still need development. See
 [PLAN.md](PLAN.md) for coverage and [REVIEW_ISSUES.md](REVIEW_ISSUES.md) for a
 kernel-checked boundary case in the paper's context-decomposition lemma.
+
+The algebraic normal form and the complete extremal-context argument now
+have proofs using background axioms only, including both Delta inequalities.
+The correction preserves the hole’s initial/root marks and self-loops.
 
 ## Review entry points
 

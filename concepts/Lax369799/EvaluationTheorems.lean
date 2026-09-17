@@ -26,4 +26,9 @@ axiom context_monotone {A : RankedSet} (E : SetAlgebra A) {k n : ℕ}
     (C : SetContext A k n) (a b : A k) (h : Below E a b) :
   Below E (E.eval n (plug C (atomic a))) (E.eval n (plug C (atomic b)))
 
+axiom relabel_monotone {A B : RankedSet} (E : SetAlgebra A)
+    (f g : RankedMap B A) (h : ∀ r b, Below E (f r b) (g r b))
+    {n : ℕ} (S : SetSystem B n) :
+  Below E (E.eval n (relabel f S)) (E.eval n (relabel g S))
+
 end Lax369799.EvaluationTheorems

@@ -1,5 +1,10 @@
+import Lax369799Proofs.AlgebraicDecomposition
+import Lax369799Proofs.AtomicFlattening
+import Lax369799Proofs.AutomatonProperty
 import Lax369799Proofs.ContextCongruence
 import Lax369799Proofs.ContextDecomposition
+import Lax369799Proofs.DeltaComparison
+import Lax369799Proofs.DeltaContext
 import Lax369799Proofs.Encoding
 import Lax369799Proofs.Evaluation
 import Lax369799Proofs.ExtremalContexts
@@ -9,6 +14,7 @@ import Lax369799Proofs.MorphismTheorems
 import Lax369799Proofs.MuBisimulation
 import Lax369799Proofs.MuCalculus
 import Lax369799Proofs.MuToMSO
+import Lax369799Proofs.NormalMonotonicity
 import Lax369799Proofs.PresentationCovers
 import Lax369799Proofs.Profiles
 import Lax369799Proofs.Pullbacks

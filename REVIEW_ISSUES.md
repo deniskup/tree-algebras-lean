@@ -37,8 +37,8 @@ the hole to itself. The reconstruction must restore these three kinds of
 boundary data. Merely requiring positive hole rank is insufficient: an
 initial unary hole with a self-loop has the same loss of boundary data.
 The audit also checks the looping-hole example for every rank k, including
-k ≥ 2 as used by the extremal-context argument. The effect on that argument
-remains to be checked. The general corrected decomposition is now proved
+k ≥ 2 as used by the extremal-context argument. The repaired argument has now been checked through the automaton-property
+theorem. The general corrected decomposition is now proved
 in `proofs/Lax369799Proofs/ContextDecomposition.lean`, with its statement and
 construction in `concepts/Lax369799/ContextDecomposition.lean`.
 
@@ -54,16 +54,16 @@ with unreachable vertices removed only after reconstruction; their labels
 are in the extended alphabet but avoid its hole symbol.
 
 `PresentationCovers.trim_cover` supplies the general reachable-restriction
-lemma used by this proof. These supporting results do not establish the
-paper's later normal form over algebra elements: the extremal-context and
-Delta arguments still need to be adapted to carry the same boundary data.
+lemma used by this proof. The later algebraic normal form and extremal-context argument now carry
+the same boundary data and have ground proofs as well.
 
 The literal decomposition lemma has deliberately not been added as an
 Archive statement. The draft retains the paper's principal theorem
 statements as open obligations, without treating them as proved.
 
-The proposed downstream repair is detailed in [EXTREMAL_REPAIR.md](EXTREMAL_REPAIR.md).
+The proved downstream repair is detailed in [EXTREMAL_REPAIR.md](EXTREMAL_REPAIR.md).
 The planted normal contexts and modified Delta are now defined in
 `concepts/Lax369799/ExtremalContexts.lean`. Delta's determinism has a ground
 proof, as does finite extremal choice over boundary data and unary values.
-The algebraic normal form and the comparison inequalities remain open.
+The algebraic normal form, both comparison inequalities, and the resulting
+automaton-property theorem also have ground proofs.

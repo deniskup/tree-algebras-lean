@@ -22,30 +22,21 @@ after that point need explicit confirmation.
 | 6.3 | UnfoldAutomata, AlgebraToAutomaton | Finite type sets, parity word condition, runs/branches, recognition statement |
 | 6.4 | BisimAutomata, BisimAutomatonTheorem, ModalMuCalculus, AlgebraToMuCalculus, MuCalculusTheorems, FiniteBisimulationTheorem | Full mu-calculus syntax/semantics, algebra-to-mu statement, standard reverse-direction dependencies, main equivalence |
 
-Twenty-seven statements now have Archive proofs with background axioms
-only. These include all morphism/yield statements and all set-algebra
-meet/order statements; three flattening/congruence results; evaluation
-of sums, evaluation in contexts, and contextual monotonicity; all three
-mu-calculus statements; exact transition-system encoding; finite small
-profiles; the boundary-preserving decomposition; and the boundary-aware
-Delta determinism and finite extremal choice. Three further proofs expose
-explicit dependencies: the algebra-to-mu reduction, the main logical
-equivalence, and syntactic rankwise finiteness.
-Of the 43 current statement obligations, 13 have no proof yet and three
-have proofs with unresolved dependencies. The independent source diagnostic
-in `audit/` is also kernel-checked.
+Thirty-six statements now have Archive proofs using background axioms
+only, including the complete boundary-preserving automaton-property
+argument. Its algebraic decomposition, extremal choice, both Delta
+inequalities, and boundary and unary-piece comparisons are proved.
+Three further proofs expose unresolved dependencies: the algebra-to-mu
+reduction, the main logical equivalence, and syntactic rankwise finiteness.
+The independent source diagnostic in `audit/` is also kernel-checked.
 
 ## Work needed before the concept scope is complete
 
-1. The decomposition with explicit hole boundary data is now proved. Adapt
-   the algebraic normal form and extremal-context proof to this correction.
-   Keep the difference from the literal v6 construction explicit.
-   The planted normal contexts, modified Delta, its determinism, and
-   finite extremal choice are now formalized in ExtremalContexts. These proofs now have no unresolved
-   assumptions. See EXTREMAL_REPAIR.md.
-2. Relate the finite-presentation pieces to unary algebra values, retaining
-   the hole's initial/root marks and loop directions. Prove the algebraic normal form and the two Delta inequalities;
-   the construction and its determinism are already formalized.
+1. The repaired structural and algebraic decomposition and the complete
+   extremal-context argument are proved. Keep their difference from the
+   literal v6 construction explicit; see EXTREMAL_REPAIR.md.
+2. Construct the syntactic set-algebra and prove its recognition and
+   contextual properties, then apply the ground automaton-property theorem.
 3. Add the smallification and optimal flatten-resolution interfaces from
    Section 4.3. Existing small-profile statements do not replace these proofs.
 4. Develop the compression construction and the modal parity acceptance-game

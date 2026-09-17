@@ -5,7 +5,7 @@ namespace Lax369799Proofs.ContextDecomposition
 open Lax369799.RankedSystems Lax369799.Morphisms Lax369799.Flattening
 open Lax369799.PresentationCovers Lax369799.ContextDecomposition
 
-private theorem hole_label {A : RankedSet} {k : ℕ} (C : SetContext A k 0) :
+theorem hole_label {A : RankedSet} {k : ℕ} (C : SetContext A k 0) :
     C.system.graph.label (holeVertex C) = ⟨k, Sum.inr ⟨rfl⟩⟩ := by
   have H : IsHole (C.system.graph.label (holeVertex C)) := (Classical.choose_spec C.one_hole).1
   generalize C.system.graph.label (holeVertex C) = a at H ⊢
