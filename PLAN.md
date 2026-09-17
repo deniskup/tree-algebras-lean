@@ -22,7 +22,7 @@ after that point need explicit confirmation.
 | 6.3 | UnfoldAutomata, AlgebraToAutomaton | Finite type sets, parity word condition, runs/branches, recognition statement |
 | 6.4 | BisimAutomata, BisimAutomatonTheorem, ModalMuCalculus, AlgebraToMuCalculus, MuCalculusTheorems, FiniteBisimulationTheorem | Full mu-calculus syntax/semantics, algebra-to-mu statement, standard reverse-direction dependencies, main equivalence |
 
-One hundred and thirteen statements now have Archive proofs using background axioms
+One hundred and sixteen statements now have Archive proofs using background axioms
 only, including the complete boundary-preserving automaton-property
 argument. Its algebraic decomposition, extremal choice, both Delta
 inequalities, and boundary and unary-piece comparisons are proved.
@@ -30,8 +30,8 @@ Three further proofs expose unresolved dependencies: the algebra-to-mu
 reduction, the main logical equivalence, and syntactic rankwise finiteness.
 Acceptance, yields of sums, and syntactic recognition conditional on a
 syntactic algebra are now ground as well. All three independent source
-diagnostics in `audit/` are kernel-checked. There are 126 declared statements:
-116 have Archive proofs (113 ground and three relative), and 10 have no proof.
+diagnostics in `audit/` are kernel-checked. There are 129 declared statements:
+119 have Archive proofs (116 ground and three relative), and 10 have no proof.
 
 The literal flattening associativity lemma fails with intermediate
 reachability pruning. The user authorized a repair. FinitePresentations, FiniteContexts,
@@ -56,7 +56,9 @@ record containing the unverified continuity requirement.
    DeterministicPieces proves the empty/identity versus unary-system split
    and compression preserving loop flags with bound |B₁|+1. FiniteProfiles
    proves finiteness for every fixed bound; SystemEvaluation proves renaming
-   congruence. Evaluation preservation under continuation compression remains.
+   congruence. DeterministicNormalForms proves the complete optional-unary
+   normal form, including arbitrary deterministic substitution. Evaluation
+   preservation under continuation compression remains.
 4. Develop the compression construction and the modal parity acceptance-game
    translation from Section 6.4. The duplication condition and the two
    top-level bisim-automaton statements are present, but their construction

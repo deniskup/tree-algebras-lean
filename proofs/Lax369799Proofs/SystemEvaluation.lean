@@ -68,4 +68,46 @@ theorem rename_congruence {A : RankedSet} (E : Algebra A) (hE : UnfoldInvariant 
     E.eval n (renameSystem σ S) = E.eval n (renameSystem σ T) := by
   rw [rename_evaluation E hE σ S, rename_evaluation E hE σ T, h]
 
+/--
+---
+conclusion: Lax369799.SystemEvaluation.context_evaluation
+---
+The context labelled by atomic ordinary letters and the supplied hole
+system is deterministic. Associativity evaluates its flattening by first
+evaluating its labels; the unit law restores the ordinary letters.
+-/
+theorem context_evaluation {A : RankedSet} (E : Algebra A) {k n : ℕ}
+    (C : SetContext A k n) (hC : C.system.Deterministic) (S : System A k) :
+    ∃ U : System A n, U.val = plug C S.val ∧
+      E.eval n U = E.eval n (relabelSystem (Lax369799.SystemEvaluation.fillLetter (E.eval k S))
+        ⟨C.system, hC⟩) := by
+  let T := relabelSystem (Lax369799.SystemEvaluation.substituteSystem S) ⟨C.system, hC⟩
+  obtain ⟨U, hU⟩ := Flattening.flatten_system T
+  have hval : (fun r a => (Lax369799.SystemEvaluation.substituteSystem S r a).val) =
+      substitution S.val := by
+    funext r a
+    cases a with
+    | inl a => rfl
+    | inr h => obtain ⟨h⟩ := h; subst r; rfl
+  have heval : (fun r a => E.eval r (Lax369799.SystemEvaluation.substituteSystem S r a)) =
+      Lax369799.SystemEvaluation.fillLetter (E.eval k S) := by
+    funext r a
+    cases a with
+    | inl a => exact E.unit r a
+    | inr h => obtain ⟨h⟩ := h; subst r; rfl
+  refine ⟨U, ?_, ?_⟩
+  · change U.val = flatten (relabel (substitution S.val) C.system)
+    change U.val = flatten (relabel (fun r a =>
+      (Lax369799.SystemEvaluation.substituteSystem S r a).val) C.system) at hU
+    rw [hval] at hU
+    exact hU
+  · have hh := (E.associative n T U hU).symm
+    have he : relabelSystem E.eval T =
+        relabelSystem (Lax369799.SystemEvaluation.fillLetter (E.eval k S)) ⟨C.system, hC⟩ := by
+      apply Subtype.ext
+      change relabel (fun r a => E.eval r (Lax369799.SystemEvaluation.substituteSystem S r a)) C.system = _
+      rw [heval]
+      rfl
+    exact hh.trans (congrArg (E.eval n) he)
+
 end Lax369799Proofs.SystemEvaluation

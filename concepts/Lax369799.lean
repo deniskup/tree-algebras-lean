@@ -8,6 +8,7 @@ import Lax369799.AutomatonPropertyTheorem
 import Lax369799.BisimAutomata
 import Lax369799.BisimAutomatonTheorem
 import Lax369799.ContextDecomposition
+import Lax369799.DeterministicNormalForms
 import Lax369799.DeterministicPieces
 import Lax369799.EncodingTheorems
 import Lax369799.EvaluationTheorems

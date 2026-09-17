@@ -7,6 +7,7 @@ import Lax369799Proofs.ContextCongruence
 import Lax369799Proofs.ContextDecomposition
 import Lax369799Proofs.DeltaComparison
 import Lax369799Proofs.DeltaContext
+import Lax369799Proofs.DeterministicNormalForms
 import Lax369799Proofs.DeterministicPieces
 import Lax369799Proofs.Encoding
 import Lax369799Proofs.Evaluation
