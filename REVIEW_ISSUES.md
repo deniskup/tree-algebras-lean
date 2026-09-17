@@ -157,3 +157,22 @@ all possible proofs of continuity. The unpruned quotient construction does
 not assume this inclusion or continuity. Its order, meet, and recognition
 proofs remain valid. The verified extremal-context proof does not invoke
 the continuity field; later uses of yield-order must be reviewed separately.
+
+## Direct hole loops in context smallification
+
+The smallification proof in v6 applies the recognising evaluation to every
+unary cut piece. For a deterministic context, a direction leading straight
+back to the hole has an empty cut piece. That piece is not a deterministic
+system, so its value is not supplied by the stated regular-tree evaluation.
+This is a typing issue in the displayed proof; it does not by itself refute
+the smallification statement with its original bound.
+
+`DeterministicPieces.direction_piece` and `entry_piece` now prove the exact
+alternatives: a direct boundary connection produces an empty piece, and
+every other continuation produces a deterministic unary system. The optional
+continuation keeps the identity case separate. The checked compression lemma
+preserves both optional observations and loop flags, with fibre bound
+`Nat.card (B 1) + 1`. `FiniteProfiles.bounded_profile_finite` proves that this
+modified bound still gives finitely many profiles. Evaluation preservation
+under this compression, and the resulting profile-refinement theorem,
+remain to be proved.

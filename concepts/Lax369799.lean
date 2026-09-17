@@ -8,6 +8,7 @@ import Lax369799.AutomatonPropertyTheorem
 import Lax369799.BisimAutomata
 import Lax369799.BisimAutomatonTheorem
 import Lax369799.ContextDecomposition
+import Lax369799.DeterministicPieces
 import Lax369799.EncodingTheorems
 import Lax369799.EvaluationTheorems
 import Lax369799.ExtremalContexts
@@ -42,6 +43,7 @@ import Lax369799.SetAlgebraTheorems
 import Lax369799.SetAlgebras
 import Lax369799.SyntacticAlgebraTheorems
 import Lax369799.SyntacticOrder
+import Lax369799.SystemEvaluation
 import Lax369799.TransitionEncoding
 import Lax369799.TransitionSystems
 import Lax369799.UnfoldAutomata

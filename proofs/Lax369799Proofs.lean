@@ -2,10 +2,12 @@ import Lax369799Proofs.Acceptance
 import Lax369799Proofs.AlgebraicDecomposition
 import Lax369799Proofs.AtomicFlattening
 import Lax369799Proofs.AutomatonProperty
+import Lax369799Proofs.BoundedProfiles
 import Lax369799Proofs.ContextCongruence
 import Lax369799Proofs.ContextDecomposition
 import Lax369799Proofs.DeltaComparison
 import Lax369799Proofs.DeltaContext
+import Lax369799Proofs.DeterministicPieces
 import Lax369799Proofs.Encoding
 import Lax369799Proofs.Evaluation
 import Lax369799Proofs.ExtremalContexts
@@ -45,6 +47,7 @@ import Lax369799Proofs.SumCovers
 import Lax369799Proofs.SumEvaluation
 import Lax369799Proofs.SumYields
 import Lax369799Proofs.SyntacticRecognition
+import Lax369799Proofs.SystemEvaluation
 import Lax369799Proofs.UnfoldEquivalence
 import Lax369799Proofs.UntrimmedFlattening
 import Lax369799Proofs.VariableCompression
