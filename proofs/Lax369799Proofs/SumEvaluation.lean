@@ -28,7 +28,7 @@ theorem eval_cover {A : RankedSet} (E : SetAlgebra A) {n : ℕ}
     E.eval n S = E.eval n T :=
   E.unfold_invariant n S T ⟨S, ⟨identity S, identity_surjective S⟩, ⟨f, hf⟩⟩
 
-private def binary {A : RankedSet} {n : ℕ} (S T : SetSystem A n) :
+def binary {A : RankedSet} {n : ℕ} (S T : SetSystem A n) :
     SetSystem (SetSystem A) n where
   size := 2
   graph := {
@@ -45,7 +45,7 @@ private def split {A : RankedSet} {n : ℕ} (S T : SetSystem A n) :
     ((v : (binary S T).Vertex) × (Inner (binary S T) v).Vertex) → S.Vertex ⊕ T.Vertex :=
   fun v => Fin.cases (fun w => .inl w) (fun _ w => .inr w) v.1 v.2
 
-private theorem binary_flatten_cover {A : RankedSet} {n : ℕ} (S T : SetSystem A n) :
+theorem binary_flatten_cover {A : RankedSet} {n : ℕ} (S T : SetSystem A n) :
     UnfoldsTo (sum S T) (flatten (binary S T)) := by
   classical
   let raw : Map (Lax369799Proofs.Flattening.graph (binary S T)) (sumGraph S T) := {
@@ -89,6 +89,30 @@ private theorem binary_flatten_cover {A : RankedSet} {n : ℕ} (S T : SetSystem 
         | exact ⟨.inl ⟨(0 : Fin 2), u⟩, Or.inl ⟨u, hs, rfl⟩, rfl⟩
         | exact ⟨.inl ⟨(1 : Fin 2), u⟩, Or.inl ⟨u, hs, rfl⟩, rfl⟩
       | inr i => exact ⟨.inr i, Or.inr ⟨i, hs, Or.inr ⟨i, ⟨i, rfl, rfl⟩, rfl⟩⟩, rfl⟩
+
+theorem eval_binary_labels {A B : RankedSet} (E : SetAlgebra B)
+    (f : RankedMap (SetSystem A) B) {n : ℕ} (S T : SetSystem A n) :
+    E.eval n (relabel f (binary S T)) = meet E (f n S) (f n T) := by
+  let raw : Map (sumGraph (atomic (f n S)) (atomic (f n T)))
+      (relabel f (binary S T)).graph := {
+    toFun := Sum.elim (fun _ => (0 : Fin 2)) (fun _ => (1 : Fin 2))
+    initial := fun _ _ => True.intro
+    root := by intro v hv; cases v <;> exact False.elim hv
+    label := by intro v; cases v <;> rfl
+    edge := by
+      intro v d t ht
+      cases v <;> obtain ⟨s, ⟨i, rfl, rfl⟩, rfl⟩ := ht <;> exact ⟨i, rfl, rfl⟩ }
+  have hp : (project raw).LocallySurjective := by
+    apply project_surjective raw
+    · intro v hv
+      fin_cases v
+      · exact ⟨.inl (0 : Fin 1), True.intro, rfl⟩
+      · exact ⟨.inr (0 : Fin 1), True.intro, rfl⟩
+    · intro v hv; exact False.elim hv
+    · intro v d t ht
+      obtain ⟨i, rfl, rfl⟩ := ht
+      cases v <;> exact ⟨.inr i, ⟨.inr i, ⟨i, rfl, rfl⟩, rfl⟩, rfl⟩
+  exact (eval_cover E (project raw) hp).symm
 
 /--
 ---

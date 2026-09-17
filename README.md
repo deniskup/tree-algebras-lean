@@ -6,22 +6,29 @@ Local Lax submission **lax-369799**, based on **arXiv:2407.12677v6**.
 
 This is a **concept draft**, not a completed formalization. The principal
 statements and substantial supporting definitions have been written in
-Lean. Thirty-six supporting statements have proofs using only background
+Lean. Forty-four supporting statements have proofs using only background
 axioms; three further proofs have explicit unresolved dependencies. The
 two main results remain open. A successful build checks the definitions, statement types, proof
 terms, and Archive format; it does not discharge unproved statement
 obligations. The concepts are not frozen or signed off.
 
 Validation: `lax build tree-algebras --replay` passed on 2026-09-17.
-The current development has 31 concepts and 39 Archive proofs: 36 use
+The current development has 32 concepts and 47 Archive proofs: 44 use
 background axioms only and three have explicit paper-statement dependencies.
 The reverse direction of the logical equivalence is proved, as are all
 six morphism/yield results, the set-algebra order laws, and the repaired
-automaton-property theorem. Twelve
+automaton-property theorem. Eleven
 statement obligations have no proof yet. The independent context-decomposition
-audit also passes with background axioms only. Lax reports three unused
+and flattening-associativity audits also pass with background axioms only. Lax reports three unused
 helper warnings for automatically generated constructor lemmas of the
 presentation-map structure; these generated lemmas are retained intentionally.
+
+A second source issue now needs clarification: intermediate reachability
+pruning breaks the literal flattening associativity lemma. The checked
+counterexample is in [audit/FlatteningAssociativity.lean](audit/FlatteningAssociativity.lean),
+with its mathematical description in [REVIEW_ISSUES.md](REVIEW_ISSUES.md).
+This affects the construction of the syntactic algebra; the completed
+conditional results do not assert that this algebra exists.
 
 The intended scope remains both main results of the paper and their
 transitive proof dependencies. Technical constructions and external
@@ -38,6 +45,8 @@ The correction preserves the hole’s initial/root marks and self-loops.
 - [Decomposition preserving all hole marks and self-loops](concepts/Lax369799/ContextDecomposition.lean),
   with [its proofs](proofs/Lax369799Proofs/ContextDecomposition.lean)
 
+- [Acceptance and syntactic recognition](proofs/Lax369799Proofs/SyntacticRecognition.lean),
+  including [yields of disjoint unions](proofs/Lax369799Proofs/SumYields.lean)
 - [Morphism and yield proofs](proofs/Lax369799Proofs/Yields.lean),
   [pullbacks](proofs/Lax369799Proofs/Pullbacks.lean), and
   [flattening proofs](proofs/Lax369799Proofs/Flattening.lean)
@@ -82,6 +91,7 @@ hidden in a definition.
 lax build .
 # Kernel check of the independent source diagnostic:
 (cd concepts && lake env lean ../audit/ContextDecomposition.lean)
+(cd proofs && lake env lean ../audit/FlatteningAssociativity.lean)
 ```
 
 `reference/` contains the exact downloaded source archive, its SHA-256

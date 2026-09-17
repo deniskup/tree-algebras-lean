@@ -43,4 +43,38 @@ theorem atomic_flatten_cover {A : RankedSet} {n : ℕ} (S : SetSystem A n) :
           Or.inr ⟨i, ⟨i, rfl, rfl⟩, Or.inr ⟨j, ht, rfl⟩⟩, rfl⟩ }
   exact Lax369799Proofs.trim_cover _ S raw
 
+/--
+---
+conclusion: Lax369799.FlatteningTheorems.outer_atomic_cover
+---
+The sole outer vertex contributes the given system without changing any
+mark or transition. Projection to its inner vertex is locally surjective.
+-/
+theorem outer_atomic_cover {A : RankedSet} {n : ℕ} (S : SetSystem A n) :
+    UnfoldsTo S (flatten (atomic S)) := by
+  let raw : Cover (Lax369799Proofs.Flattening.graph (atomic S)) S.graph := {
+    toFun := fun v => v.2
+    label := fun _ => rfl
+    initial := fun _ h => h.2
+    root := fun _ h => h.elim id (fun h => False.elim h.1)
+    edge := by
+      intro v d t ht
+      rcases ht with ⟨w, hw, rfl⟩ | ⟨i, hi, ht⟩
+      · exact hw
+      · rcases ht with ⟨w, ⟨j, _, he⟩, _⟩ | ⟨j, ⟨l, hd, he⟩, rfl⟩
+        · cases he
+        · have hj := Sum.inr.inj he
+          have hi' : i = l := Fin.ext hd
+          subst j
+          subst i
+          exact hi
+    initial_lift := fun v hv => ⟨⟨(0 : Fin 1), v⟩, ⟨True.intro, hv⟩, rfl⟩
+    root_lift := fun v hv => ⟨⟨(0 : Fin 1), v⟩, Or.inl hv, rfl⟩
+    edge_lift := by
+      intro v d t ht
+      cases t with
+      | inl w => exact ⟨.inl ⟨v.1, w⟩, Or.inl ⟨w, ht, rfl⟩, rfl⟩
+      | inr i => exact ⟨.inr i, Or.inr ⟨i, ht, Or.inr ⟨i, ⟨i, rfl, rfl⟩, rfl⟩⟩, rfl⟩ }
+  exact Lax369799Proofs.trim_cover _ S raw
+
 end Lax369799Proofs.AtomicFlattening

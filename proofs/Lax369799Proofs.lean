@@ -1,3 +1,4 @@
+import Lax369799Proofs.Acceptance
 import Lax369799Proofs.AlgebraicDecomposition
 import Lax369799Proofs.AtomicFlattening
 import Lax369799Proofs.AutomatonProperty
@@ -21,5 +22,7 @@ import Lax369799Proofs.Pullbacks
 import Lax369799Proofs.SetAlgebraTheorems
 import Lax369799Proofs.SumCovers
 import Lax369799Proofs.SumEvaluation
+import Lax369799Proofs.SumYields
+import Lax369799Proofs.SyntacticRecognition
 import Lax369799Proofs.UnfoldEquivalence
 import Lax369799Proofs.Yields

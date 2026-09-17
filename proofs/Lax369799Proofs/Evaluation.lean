@@ -43,7 +43,7 @@ private noncomputable def includeRight {A : RankedSet} {n : ℕ} (S T : SetSyste
     label := fun _ => rfl
     edge := fun _ _ t h => ⟨t, h, rfl⟩ }
 
-private noncomputable def plug_morphism {A : RankedSet} {k n : ℕ} (C : SetContext A k n)
+noncomputable def plug_morphism {A : RankedSet} {k n : ℕ} (C : SetContext A k n)
     {S T : SetSystem A k} (f : Morphism S T) : Morphism (plug C S) (plug C T) := by
   apply ContextCongruence.flatten_label_morphism C.system (substitution S) (substitution T)
   intro r a

@@ -1,3 +1,4 @@
+import Lax369799.AcceptanceTheorems
 import Lax369799.AlgebraToAutomaton
 import Lax369799.AlgebraToMuCalculus
 import Lax369799.AlgebraicDecomposition

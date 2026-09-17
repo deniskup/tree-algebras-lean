@@ -67,3 +67,56 @@ The planted normal contexts and modified Delta are now defined in
 proof, as does finite extremal choice over boundary data and unary values.
 The algebraic normal form, both comparison inequalities, and the resulting
 automaton-property theorem also have ground proofs.
+
+
+## Intermediate pruning breaks flattening associativity
+
+The convention at the start of Section 2 and in the set-system definition
+requires removal of unreachable vertices (`reference/source/systems.tex`,
+lines 21 and 54). The monad lemma in Section 2.6 (lines 482–490) asserts
+
+```
+flatten(flatten(S₃)) = flatten(relabel flatten S₃).
+```
+
+With pruning after each flattening, these two sides need not even be
+unfold-equivalent. The following example uses only two outer vertices:
+
+- The outer system is closed, has initial vertex p, no roots, and the
+  edge p --0--> q.
+- The label of p is the empty rank-one set-system over set-systems.
+- The label of q is `atomic(plant(atomic a))`, for a nullary letter a.
+
+Every system supplied as input satisfies the stated reachability condition.
+In particular, q is reachable along the outer edge.
+
+If the outer and middle levels are flattened first, p contributes no
+vertices. The middle vertex contributed by q is neither initial nor root,
+so pruning removes it. Both this intermediate result and its subsequent
+flattening are empty.
+
+If the middle and inner levels are flattened first, q's label becomes the
+one-vertex rooted a-system. The final flattening retains this inner root,
+independently of reachability from p. The result therefore has a root.
+A common locally surjective cover cannot map to the empty system and also
+cover this root.
+
+`audit/FlatteningAssociativity.lean` defines this example and proves
+`flattening_not_associative_up_to_unfolding`. Its axiom report is exactly
+`propext`, `Classical.choice`, and `Quot.sound`; it assumes no paper theorem.
+Run it from `proofs/`:
+
+```sh
+lake env lean ../audit/FlatteningAssociativity.lean
+```
+
+This issue is independent of the corrected hole-boundary decomposition.
+The associativity claim has not been added as an Archive axiom. Existing
+set-algebra results are conditional on the explicit set-algebra axioms;
+they do not supply the missing syntactic set-algebra construction.
+
+Clarification requested: should unreachable vertices be retained in
+intermediate set-systems, or is some other restriction or convention
+intended? Changing pruning globally would affect the definitions and the
+structural proof route, so this requires a mathematical decision before
+continuing the syntactic-algebra construction.
