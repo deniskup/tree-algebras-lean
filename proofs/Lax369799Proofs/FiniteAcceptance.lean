@@ -56,7 +56,7 @@ theorem syntactic_substitution_algebra {A : RankedSet} (L : Lax369799.Algebras.L
           quotientMap (Accepting L) n (flatten S) :=
   FiniteSyntacticAlgebra.contextual_algebra (Accepting L) (accepting_isomorphic L)
 
-private noncomputable def trimProjection {A : RankedSet} {n : ℕ} {V : Type} [Fintype V]
+noncomputable def trimProjection {A : RankedSet} {n : ℕ} {V : Type} [Fintype V]
     (G : Presentation A n V) :
     Lax369799.PresentationCovers.Cover (Lax369799.RankedSystems.trim G).graph G where
   toFun := vertex G
@@ -143,5 +143,23 @@ theorem accepting_system {A : RankedSet} (L : Lax369799.Algebras.Language A)
   exact (Acceptance.accepting_unfold L _ _
     ⟨_, ⟨MorphismTheorems.identity _, MorphismTheorems.identity_surjective _⟩, ⟨project f, hf⟩⟩).trans
     (Acceptance.accepting_system L hL S)
+
+/--
+---
+conclusion: Lax369799.FiniteAcceptance.accepting_empty
+---
+The empty presentation has no initial or root yields, so its universal
+acceptance test holds for every language.
+-/
+theorem accepting_empty {A : RankedSet} (L : Lax369799.Algebras.Language A) :
+    Accepting L (empty A 0) := by
+  intro T ht
+  rcases ht with ⟨U, ⟨D, ⟨d⟩, _⟩, _⟩ | ⟨U, ⟨D, ⟨d⟩, _⟩, _⟩
+  · obtain ⟨v, _⟩ := D.property.1
+    exact Fin.elim0 (vertex (empty A 0).graph (d.toFun v))
+  · obtain ⟨v, _⟩ := D.property.1
+    let G := (Lax369799.RankedSystems.trim (empty A 0).graph).graph
+    exact Fin.elim0 (vertex (empty A 0).graph
+      (vertex { G with initial := G.root, root := ∅ } (d.toFun v)))
 
 end Lax369799Proofs.FiniteAcceptance

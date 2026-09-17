@@ -12,12 +12,19 @@ import Lax369799.EncodingTheorems
 import Lax369799.EvaluationTheorems
 import Lax369799.ExtremalContexts
 import Lax369799.FiniteAcceptance
+import Lax369799.FiniteAutomatonProperty
 import Lax369799.FiniteBisimulationTheorem
 import Lax369799.FiniteContexts
 import Lax369799.FiniteContextualOrder
+import Lax369799.FiniteDecomposition
+import Lax369799.FiniteEvaluation
+import Lax369799.FiniteExtremal
 import Lax369799.FiniteMorphisms
+import Lax369799.FiniteNormalForms
 import Lax369799.FiniteOrderedAlgebra
+import Lax369799.FinitePlant
 import Lax369799.FinitePresentations
+import Lax369799.FiniteProfiles
 import Lax369799.FiniteSyntacticAlgebra
 import Lax369799.Flattening
 import Lax369799.FlatteningTheorems
@@ -29,6 +36,7 @@ import Lax369799.Morphisms
 import Lax369799.MuCalculusTheorems
 import Lax369799.PresentationCovers
 import Lax369799.RankedSystems
+import Lax369799.Renaming
 import Lax369799.Resolutions
 import Lax369799.SetAlgebraTheorems
 import Lax369799.SetAlgebras
@@ -37,3 +45,4 @@ import Lax369799.SyntacticOrder
 import Lax369799.TransitionEncoding
 import Lax369799.TransitionSystems
 import Lax369799.UnfoldAutomata
+import Lax369799.VariableCompression

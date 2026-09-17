@@ -35,4 +35,7 @@ axiom syntactic_acceptance {A : RankedSet} (L : Language A)
     {S T : SetSystem A 0} (h : SyntacticBelow L S T) :
     Accepting L S → Accepting L T
 
+axiom accepting_plant {A : RankedSet} (L : Language A) (S : SetSystem A 0) :
+    Accepting L (plant S) ↔ Accepting L S
+
 end Lax369799.AcceptanceTheorems

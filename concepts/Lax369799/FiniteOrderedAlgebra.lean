@@ -29,4 +29,26 @@ axiom language_recognition {A : RankedSet} (L : Algebras.Language A)
         E.eval 0 (relabel (fun r a => quotientMap (Accepting L) r (atomic a))
           (ofSetSystem S.val)) ∈ P ↔ S ∈ L
 
+axiom principal_acceptance {A : RankedSet} (L : Algebras.Language A)
+    (E : Algebra (Carrier (Accepting L)))
+    (hE : ∀ n (S : FiniteSystem (FiniteSystem A) n),
+      E.eval n (relabel (quotientMap (Accepting L)) S) = quotientMap (Accepting L) n (flatten S))
+    (hfinite : Finite (Carrier (Accepting L) 0)) :
+    ∃ p, ∀ a, AcceptingClass (Accepting L) a ↔ ClassBelow (Accepting L) p a
+
+axiom evaluation_morphism {A : RankedSet} (L : Algebras.Language A)
+    (E : Algebra (Carrier (Accepting L)))
+    (hE : ∀ n (S : FiniteSystem (FiniteSystem A) n),
+      E.eval n (relabel (quotientMap (Accepting L)) S) = quotientMap (Accepting L) n (flatten S))
+    {n : ℕ} {S T : FiniteSystem (Carrier (Accepting L)) n} (f : FiniteMorphisms.Morphism S T) :
+    ClassBelow (Accepting L) (E.eval n T) (E.eval n S)
+
+axiom evaluation_cover {A : RankedSet} (L : Algebras.Language A)
+    (E : Algebra (Carrier (Accepting L)))
+    (hE : ∀ n (S : FiniteSystem (FiniteSystem A) n),
+      E.eval n (relabel (quotientMap (Accepting L)) S) = quotientMap (Accepting L) n (flatten S))
+    {n : ℕ} {S T : FiniteSystem (Carrier (Accepting L)) n}
+    (f : PresentationCovers.Cover S.graph T.graph) (hf : Function.Surjective f.toFun) :
+    E.eval n S = E.eval n T
+
 end Lax369799.FiniteOrderedAlgebra

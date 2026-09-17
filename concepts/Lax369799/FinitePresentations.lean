@@ -59,6 +59,21 @@ def sumPresentation {A : RankedSet} {n : ℕ} {V W : Type}
 noncomputable def sum {A : RankedSet} {n : ℕ} (S T : FiniteSystem A n) : FiniteSystem A n :=
   enumerate (sumPresentation S.graph T.graph)
 
+/-- The presentation with no vertices. -/
+def empty (A : RankedSet) (n : ℕ) : FiniteSystem A n where
+  size := 0
+  graph := {
+    label := Fin.elim0
+    initial := ∅
+    root := ∅
+    edge := fun _ _ _ => False
+    direction_valid := fun v => Fin.elim0 v }
+
+/-- Turn all initial vertices into roots without deleting vertices. -/
+def plant {A : RankedSet} {n : ℕ} (S : FiniteSystem A n) : FiniteSystem A n where
+  size := S.size
+  graph := { S.graph with initial := ∅, root := S.graph.root ∪ S.graph.initial }
+
 /-- A two-component pattern for disjoint union. -/
 def binary {A : RankedSet} {n : ℕ} (a b : A n) : FiniteSystem A n where
   size := 2

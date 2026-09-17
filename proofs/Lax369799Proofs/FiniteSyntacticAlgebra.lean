@@ -131,6 +131,14 @@ private theorem evaluate_unique {A : RankedSet} (F : ClosedProperty A)
   rw [relabel_representatives F S] at h
   exact h
 
+theorem evaluation_by_representatives {A : RankedSet} (F : ClosedProperty A)
+    (E : Algebra (Carrier F))
+    (hE : ∀ n (S : FiniteSystem (FiniteSystem A) n),
+      E.eval n (relabel (quotientMap F) S) = quotientMap F n (flatten S))
+    {n : ℕ} (S : FiniteSystem (Carrier F) n) :
+    E.eval n S = quotientMap F n (flatten (relabel (fun _ a => a.out) S)) :=
+  evaluate_unique F E hE n S
+
 /--
 ---
 conclusion: Lax369799.FiniteSyntacticAlgebra.evaluation_monotone

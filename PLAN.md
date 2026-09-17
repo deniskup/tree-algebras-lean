@@ -22,22 +22,25 @@ after that point need explicit confirmation.
 | 6.3 | UnfoldAutomata, AlgebraToAutomaton | Finite type sets, parity word condition, runs/branches, recognition statement |
 | 6.4 | BisimAutomata, BisimAutomatonTheorem, ModalMuCalculus, AlgebraToMuCalculus, MuCalculusTheorems, FiniteBisimulationTheorem | Full mu-calculus syntax/semantics, algebra-to-mu statement, standard reverse-direction dependencies, main equivalence |
 
-Seventy-four statements now have Archive proofs using background axioms
+One hundred and five statements now have Archive proofs using background axioms
 only, including the complete boundary-preserving automaton-property
 argument. Its algebraic decomposition, extremal choice, both Delta
 inequalities, and boundary and unary-piece comparisons are proved.
 Three further proofs expose unresolved dependencies: the algebra-to-mu
 reduction, the main logical equivalence, and syntactic rankwise finiteness.
 Acceptance, yields of sums, and syntactic recognition conditional on a
-syntactic algebra are now ground as well. Both independent source
-diagnostics in `audit/` are kernel-checked. There are 88 declared statements:
-77 have Archive proofs (74 ground and three relative), and 11 have no proof.
+syntactic algebra are now ground as well. All three independent source
+diagnostics in `audit/` are kernel-checked. There are 119 declared statements:
+108 have Archive proofs (105 ground and three relative), and 11 have no proof.
 
 The literal flattening associativity lemma fails with intermediate
 reachability pruning. The user authorized a repair. FinitePresentations, FiniteContexts,
 FiniteContextualOrder, FiniteSyntacticAlgebra, and FiniteAcceptance now
-provide an unpruned substitution algebra with proved context and quotient
-laws. The further set-algebra and automata obligations remain; see
+provide an unpruned substitution algebra with proved context, quotient,
+order, meet, morphism, and cover laws. FinitePlant, FiniteEvaluation,
+FiniteDecomposition, FiniteNormalForms, and FiniteExtremal now support a
+complete proof of its automaton property under finiteness of the unary
+sort, without continuity. The finiteness and actual automata obligations remain; see
 REPAIR_PLAN.md. Do not silently identify this algebra with the original
 record containing the unverified continuity requirement.
 
@@ -46,8 +49,9 @@ record containing the unverified continuity requirement.
 1. The repaired structural and algebraic decomposition and the complete
    extremal-context argument are proved. Keep their difference from the
    literal v6 construction explicit; see EXTREMAL_REPAIR.md.
-2. Construct the syntactic set-algebra and prove its recognition and
-   contextual properties, then apply the ground automaton-property theorem.
+2. The repaired syntactic substitution algebra and its automaton property
+   are proved. Complete its rankwise-finiteness proof and review the
+   additional old set-algebra requirements separately.
 3. Add the smallification and optimal flatten-resolution interfaces from
    Section 4.3. Existing small-profile statements do not replace these proofs.
 4. Develop the compression construction and the modal parity acceptance-game

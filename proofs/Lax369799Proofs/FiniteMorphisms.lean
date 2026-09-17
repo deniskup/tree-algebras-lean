@@ -32,6 +32,18 @@ noncomputable def toEnumeration {A : RankedSet} {n : ℕ} {V : Type} [Fintype V]
     have h := f.edge v d t ht
     cases t <;> simpa using h
 
+noncomputable def fromEnumeration {A : RankedSet} {n : ℕ} {V : Type} [Fintype V]
+    {G : Presentation A n V} {T : FiniteSystem A n} (f : Map G T.graph) :
+    Morphism (enumerate G) T where
+  toFun := fun v => f.toFun ((Fintype.equivFin V).symm v)
+  initial := fun _ h => f.initial _ h
+  root := fun _ h => f.root _ h
+  label := fun _ => f.label _
+  edge := by
+    intro v d t ht
+    have h := f.edge _ d (Sum.map (Fintype.equivFin V).symm id t) ht
+    cases t <;> exact h
+
 noncomputable def enumerateMap {A : RankedSet} {n : ℕ} {V W : Type} [Fintype V] [Fintype W]
     {G : Presentation A n V} {H : Presentation A n W} (f : Map G H) :
     Morphism (enumerate G) (enumerate H) := toEnumeration {

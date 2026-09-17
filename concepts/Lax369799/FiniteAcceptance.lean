@@ -36,4 +36,7 @@ axiom accepting_system {A : RankedSet} (L : Algebras.Language A)
     (hL : Algebras.UnfoldInvariantLanguage L) (S : RankedSystems.System A 0) :
     Accepting L (ofSetSystem S.val) ↔ S ∈ L
 
+axiom accepting_empty {A : RankedSet} (L : Algebras.Language A) :
+    Accepting L (empty A 0)
+
 end Lax369799.FiniteAcceptance

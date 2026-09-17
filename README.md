@@ -6,24 +6,24 @@ Local Lax submission **lax-369799**, based on **arXiv:2407.12677v6**.
 
 This is a **concept draft**, not a completed formalization. The principal
 statements and substantial supporting definitions have been written in
-Lean. Seventy-four supporting statements have proofs using only background
+Lean. One hundred and five supporting statements have proofs using only background
 axioms; three further proofs have explicit unresolved dependencies. The
 two main results remain open. A successful build checks the definitions, statement types, proof
 terms, and Archive format; it does not discharge unproved statement
 obligations. The concepts are not frozen or signed off.
 
 Validation: `lax build tree-algebras --replay` passed on 2026-09-17.
-The current development has 39 concepts and 77 Archive proofs: 74 use
+The current development has 48 concepts and 108 Archive proofs: 105 use
 background axioms only and three have explicit paper-statement dependencies.
 The reverse direction of the logical equivalence is proved, as are all
 six morphism/yield results, the set-algebra order laws, and the repaired
 automaton-property theorem. Eleven
-statement obligations have no proof yet. The independent context-decomposition
-and flattening-associativity audits also pass with background axioms only. Lax reports three unused
+statement obligations have no proof yet. The independent context-decomposition, flattening-associativity,
+and yield-substitution audits also pass with background axioms only. Lax reports three unused
 helper warnings for automatically generated constructor lemmas of the
 presentation-map structure; these generated lemmas are retained intentionally.
 
-A second source issue is under repair: intermediate reachability
+The substitution repair addresses a second source issue: intermediate reachability
 pruning breaks the literal flattening associativity lemma. The checked
 counterexample is in [audit/FlatteningAssociativity.lean](audit/FlatteningAssociativity.lean),
 with its mathematical description in [REVIEW_ISSUES.md](REVIEW_ISSUES.md).
@@ -32,7 +32,10 @@ now has proved monad laws, context composition, contextual congruence, and
 quotient evaluation and recognition. Its substitution algebra has a partial order, monotone evaluation, and
 binary meet given by disjoint union. Acceptance is an upward-closed meet
 filter, and recognition is proved on the original reachable deterministic
-systems. Rankwise finiteness and the automata results still need development.
+systems. The boundary-preserving normal form and complete extremal argument now
+prove the automaton property for this quotient when its unary sort is finite,
+without yield continuity. Rankwise finiteness and the actual automata and
+logic constructions still need development.
 The paper’s full yield-continuity axiom has not been carried over. See
 [REPAIR_PLAN.md](REPAIR_PLAN.md).
 

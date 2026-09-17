@@ -123,3 +123,37 @@ system development has not been silently reinterpreted. The remaining
 work is to establish the appropriate algebra and yield laws for the
 repaired construction; retention alone does not justify carrying over
 continuity unchanged.
+
+## The yield-substitution inclusion used for continuity fails
+
+The inclusion marked `(*)` in the syntactic continuity proof
+(`reference/source/set-algebras.tex`, lines 308–316) asserts that every yield
+of a substituted system comes from substituting an outer yield. This fails
+already for a reachable two-vertex pattern, independently of intermediate
+pruning:
+
+- The initial outer vertex p has rank two and is labelled by the empty
+  rank-two set-system.
+- Its only edge is p --0--> q; direction 1 has no edge.
+- Vertex q has rank zero and is labelled by the one-vertex rooted a-system.
+- There are no outer roots.
+
+There is no outer initial yield: any deterministic resolution must supply
+an edge in direction 1 at p, which a morphism cannot preserve. There is no
+outer root yield either. Nevertheless, flattening retains q's inner root,
+so the planted a-system is a yield of the flattening. Thus the left side
+of `(*)` is nonempty and its right side is empty.
+
+`audit/YieldSubstitution.lean` checks both facts and proves
+`yield_substitution_inclusion_fails`, using only `propext`,
+`Classical.choice`, and `Quot.sound`. Run from `proofs/`:
+
+```sh
+lake env lean ../audit/YieldSubstitution.lean
+```
+
+This refutes the asserted inclusion, not the main theorem and not by itself
+all possible proofs of continuity. The unpruned quotient construction does
+not assume this inclusion or continuity. Its order, meet, and recognition
+proofs remain valid. The verified extremal-context proof does not invoke
+the continuity field; later uses of yield-order must be reviewed separately.
