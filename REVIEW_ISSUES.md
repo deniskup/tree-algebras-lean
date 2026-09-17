@@ -61,3 +61,9 @@ Delta arguments still need to be adapted to carry the same boundary data.
 The literal decomposition lemma has deliberately not been added as an
 Archive statement. The draft retains the paper's principal theorem
 statements as open obligations, without treating them as proved.
+
+The proposed downstream repair is detailed in [EXTREMAL_REPAIR.md](EXTREMAL_REPAIR.md).
+The planted normal contexts and modified Delta are now defined in
+`concepts/Lax369799/ExtremalContexts.lean`. Delta's determinism has a ground
+proof, as does finite extremal choice over boundary data and unary values.
+The algebraic normal form and the comparison inequalities remain open.

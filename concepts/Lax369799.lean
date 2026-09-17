@@ -5,7 +5,10 @@ import Lax369799.AutomatonProperty
 import Lax369799.AutomatonPropertyTheorem
 import Lax369799.BisimAutomata
 import Lax369799.BisimAutomatonTheorem
+import Lax369799.ContextDecomposition
 import Lax369799.EncodingTheorems
+import Lax369799.EvaluationTheorems
+import Lax369799.ExtremalContexts
 import Lax369799.FiniteBisimulationTheorem
 import Lax369799.Flattening
 import Lax369799.FlatteningTheorems
@@ -15,6 +18,7 @@ import Lax369799.MonadicSecondOrder
 import Lax369799.MorphismTheorems
 import Lax369799.Morphisms
 import Lax369799.MuCalculusTheorems
+import Lax369799.PresentationCovers
 import Lax369799.RankedSystems
 import Lax369799.Resolutions
 import Lax369799.SetAlgebraTheorems
@@ -24,5 +28,3 @@ import Lax369799.SyntacticOrder
 import Lax369799.TransitionEncoding
 import Lax369799.TransitionSystems
 import Lax369799.UnfoldAutomata
-import Lax369799.PresentationCovers
-import Lax369799.ContextDecomposition

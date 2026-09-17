@@ -6,19 +6,21 @@ Local Lax submission **lax-369799**, based on **arXiv:2407.12677v6**.
 
 This is a **concept draft**, not a completed formalization. The principal
 statements and substantial supporting definitions have been written in
-Lean. Seventeen supporting statements have proofs using only background
+Lean. Twenty-seven supporting statements have proofs using only background
 axioms; three further proofs have explicit unresolved dependencies. The
 two main results remain open. A successful build checks the definitions, statement types, proof
 terms, and Archive format; it does not discharge unproved statement
 obligations. The concepts are not frozen or signed off.
 
-Validation is being refreshed with `lax build tree-algebras --replay`.
-The current development has 28 concepts and 20 Archive proofs: 17 use
+Validation: `lax build tree-algebras --replay` passed on 2026-09-17.
+The current development has 30 concepts and 30 Archive proofs: 27 use
 background axioms only and three have explicit paper-statement dependencies.
 The reverse direction of the logical equivalence is proved, as are all
-six morphism/yield results and the first two flattening results. Eighteen
+six morphism/yield results and the first two flattening results. Thirteen
 statement obligations have no proof yet. The independent context-decomposition
-audit also passes with background axioms only.
+audit also passes with background axioms only. Lax reports three unused
+helper warnings for automatically generated constructor lemmas of the
+presentation-map structure; these generated lemmas are retained intentionally.
 
 The intended scope remains both main results of the paper and their
 transitive proof dependencies. Technical constructions and external

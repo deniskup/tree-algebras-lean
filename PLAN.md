@@ -14,23 +14,24 @@ after that point need explicit confirmation.
 | 2.3–2.5 | Morphisms, MorphismTheorems | Morphisms, local surjectivity, isomorphism, unfolding, regular-tree quotient, direct resolutions, yields; composition, pullback, equivalence and yield statements |
 | 2.6–2.9 | Flattening, Resolutions, FlatteningTheorems, PresentationCovers, ContextDecomposition | Concrete flattening, one-hole contexts, plugging, renaming, resolutions, flatten-resolutions; preservation and congruence statements |
 | 3 | Algebras | Evaluation, isomorphism invariance, unit/associativity, algebra morphisms, recognition, language unfold-invariance |
-| 4.1 | SetAlgebras, SetAlgebraTheorems | All set-algebra axioms, derived meet/order, order and yield statements |
+| 4.1 | SetAlgebras, SetAlgebraTheorems, EvaluationTheorems | All set-algebra axioms, derived meet/order, order and yield statements |
 | 4.2–4.3 | SyntacticOrder, Resolutions, SyntacticAlgebraTheorems | Contextual preorder, quotient, quotient-evaluation specification, profiles, small profiles, finiteness/refinement statements |
-| 5 | AutomatonProperty, AutomatonPropertyTheorem | Deterministic elements, automaton property, plant invariance, order separation, principal sufficient-condition and syntactic statements |
+| 5 | AutomatonProperty, AutomatonPropertyTheorem, ExtremalContexts | Deterministic elements, automaton property, plant invariance, order separation, principal sufficient-condition and syntactic statements |
 | 6.1 | TransitionSystems, TransitionEncoding, EncodingTheorems | Usual bisimulation, ranked decoding, generated ranked bisimilarity, encoding and equivalence statements |
 | 6.2 | MonadicSecondOrder, MSORecognition | Full MSO syntax/semantics and the recognition statement |
 | 6.3 | UnfoldAutomata, AlgebraToAutomaton | Finite type sets, parity word condition, runs/branches, recognition statement |
 | 6.4 | BisimAutomata, BisimAutomatonTheorem, ModalMuCalculus, AlgebraToMuCalculus, MuCalculusTheorems, FiniteBisimulationTheorem | Full mu-calculus syntax/semantics, algebra-to-mu statement, standard reverse-direction dependencies, main equivalence |
 
-Seventeen statements now have Archive proofs with background axioms only:
-all six morphism/yield results; flattening preserves systems and
-flatten-resolutions give direct resolutions; all three mu-calculus
-statements; exact transition-system encoding; low-rank determinism; and
-four corrected-decomposition/cover results. Three further proofs expose
-explicit dependencies: the order laws depend on the meet laws, the
-algebra-to-mu reduction depends on the bisim-automaton results, and the
-main logical equivalence depends on its forward-direction ingredients.
-Of the 38 current statement obligations, 18 have no proof yet and three
+Twenty-seven statements now have Archive proofs with background axioms
+only. These include all morphism/yield statements and all set-algebra
+meet/order statements; three flattening/congruence results; evaluation
+of sums, evaluation in contexts, and contextual monotonicity; all three
+mu-calculus statements; exact transition-system encoding; finite small
+profiles; the boundary-preserving decomposition; and the boundary-aware
+Delta determinism and finite extremal choice. Three further proofs expose
+explicit dependencies: the algebra-to-mu reduction, the main logical
+equivalence, and syntactic rankwise finiteness.
+Of the 43 current statement obligations, 13 have no proof yet and three
 have proofs with unresolved dependencies. The independent source diagnostic
 in `audit/` is also kernel-checked.
 
@@ -39,10 +40,12 @@ in `audit/` is also kernel-checked.
 1. The decomposition with explicit hole boundary data is now proved. Adapt
    the algebraic normal form and extremal-context proof to this correction.
    Keep the difference from the literal v6 construction explicit.
+   The planted normal contexts, modified Delta, its determinism, and
+   finite extremal choice are now formalized in ExtremalContexts. These proofs now have no unresolved
+   assumptions. See EXTREMAL_REPAIR.md.
 2. Relate the finite-presentation pieces to unary algebra values, retaining
-   the hole's initial/root marks and loop directions. Add extremal contexts
-   and the concrete Delta construction from Section 5,
-   its determinism and the two inequalities.
+   the hole's initial/root marks and loop directions. Prove the algebraic normal form and the two Delta inequalities;
+   the construction and its determinism are already formalized.
 3. Add the smallification and optimal flatten-resolution interfaces from
    Section 4.3. Existing small-profile statements do not replace these proofs.
 4. Develop the compression construction and the modal parity acceptance-game

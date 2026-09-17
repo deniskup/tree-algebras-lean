@@ -97,6 +97,70 @@ noncomputable def trimMap {A : RankedSet} {n : ℕ} {V W : Type} [Fintype V] [Fi
       have hh := f.edge (vertex S v) d (Sum.map (vertex S) id t) h
       cases t <;> exact hh }
 
+theorem vertex_injective {A : RankedSet} {n : ℕ} {V : Type} [Fintype V]
+    (S : Presentation A n V) : Function.Injective (vertex S) := by
+  intro v w h
+  apply (index S).symm.injective
+  exact Subtype.ext h
+
+theorem vertex_trimMap {A : RankedSet} {n : ℕ} {V W : Type} [Fintype V] [Fintype W]
+    {S : Presentation A n V} {T : Presentation A n W} (f : Map S T) (v) :
+    vertex T ((trimMap f).toFun v) = f.toFun (vertex S v) := by
+  exact vertex_index T _ _
+
+theorem trimMap_surjective {A : RankedSet} {n : ℕ} {V W : Type} [Fintype V] [Fintype W]
+    {S : Presentation A n V} {T : Presentation A n W} (f : Map S T)
+    (hi : ∀ w, T.initial w → ∃ v, S.initial v ∧ f.toFun v = w)
+    (hr : ∀ w, T.root w → ∃ v, S.root v ∧ f.toFun v = w)
+    (he : ∀ v d t, T.edge (f.toFun v) d t →
+      ∃ s, S.edge v d s ∧ Sum.map f.toFun id s = t) :
+    (trimMap f).LocallySurjective := by
+  classical
+  refine ⟨?_, ?_, ?_⟩
+  · intro w hw
+    obtain ⟨v, hv, hvw⟩ := hi (vertex T w) hw
+    have hv' : S.Reachable v := ⟨v, Or.inl hv, .refl⟩
+    refine ⟨index S ⟨v, hv'⟩, ?_, ?_⟩
+    · change S.initial (vertex S (index S _))
+      rw [vertex_index]; exact hv
+    · apply vertex_injective T
+      rw [vertex_trimMap, vertex_index]
+      exact hvw
+  · intro w hw
+    obtain ⟨v, hv, hvw⟩ := hr (vertex T w) hw
+    have hv' : S.Reachable v := ⟨v, Or.inr hv, .refl⟩
+    refine ⟨index S ⟨v, hv'⟩, ?_, ?_⟩
+    · change S.root (vertex S (index S _))
+      rw [vertex_index]; exact hv
+    · apply vertex_injective T
+      rw [vertex_trimMap, vertex_index]
+      exact hvw
+  · intro v d t ht
+    change T.edge (vertex T ((trimMap f).toFun v)) d (Sum.map (vertex T) id t) at ht
+    rw [vertex_trimMap] at ht
+    obtain ⟨s, hs, hst⟩ := he (vertex S v) d _ ht
+    have maps_inj : Function.Injective (Sum.map (vertex T) (id : Fin n → Fin n)) := by
+      intro a b h
+      cases a <;> cases b
+      · exact congrArg Sum.inl (vertex_injective T (Sum.inl.inj h))
+      · cases h
+      · cases h
+      · exact congrArg Sum.inr (Sum.inr.inj h)
+    cases s with
+    | inl w =>
+      have hw : S.Reachable w := by
+        obtain ⟨r, hr, hp⟩ := ((index S).symm v).property
+        exact ⟨r, hr, hp.tail ⟨d, hs⟩⟩
+      refine ⟨.inl (index S ⟨w, hw⟩), ?_, ?_⟩
+      · change S.edge (vertex S v) d (.inl (vertex S (index S _)))
+        rw [vertex_index]; exact hs
+      · apply maps_inj
+        simpa only [Sum.map_inl, vertex_trimMap, vertex_index] using hst
+    | inr i =>
+      refine ⟨.inr i, hs, ?_⟩
+      apply maps_inj
+      exact hst
+
 private def Fiber {A : RankedSet} {n : ℕ} {S T U : SetSystem A n}
     (f : Morphism S U) (g : Morphism T U) :=
   {p : S.Vertex × T.Vertex // f.toFun p.1 = g.toFun p.2}
