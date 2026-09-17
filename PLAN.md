@@ -12,7 +12,7 @@ after that point need explicit confirmation.
 | --- | --- | --- |
 | 2.1–2.2 | RankedSystems | Ranked sets, finite reachable presentations, deterministic systems, atomic systems, relabelling, sum, plant, uproot |
 | 2.3–2.5 | Morphisms, MorphismTheorems | Morphisms, local surjectivity, isomorphism, unfolding, regular-tree quotient, direct resolutions, yields; composition, pullback, equivalence and yield statements |
-| 2.6–2.9 | Flattening, Resolutions, FlatteningTheorems | Concrete flattening, one-hole contexts, plugging, renaming, resolutions, flatten-resolutions; preservation and congruence statements |
+| 2.6–2.9 | Flattening, Resolutions, FlatteningTheorems, PresentationCovers, ContextDecomposition | Concrete flattening, one-hole contexts, plugging, renaming, resolutions, flatten-resolutions; preservation and congruence statements |
 | 3 | Algebras | Evaluation, isomorphism invariance, unit/associativity, algebra morphisms, recognition, language unfold-invariance |
 | 4.1 | SetAlgebras, SetAlgebraTheorems | All set-algebra axioms, derived meet/order, order and yield statements |
 | 4.2–4.3 | SyntacticOrder, Resolutions, SyntacticAlgebraTheorems | Contextual preorder, quotient, quotient-evaluation specification, profiles, small profiles, finiteness/refinement statements |
@@ -22,15 +22,20 @@ after that point need explicit confirmation.
 | 6.3 | UnfoldAutomata, AlgebraToAutomaton | Finite type sets, parity word condition, runs/branches, recognition statement |
 | 6.4 | BisimAutomata, BisimAutomatonTheorem, ModalMuCalculus, AlgebraToMuCalculus, MuCalculusTheorems, FiniteBisimulationTheorem | Full mu-calculus syntax/semantics, algebra-to-mu statement, standard reverse-direction dependencies, main equivalence |
 
-All Archive statement declarations are currently open. The only independent
-mathematical proof written so far is the local source diagnostic in `audit/`.
+Four supporting statements have Archive proofs with background axioms only:
+reachable restriction of a cover, absence of hole labels in the pieces,
+the corrected decomposition cover, and its unfold-equivalence consequence.
+The original 34 statement obligations remain open. The independent source
+diagnostic in `audit/` is also kernel-checked.
 
 ## Work needed before the concept scope is complete
 
-1. Repair the context-decomposition boundary case, and check the consequences
-   for the extremal-context proof. Keep source corrections explicit.
-2. Add the general context-pieces/recomposition interfaces after this repair.
-   Add extremal contexts and the concrete Delta construction from Section 5,
+1. The decomposition with explicit hole boundary data is now proved. Adapt
+   the algebraic normal form and extremal-context proof to this correction.
+   Keep the difference from the literal v6 construction explicit.
+2. Relate the finite-presentation pieces to unary algebra values, retaining
+   the hole's initial/root marks and loop directions. Add extremal contexts
+   and the concrete Delta construction from Section 5,
    its determinism and the two inequalities.
 3. Add the smallification and optimal flatten-resolution interfaces from
    Section 4.3. Existing small-profile statements do not replace these proofs.

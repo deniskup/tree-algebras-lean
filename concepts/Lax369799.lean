@@ -24,3 +24,5 @@ import Lax369799.SyntacticOrder
 import Lax369799.TransitionEncoding
 import Lax369799.TransitionSystems
 import Lax369799.UnfoldAutomata
+import Lax369799.PresentationCovers
+import Lax369799.ContextDecomposition

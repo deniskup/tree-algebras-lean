@@ -6,12 +6,14 @@ Local Lax submission **lax-369799**, based on **arXiv:2407.12677v6**.
 
 This is a **concept draft**, not a completed formalization. The principal
 statements and substantial supporting definitions have been written in
-Lean. The proof package is empty. A successful build checks the definitions,
-statement types, and Archive format; it does not discharge the declared
-axioms. The concepts are not frozen or signed off.
+Lean. Four supporting statements have proofs; the two main results remain
+open. A successful build checks the definitions, statement types, proof
+terms, and Archive format; it does not discharge unproved statement
+obligations. The concepts are not frozen or signed off.
 
 Validation: `lax build tree-algebras --replay` passed on 2026-09-17:
-26 concepts, 34 open statements, and 0 Archive proofs. The independent
+28 concepts and 4 Archive proofs. All four proofs use background axioms
+only; the original 34 statement obligations remain open. The independent
 context-decomposition audit also passes with background axioms only.
 
 The intended scope remains both main results of the paper and their
@@ -21,6 +23,9 @@ automata/game-theoretic dependencies still need development. See
 kernel-checked boundary case in the paper's context-decomposition lemma.
 
 ## Review entry points
+
+- [Decomposition preserving all hole marks and self-loops](concepts/Lax369799/ContextDecomposition.lean),
+  with [its proofs](proofs/Lax369799Proofs/ContextDecomposition.lean)
 
 - [Finite MSO/bisimulation theorem](concepts/Lax369799/FiniteBisimulationTheorem.lean)
 - [MSO syntax and semantics](concepts/Lax369799/MonadicSecondOrder.lean)

@@ -31,15 +31,32 @@ counterexample to either main theorem. The source proof of
 `lemma:choice-extremal-context` uses this decomposition, so the proof route
 needs a repair before that step can be certified.
 
-A candidate repair is to retain, alongside the unary pieces, whether the
+The implemented correction retains, alongside the unary pieces, whether the
 hole is initial, whether it is a root, and the directions of any edges from
 the hole to itself. The reconstruction must restore these three kinds of
 boundary data. Merely requiring positive hole rank is insufficient: an
 initial unary hole with a self-loop has the same loss of boundary data.
 The audit also checks the looping-hole example for every rank k, including
 k ≥ 2 as used by the extremal-context argument. The effect on that argument
-must also be checked; no
-corrected decomposition theorem has yet been declared or assumed.
+remains to be checked. The general corrected decomposition is now proved
+in `proofs/Lax369799Proofs/ContextDecomposition.lean`, with its statement and
+construction in `concepts/Lax369799/ContextDecomposition.lean`.
+
+The construction retains the ordinary-vertex interpretation of the hole;
+it imposes no restriction on its initial/root marks or self-loops. It
+copies each unary piece separately, adds a fresh hole carrying the recorded
+boundary data, and removes unreachable vertices. Its projection to the
+original context is locally surjective. This proves unfold-equivalence
+for every closed context, without any paper theorem as an assumption.
+A separate checked statement confirms that none of the pieces contains
+a hole-labelled vertex. The pieces currently use finite presentations,
+with unreachable vertices removed only after reconstruction; their labels
+are in the extended alphabet but avoid its hole symbol.
+
+`PresentationCovers.trim_cover` supplies the general reachable-restriction
+lemma used by this proof. These supporting results do not establish the
+paper's later normal form over algebra elements: the extremal-context and
+Delta arguments still need to be adapted to carry the same boundary data.
 
 The literal decomposition lemma has deliberately not been added as an
 Archive statement. The draft retains the paper's principal theorem
