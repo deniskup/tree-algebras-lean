@@ -25,7 +25,7 @@ private theorem reroot_plant {A : RankedSet} {n : ℕ} (S : System A n) :
   congr 1
   exact Set.union_empty initial
 
-private theorem plant_injective {A : RankedSet} {n : ℕ} (S T : System A n)
+theorem plant_injective {A : RankedSet} {n : ℕ} (S T : System A n)
     (h : plant S.val = plant T.val) : S = T := by
   apply Subtype.ext
   have hh := congrArg reroot h
@@ -98,7 +98,7 @@ private theorem root_yield_plant {A : RankedSet} {n : ℕ} (S : SetSystem A n)
         have hh := d.edge v k t ht
         cases t <;> exact hh
 
-private theorem system_ne_plant {A : RankedSet} {n : ℕ} (S T : System A n) :
+theorem system_ne_plant {A : RankedSet} {n : ℕ} (S T : System A n) :
     S.val ≠ plant T.val := by
   intro h
   obtain ⟨i, hi⟩ := S.property.1

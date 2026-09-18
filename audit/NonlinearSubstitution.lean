@@ -6,6 +6,7 @@ import Mathlib.Tactic.FinCases
 namespace NonlinearSubstitutionAudit
 open Lax369799.RankedSystems Lax369799.Morphisms Lax369799.Flattening
 open Lax369799Proofs.Pullbacks
+open Lax369799.Resolutions
 
 abbrev A : RankedSet := fun _ => Unit
 
@@ -61,6 +62,42 @@ theorem mixed_resolution : DirectResolution (flatten pattern) mixed := by
         Or.inr ⟨i, ⟨rfl, i, rfl⟩, rfl⟩⟩ }
   exact ⟨lift f⟩
 
+-- Splitting the repeated variable retains the two independent choices.
+def variableOrigin : Fin 2 → Fin 1 := fun _ => 0
+
+theorem mixed_is_resolution_of_repeated : IsResolution repeated.val mixed variableOrigin := by
+  refine ⟨{
+    toFun := id
+    initial := fun _ _ => trivial
+    root := fun _ h => False.elim h
+    label := fun _ => rfl
+    edge := ?_ }⟩
+  rintro v d t ⟨s, ⟨i, rfl, rfl⟩, rfl⟩
+  exact ⟨i, rfl, rfl⟩
+
+def splitPattern : System (System A) 2 := atomicSystem mixed
+
+noncomputable def splitResolution : FlattenResolution pattern splitPattern where
+  vertex := fun _ => (0 : Fin 1)
+  variableMap := fun _ => variableOrigin
+  initial := fun _ _ => trivial
+  resolves := fun _ => mixed_is_resolution_of_repeated
+  transition := by
+    rintro v i w ⟨j, _, h⟩
+    cases h
+  exit := by
+    rintro v i j ⟨l, _, he⟩
+    exact ⟨rfl, j, rfl⟩
+
+theorem resolutions_recover_mixed :
+    ∃ U : System A 2, SystemFlattening splitPattern U ∧
+      DirectResolution (flatten pattern) U ∧ UnfoldsTo mixed.val U.val := by
+  obtain ⟨U, hu⟩ := Lax369799Proofs.Flattening.flatten_system splitPattern
+  refine ⟨U, hu,
+    Lax369799Proofs.Flattening.flatten_resolution_sound pattern splitPattern splitResolution U hu, ?_⟩
+  rw [hu]
+  exact Lax369799Proofs.AtomicFlattening.outer_atomic_cover mixed.val
+
 theorem no_uniform_initial_yield : ¬ InitYield uniform mixed := by
   rintro ⟨D, ⟨f⟩, ⟨g, hg⟩⟩
   obtain ⟨v, _⟩ := D.property.1
@@ -95,4 +132,6 @@ theorem distribution_fails : ¬ YieldBelow (flatten pattern) uniform := by
   · exact no_uniform_root_yield U hu
 
 #print axioms distribution_fails
+#print axioms mixed_is_resolution_of_repeated
+#print axioms resolutions_recover_mixed
 end NonlinearSubstitutionAudit

@@ -1,6 +1,7 @@
 import Lax369799Proofs.Acceptance
 import Lax369799Proofs.AcceptanceObservations
 import Lax369799Proofs.AlgebraicDecomposition
+import Lax369799Proofs.AlgebraicTransitions
 import Lax369799Proofs.AtomicFlattening
 import Lax369799Proofs.AutomatonProperty
 import Lax369799Proofs.BoundedProfileRefinement
@@ -12,6 +13,7 @@ import Lax369799Proofs.ContextRelabelling
 import Lax369799Proofs.ContinuationCompression
 import Lax369799Proofs.DeltaComparison
 import Lax369799Proofs.DeltaContext
+import Lax369799Proofs.DeterministicElements
 import Lax369799Proofs.DeterministicNormalForms
 import Lax369799Proofs.DeterministicPieces
 import Lax369799Proofs.DeterministicSyntacticOrder
@@ -38,6 +40,7 @@ import Lax369799Proofs.FiniteSums
 import Lax369799Proofs.FiniteSyntacticAlgebra
 import Lax369799Proofs.Flattening
 import Lax369799Proofs.GeneratedAlgebra
+import Lax369799Proofs.InfiniteRamsey
 import Lax369799Proofs.MainTheorems
 import Lax369799Proofs.MorphismTheorems
 import Lax369799Proofs.MuBisimulation
@@ -46,6 +49,7 @@ import Lax369799Proofs.MuToMSO
 import Lax369799Proofs.NormalMonotonicity
 import Lax369799Proofs.ObservedSubstitution
 import Lax369799Proofs.OptimalResolutions
+import Lax369799Proofs.PeriodicPaths
 import Lax369799Proofs.PlantAcceptance
 import Lax369799Proofs.PolynomialContexts
 import Lax369799Proofs.PolynomialQuotient
@@ -61,6 +65,7 @@ import Lax369799Proofs.Regularization
 import Lax369799Proofs.Renaming
 import Lax369799Proofs.ResolutionCompression
 import Lax369799Proofs.ResolutionFactorization
+import Lax369799Proofs.ResolutionLifting
 import Lax369799Proofs.RootExpansion
 import Lax369799Proofs.RootObservations
 import Lax369799Proofs.RootProfileSubstitution
@@ -72,8 +77,14 @@ import Lax369799Proofs.SumYields
 import Lax369799Proofs.SyntacticRecognition
 import Lax369799Proofs.SystemEvaluation
 import Lax369799Proofs.SystemSubstitution
+import Lax369799Proofs.UnarySystems
+import Lax369799Proofs.UnfoldBranches
 import Lax369799Proofs.UnfoldEquivalence
 import Lax369799Proofs.UntrimmedFlattening
 import Lax369799Proofs.VariableCompression
 import Lax369799Proofs.VertexContexts
+import Lax369799Proofs.WordFactorization
+import Lax369799Proofs.WordParity
+import Lax369799Proofs.YieldObservations
+import Lax369799Proofs.YieldSubstitution
 import Lax369799Proofs.Yields

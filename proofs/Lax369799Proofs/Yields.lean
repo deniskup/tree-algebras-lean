@@ -145,12 +145,12 @@ private noncomputable def rootResolution {A : RankedSet} {n : ℕ} {S : SetSyste
     label := f.label
     edge := f.edge }
 
-private theorem initial_yield_forward {A : RankedSet} {n : ℕ} {S T : SetSystem A n}
+theorem initial_yield_forward {A : RankedSet} {n : ℕ} {S T : SetSystem A n}
     (f : Morphism S T) {U : System A n} (h : InitYield S U) : InitYield T U := by
   obtain ⟨D, ⟨d⟩, hd⟩ := h
   exact ⟨D, ⟨compose d f⟩, hd⟩
 
-private theorem initial_yield_backward {A : RankedSet} {n : ℕ} {S T : SetSystem A n}
+theorem initial_yield_backward {A : RankedSet} {n : ℕ} {S T : SetSystem A n}
     (f : Morphism S T) (hf : f.LocallySurjective)
     {U : System A n} (h : InitYield T U) : InitYield S U := by
   obtain ⟨D, ⟨d⟩, ⟨u, hu⟩⟩ := h

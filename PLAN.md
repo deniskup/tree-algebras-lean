@@ -22,7 +22,7 @@ after that point need explicit confirmation.
 | 6.3 | UnfoldAutomata, AlgebraToAutomaton | Finite type sets, parity word condition, runs/branches, recognition statement |
 | 6.4 | BisimAutomata, BisimAutomatonTheorem, ModalMuCalculus, AlgebraToMuCalculus, MuCalculusTheorems, FiniteBisimulationTheorem | Full mu-calculus syntax/semantics, algebra-to-mu statement, standard reverse-direction dependencies, main equivalence |
 
-One hundred and sixty-seven statements now have Archive proofs using background axioms
+One hundred and eighty-five statements now have Archive proofs using background axioms
 only, including the complete boundary-preserving automaton-property
 argument. Its algebraic decomposition, extremal choice, both Delta
 inequalities, and boundary and unary-piece comparisons are proved.
@@ -31,8 +31,8 @@ reduction and the main logical equivalence. Syntactic rankwise finiteness
 is now proved without paper-statement assumptions.
 Acceptance, yields of sums, and syntactic recognition conditional on a
 syntactic algebra are now ground as well. All four independent source
-diagnostics in `audit/` are kernel-checked. There are 179 declared statements:
-169 have Archive proofs (167 ground and two relative), and 10 have no proof.
+diagnostics in `audit/` are kernel-checked. There are 196 declared statements:
+187 have Archive proofs (185 ground and two relative), and 9 have no proof.
 
 The literal flattening associativity lemma fails with intermediate
 reachability pruning. The user authorized a repair. FinitePresentations, FiniteContexts,
@@ -73,16 +73,38 @@ record containing the unverified continuity requirement.
    PolynomialContexts and PolynomialQuotient give evaluation congruence and
    quotient algebra laws. PolynomialUnfolding supplies unfolding invariance.
    The automaton-property theorem now applies with the paper’s ordinary
-   recognizability hypothesis. The next issue is the deterministic-element
-   normalization used to extract unary branch types: nonlinear substitution
-   does not distribute over variable choices (see REVIEW_ISSUES.md).
+   recognizability hypothesis. Continue the deterministic-element normalization and unary branch-type
+   construction using resolutions with variable-origin maps. The nonlinear
+   example is the paper’s motivation for resolutions, and is now checked
+   positively as an explicit flatten-resolution (see REVIEW_ISSUES.md).
+   ResolutionLifting proves renaming lift and resolution transfer;
+   YieldSubstitution and YieldObservations now prove flattening monotonicity
+   and the original yield-context congruence, including root yields.
+   UnarySystems proves uniqueness of variable exits and yield decomposition
+   into variable-specific copies. DeterministicElements now proves the
+   positive-rank unary normal form under the original explicit SetAlgebra
+   hypothesis, including continuity. Instantiating that hypothesis for the
+   repaired quotient remains an open obligation.
 5. Develop the compression construction and the modal parity acceptance-game
    translation from Section 6.4. The duplication condition and the two
    top-level bisim-automaton statements are present, but their construction
    and game interfaces are not yet defined.
-6. Formalize the regular-word acceptance facts, Ramsey factorisation and
-   finite parity-game facts used in Sections 6.3–6.4; expose substantial
-   dependencies as separate concepts rather than opaque assumptions.
+6. InfiniteRamsey now proves the infinite pair-coloring theorem, and
+   WordFactorization proves idempotent block factorization in a finite
+   monoid, with a stable nonempty prefix. WordParity proves the unique
+   least recurring priority, prefix-shift invariance of recurrence, the
+   recurring minimum-priority cycle, and its acceptance criterion.
+   PeriodicPaths constructs an ultimately periodic witness with the same
+   minimum recurring priority, proving the periodic-path test.
+   UnfoldBranches applies that test to unfold-automaton runs through the
+   product of vertices, directions, and word-automaton states.
+   AlgebraicTransitions defines the finite-type transition table and proves
+   its context acceptance lemma under an explicit set-algebra automaton
+   property. Constructing its word condition and the full recognition
+   equivalence remain outstanding.
+   Continue the regular-word
+   acceptance and finite parity-game facts used in Sections 6.3–6.4;
+   expose substantial dependencies as separate concepts.
 7. Add the effectivity claim and its coding/size-bound definitions. The present
    existential main statement does not assert a computable translation.
 8. Review all formal statements against active v6 TeX (ignore commented-out

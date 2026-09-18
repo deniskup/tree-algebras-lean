@@ -15,14 +15,14 @@ private theorem bounded_initial {A B : RankedSet} (bound : ℕ)
   unfold BoundedProfile
   rw [RootObservations.initial_profile]
 
-private def initialPattern {A : RankedSet} {n : ℕ} {V : Type}
+def initialPattern {A : RankedSet} {n : ℕ} {V : Type}
     (P : Presentation (SetSystem A) n V) :
     Presentation (Lax369799.FinitePresentations.FiniteSystem A) n V := {
   finiteLabels P with
     label := fun v => ⟨(P.label v).1, component (Lax369799.FinitePresentations.ofSetSystem (P.label v).2) false⟩
     root := ∅ }
 
-private def initialCover {A : RankedSet} {n : ℕ} {V : Type}
+def initialCover {A : RankedSet} {n : ℕ} {V : Type}
     (P : Presentation (SetSystem A) n V) :
     Lax369799.PresentationCovers.Cover
       (Lax369799.FinitePresentations.flattenPresentation (initialPattern P))

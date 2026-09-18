@@ -40,12 +40,17 @@ and their external dependencies remain outstanding.
 ## Next obligations
 
 1. The corrected resolution, bounded-profile refinement, and regularization
-   arguments are complete, with fibre bound |B₁|+1. Resolve the deterministic
-   normal-form issue caused by nonlinear substitution before using the
-   paper’s unary branch-type construction. See REVIEW_ISSUES.md.
+   arguments are complete, with fibre bound |B₁|+1. Continue the deterministic
+   normal-form and unary branch-type constructions using variable-splitting
+   resolutions. The nonlinear diagnostic illustrates why direct resolutions
+   alone do not compose; it requires no change of choice semantics.
+   The complete yield-context congruence is now proved. The unary normal
+   form is also proved for the original continuity-bearing SetAlgebra
+   interface; applying it to the repaired quotient is still outstanding.
 2. Develop the deterministic-value and regular-word constructions needed
    for the actual unfold-automaton, using verified laws instead of assuming
-   the original continuity requirement.
+   the original continuity requirement. Infinite pair Ramsey and stable
+   idempotent factorization of words in a finite monoid are now proved.
 3. Complete the bisimulation, MSO, parity-game, and mu-calculus translations
    and effectivity claims. Preserve the original main statements; do not
    replace them with conditional or weakened results.

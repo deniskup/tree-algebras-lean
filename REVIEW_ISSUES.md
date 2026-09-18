@@ -183,34 +183,36 @@ rankwise-finiteness theorem, without assuming the original small-profile
 refinement statement. The smaller original bound remains unproved.
 
 
-## Nonlinear substitution and the deterministic-element normal form
+## Nonlinear substitution: resolutions recover the mixed case
 
-The next use of continuity occurs in Section 5's `lemma:det-characterisation`,
-which normalizes a value represented using rank-zero and rank-one labels
-into a sum of unary components, one per output variable. This does not
-follow merely from the unpruned substitution, order, and cover laws proved
-for the repaired contextual algebra.
+The example in `audit/NonlinearSubstitution.lean` illustrates the need for
+resolutions, not a defect in independent-choice substitution. This is the
+same phenomenon explicitly discussed in v6 Section 2.9,
+`example:direct-resolutions-not-compositional`. The earlier interpretation
+of this diagnostic as requiring a choice-semantics clarification was mistaken.
 
-A nonempty, root-free diagnostic is checked in
-`audit/NonlinearSubstitution.lean`. Let `a` be a binary symbol and let the
-rank-one system `b` be `a(x,x)`. Take a one-vertex outer pattern labelled
-by `b`, whose direction zero has both `x₀` and `x₁` as successors.
-The literal substitution has `a(x₀,x₁)` as a direct resolution: the two
-occurrences of the inner variable can use different outer successors.
-By contrast, the disjoint union `a(x₀,x₀) + a(x₁,x₁)` has no initial yield
-unfold-equivalent to `a(x₀,x₁)`, and it has no root yields.
-The theorem `distribution_fails` proves the failure of yield inclusion,
-using only `propext`, `Classical.choice`, and `Quot.sound`.
+Let `b = a(x,x)`. The direct-resolution-only combination of a unary outer
+choice yields only `a(x₀,x₀)` and `a(x₁,x₁)`, whereas substitution also admits
+`a(x₀,x₁)`. A resolution retains this mixed system together with the map
+`σ : Fin 2 → Fin 1` sending both variables to zero. Renaming the mixed
+system by `σ` gives a direct resolution of `b`.
 
-Thus retaining unreachable vertices and hole boundary data does not make
-this distribution valid. This example does not refute the abstract
-normal-form lemma for a structure satisfying all of the original
-set-algebra axioms: that lemma explicitly uses continuity. It does show
-why that lemma cannot simply be carried over to the repaired algebra,
-whose continuity is not established. A replacement normal-form argument,
-or a further change to the substitution/choice semantics, is still needed
-to derive the proposed unfold-automaton transitions.
+The audit now proves `mixed_is_resolution_of_repeated`, constructs the
+explicit `splitResolution` flatten-resolution, and proves
+`resolutions_recover_mixed`: its flattening is a direct resolution of the
+original flattened pattern and an unfolding of the mixed system. All these
+proofs use only background axioms. `distribution_fails` remains a correct
+statement about the insufficient direct-resolution-only construction.
 
-The regularization, rankwise-finiteness, and repaired automaton-property
-proofs do not use this distribution. Their kernel-checked results remain
-valid; the complete algebra-to-automaton theorem remains open.
+No shared-choice convention is needed. Continue using resolutions with
+their variable-origin maps. The remaining normal-form and continuity
+obligations must be proved using the appropriate resolution arguments;
+this example is not evidence that those obligations are false.
+
+The general resolution argument is now checked in the Archive development.
+`ResolutionLifting.transfer` preserves the variable-origin map when passing
+through yield inclusion. `YieldSubstitution.transfer_resolution` applies
+this to factorized flatten-resolutions. `YieldObservations.flatten_mono`
+and `yield_context_congruence` include both initial and root yields and
+use only background axioms. Thus the nonlinear example creates no gap
+in these compositional results.

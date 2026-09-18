@@ -3,6 +3,7 @@ import Lax369799.AcceptanceTheorems
 import Lax369799.AlgebraToAutomaton
 import Lax369799.AlgebraToMuCalculus
 import Lax369799.AlgebraicDecomposition
+import Lax369799.AlgebraicTransitions
 import Lax369799.Algebras
 import Lax369799.AutomatonProperty
 import Lax369799.AutomatonPropertyTheorem
@@ -12,6 +13,7 @@ import Lax369799.BoundedProfileRefinement
 import Lax369799.ContextDecomposition
 import Lax369799.ContextRelabelling
 import Lax369799.ContextSmallification
+import Lax369799.DeterministicElements
 import Lax369799.DeterministicNormalForms
 import Lax369799.DeterministicPieces
 import Lax369799.DeterministicSyntacticOrder
@@ -36,6 +38,7 @@ import Lax369799.FiniteSyntacticAlgebra
 import Lax369799.Flattening
 import Lax369799.FlatteningTheorems
 import Lax369799.GeneratedAlgebra
+import Lax369799.InfiniteRamsey
 import Lax369799.MSORecognition
 import Lax369799.ModalMuCalculus
 import Lax369799.MonadicSecondOrder
@@ -44,6 +47,7 @@ import Lax369799.Morphisms
 import Lax369799.MuCalculusTheorems
 import Lax369799.ObservedSubstitution
 import Lax369799.OptimalResolutions
+import Lax369799.PeriodicPaths
 import Lax369799.PolynomialContexts
 import Lax369799.PolynomialQuotient
 import Lax369799.PolynomialUnfolding
@@ -54,6 +58,7 @@ import Lax369799.RankedSystems
 import Lax369799.Regularization
 import Lax369799.Renaming
 import Lax369799.ResolutionCompression
+import Lax369799.ResolutionLifting
 import Lax369799.Resolutions
 import Lax369799.RootExpansion
 import Lax369799.RootObservations
@@ -67,6 +72,11 @@ import Lax369799.SystemEvaluation
 import Lax369799.SystemSubstitution
 import Lax369799.TransitionEncoding
 import Lax369799.TransitionSystems
+import Lax369799.UnarySystems
 import Lax369799.UnfoldAutomata
+import Lax369799.UnfoldBranches
 import Lax369799.VariableCompression
 import Lax369799.VertexContexts
+import Lax369799.WordFactorization
+import Lax369799.WordParity
+import Lax369799.YieldSubstitution
