@@ -82,6 +82,7 @@ import Lax369799Proofs.RootExpansion
 import Lax369799Proofs.RootObservations
 import Lax369799Proofs.RootProfileSubstitution
 import Lax369799Proofs.RootlessFlattening
+import Lax369799Proofs.SemigroupFactorization
 import Lax369799Proofs.SetAlgebraTheorems
 import Lax369799Proofs.SetLogic
 import Lax369799Proofs.SetLogicRecognition

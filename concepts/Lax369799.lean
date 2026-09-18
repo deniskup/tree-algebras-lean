@@ -73,6 +73,7 @@ import Lax369799.RootExpansion
 import Lax369799.RootObservations
 import Lax369799.RootProfileSubstitution
 import Lax369799.RootlessFlattening
+import Lax369799.SemigroupFactorization
 import Lax369799.SetAlgebraTheorems
 import Lax369799.SetAlgebras
 import Lax369799.SetLogic

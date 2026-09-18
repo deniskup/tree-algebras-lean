@@ -216,3 +216,46 @@ this to factorized flatten-resolutions. `YieldObservations.flatten_mono`
 and `yield_context_congruence` include both initial and root yields and
 use only background axioms. Thus the nonlinear example creates no gap
 in these compositional results.
+
+## Continuity and unary normal forms after resolution transfer
+
+The user's resolution correction is implemented: general flatten-resolution
+transfer and full yield-context congruence are proved. The mixed branch in
+`NonlinearSubstitution.lean` is explicitly recovered by a split-variable
+resolution. That example is not a defect in resolution composition.
+
+There is a separate compatibility question at the later continuity step.
+The same audit now proves `continuity_forces_distribution`: for every
+continuity-bearing `SetAlgebra E` and every unary value b,
+
+```
+eval(b(x₀ + x₁)) = eval(b(x₀) + b(x₁)).
+```
+
+Here the left presentation has one unary vertex and two possible targets
+in direction zero. The right presentation has two initial unary vertices,
+with their sole directions going to x₀ and x₁ respectively. Both have no
+roots. Projection to either variable is atomic b, so the proved unary
+normal form gives the displayed equality.
+
+The audit also proves `continuity_forces_expanded_distribution`: take
+b = eval(a(x,x)) for an arbitrary binary algebra element a, and use
+associativity to expand both sides. All these proofs have only the three
+background axioms (and the explicitly quantified SetAlgebra hypothesis).
+The earlier `distribution_fails` theorem checks that the corresponding
+base-letter presentations do not have the same yields: the left admits
+a(x₀,x₁), while the right does not.
+
+The intended syntactic interpretation can distinguish them: substitute
+leaves with two different marks and consider the unfolding-invariant
+language “all children of the initial vertex have the same mark.” Every
+yield on the right satisfies it; a mixed yield on the left does not.
+This last closed-context explanation is mathematical, rather than a
+separate kernel-checked closed-language counterexample.
+
+The question is how continuity or the unary normal-form argument should
+be adjusted to account for split-variable resolutions. The unpruned
+quotient does not assert continuity, so its existing proofs remain valid;
+its automaton-property theorem cannot yet be combined with the original
+continuity-based unary normal-form theorem. This issue does not affect the
+completed MSO recognition or encoding/bisimulation proofs.

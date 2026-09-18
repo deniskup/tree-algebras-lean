@@ -1,4 +1,6 @@
 import Lax369799Proofs.AtomicFlattening
+import Lax369799Proofs.DeterministicElements
+import Lax369799.PolynomialContexts
 import Mathlib.Tactic.FinCases
 
 /- A nonempty, root-free test of distributing a unary substitution over
@@ -131,7 +133,59 @@ theorem distribution_fails : ¬ YieldBelow (flatten pattern) uniform := by
     exact no_uniform_initial_yield hu
   · exact no_uniform_root_yield U hu
 
+-- The separate continuity consequence: every abstract unary value must
+-- distribute over a nondeterministic choice of output variable.
+def choice {B : RankedSet} (b : B 1) : SetSystem B 2 where
+  size := 1
+  graph := {
+    label := fun _ => ⟨1, b⟩
+    initial := Set.univ
+    root := ∅
+    edge := fun _ d t => d = 0 ∧ ∃ i : Fin 2, t = .inr i
+    direction_valid := by rintro v d t ⟨rfl, _⟩; exact Nat.zero_lt_one }
+  reachable := fun v => ⟨v, Or.inl trivial, .refl⟩
+
+private theorem choice_projection {B : RankedSet} (b : B 1) (i : Fin 2) :
+    Lax369799.DeterministicElements.projection (choice b) i = atomic b := by
+  have he : (Lax369799.DeterministicElements.projection (choice b) i).graph.edge =
+      (atomic b).graph.edge := by
+    funext v d t
+    apply propext
+    change (d = 0 ∧ ∃ j : Fin 2, Sum.map id (fun _ => i) t = .inr j) ↔
+      ∃ k : Fin 1, d = k.val ∧ t = .inr k
+    cases t with
+    | inl w => simp
+    | inr k =>
+      have hk : k = 0 := Subsingleton.elim _ _
+      subst k
+      simp
+  unfold Lax369799.DeterministicElements.projection choice atomic
+  congr 1
+  congr 1
+
+-- This uses the continuity-bearing SetAlgebra interface, not the repaired
+-- finite-presentation algebra, which does not assert continuity.
+theorem continuity_forces_distribution {B : RankedSet} (E : Lax369799.SetAlgebras.SetAlgebra B)
+    (b : B 1) :
+    E.eval 2 (choice b) = E.eval 2 (Lax369799.DeterministicElements.parallel (fun _ : Fin 2 => b)) := by
+  have h := Lax369799Proofs.DeterministicElements.normal_value E (by decide : 0 < 2)
+    (choice b) (fun _ => Nat.le_refl 1)
+  simpa only [choice_projection, E.unit] using h.symm
+
+def repeatedLabel {B : RankedSet} (a : B 2) : System B 1 :=
+  Lax369799.PolynomialContexts.withLabels repeated (fun _ => a)
+
+theorem continuity_forces_expanded_distribution {B : RankedSet}
+    (E : Lax369799.SetAlgebras.SetAlgebra B) (a : B 2) :
+    E.eval 2 (flatten (choice (repeatedLabel a).val)) = E.eval 2 (flatten
+      (Lax369799.DeterministicElements.parallel (fun _ : Fin 2 => (repeatedLabel a).val))) := by
+  rw [← E.associative 2 (choice (repeatedLabel a).val), ← E.associative 2
+    (Lax369799.DeterministicElements.parallel (fun _ : Fin 2 => (repeatedLabel a).val))]
+  exact continuity_forces_distribution E (E.eval 1 (repeatedLabel a).val)
+
 #print axioms distribution_fails
 #print axioms mixed_is_resolution_of_repeated
 #print axioms resolutions_recover_mixed
+#print axioms continuity_forces_distribution
+#print axioms continuity_forces_expanded_distribution
 end NonlinearSubstitutionAudit

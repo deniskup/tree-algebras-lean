@@ -44,7 +44,7 @@ private theorem eval_yields {A : RankedSet} (E : SetAlgebra A) {n : ℕ}
     (SetAlgebraTheorems.yield_order E T S (fun U => (h U).mpr))
     (SetAlgebraTheorems.yield_order E S T (fun U => (h U).mp))
 
-private theorem normal_value {A : RankedSet} (E : SetAlgebra A) {n : ℕ} (hn : 0 < n)
+theorem normal_value {A : RankedSet} (E : SetAlgebra A) {n : ℕ} (hn : 0 < n)
     (S : SetSystem A n) (hS : ∀ v, (S.graph.label v).1 ≤ 1) :
     E.eval n (parallel (fun i => E.eval 1 (projection S i))) = E.eval n S := by
   have hpieces := UnarySystems.variable_decomposition hn S.graph hS

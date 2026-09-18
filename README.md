@@ -6,14 +6,14 @@ Local Lax submission **lax-369799**, based on **arXiv:2407.12677v6**.
 
 This is a **concept draft**, not a completed formalization. The principal
 statements and substantial supporting definitions have been written in
-Lean. Two hundred and twelve supporting statements have proofs using only background
+Lean. Two hundred and thirteen supporting statements have proofs using only background
 axioms; two further proofs have explicit unresolved dependencies. The
 two main results remain open. A successful build checks the definitions, statement types, proof
 terms, and Archive format; it does not discharge unproved statement
 obligations. The concepts are not frozen or signed off.
 
 Validation: `lax build tree-algebras --replay` passed on 2026-09-18.
-The current development has 94 concepts and 214 Archive proofs: 212 use
+The current development has 95 concepts and 215 Archive proofs: 213 use
 background axioms only and two have explicit paper-statement dependencies.
 The reverse direction of the logical equivalence is proved, as are all
 six morphism/yield results, the set-algebra order laws, and the repaired
