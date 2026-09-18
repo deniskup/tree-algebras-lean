@@ -34,8 +34,9 @@ reachable development remains separate and has not been silently changed.
   The automaton property therefore applies without an unfolding-invariance
   assumption on the original recognizing algebra.
 
-The full paper is not yet formalized. The automata and logic constructions
-and their external dependencies remain outstanding.
+The full paper is not yet formalized. MSO recognition, ranked encoding correctness, and the reverse logical
+implication are proved. The automata constructions and their external
+dependencies remain outstanding.
 
 ## Next obligations
 
@@ -51,7 +52,7 @@ and their external dependencies remain outstanding.
    for the actual unfold-automaton, using verified laws instead of assuming
    the original continuity requirement. Infinite pair Ramsey and stable
    idempotent factorization of words in a finite monoid are now proved.
-3. Complete the bisimulation, MSO, parity-game, and mu-calculus translations
+3. Complete the parity-game and algebra-to-mu-calculus translations
    and effectivity claims. Preserve the original main statements; do not
    replace them with conditional or weakened results.
 4. Review the original reachable syntactic-algebra obligations separately.

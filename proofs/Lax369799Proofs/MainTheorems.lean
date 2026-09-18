@@ -1,9 +1,13 @@
 import Lax369799.FiniteBisimulationTheorem
-import Lax369799.MSORecognition
+import Lax369799Proofs.MSORecognition
 import Lax369799.EncodingTheorems
 import Lax369799.MuCalculusTheorems
 import Lax369799.AlgebraToMuCalculus
 import Lax369799.BisimAutomatonTheorem
+import Lax369799Proofs.Encoding
+import Lax369799Proofs.RankedBisimulation
+import Lax369799Proofs.MuToMSO
+import Lax369799Proofs.MuBisimulation
 
 namespace Lax369799Proofs.MainTheorems
 open Lax369799
@@ -33,12 +37,7 @@ theorem algebra_to_mu {P : Type} [Finite P] (L : Language (TransitionAlphabet P)
 ---
 conclusion: Lax369799.FiniteBisimulationTheorem.finite_bisimulation_invariant_mso
 assumptions:
-  - Lax369799.MSORecognition.mso_recognizable
-  - Lax369799.EncodingTheorems.encoding_exists
-  - Lax369799.EncodingTheorems.bisimulation_iff
   - Lax369799.AlgebraToMuCalculus.algebra_to_mu
-  - Lax369799.MuCalculusTheorems.mu_to_mso
-  - Lax369799.MuCalculusTheorems.mu_bisimulation_invariant
 ---
 Encode finite transition systems as ranked systems, apply MSO recognition
 and the algebraic modal translation, and decode. The converse combines
@@ -54,17 +53,17 @@ theorem finite_bisimulation_invariant_mso {P : Type} [Finite P]
     have hK : ∀ S T, RankedBisimilar S T → (S ∈ K ↔ T ∈ K) := by
       intro S T h
       exact (hφ (decode S)).symm.trans
-        ((hinv (decode S) (decode T) ((EncodingTheorems.bisimulation_iff S T).mp h)).trans
+        ((hinv (decode S) (decode T) (Lax369799Proofs.RankedBisimulation.ranked_forward S T h)).trans
           (hφ (decode T)))
-    obtain ⟨ψ, hψ⟩ := AlgebraToMuCalculus.algebra_to_mu K hK (MSORecognition.mso_recognizable φ)
+    obtain ⟨ψ, hψ⟩ := AlgebraToMuCalculus.algebra_to_mu K hK (Lax369799Proofs.MSORecognition.mso_recognizable φ)
     refine ⟨ψ, ?_⟩
     intro S
-    obtain ⟨T, rfl⟩ := EncodingTheorems.encoding_exists S
+    obtain ⟨T, rfl⟩ := Encoding.encoding_exists S
     exact (hφ (decode T)).trans (hψ T)
   · rintro ⟨φ, hφ⟩
-    obtain ⟨ψ, hψ⟩ := MuCalculusTheorems.mu_to_mso φ
+    obtain ⟨ψ, hψ⟩ := MuToMSO.mu_to_mso φ
     refine ⟨⟨ψ, fun S => (hφ S).trans (hψ S)⟩, ?_⟩
     intro S T h
-    exact (hφ S).trans ((MuCalculusTheorems.mu_bisimulation_invariant φ S T h).trans (hφ T).symm)
+    exact (hφ S).trans ((MuBisimulation.mu_bisimulation_invariant φ S T h).trans (hφ T).symm)
 
 end Lax369799Proofs.MainTheorems

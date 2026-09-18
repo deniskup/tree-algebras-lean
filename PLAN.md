@@ -17,12 +17,12 @@ after that point need explicit confirmation.
 | 4.1 | SetAlgebras, SetAlgebraTheorems, EvaluationTheorems | All set-algebra axioms, derived meet/order, order and yield statements |
 | 4.2–4.3 | SyntacticOrder, Resolutions, SyntacticAlgebraTheorems | Contextual preorder, quotient, quotient-evaluation specification, profiles, small profiles, finiteness/refinement statements |
 | 5 | AutomatonProperty, AutomatonPropertyTheorem, ExtremalContexts | Deterministic elements, automaton property, plant invariance, order separation, principal sufficient-condition and syntactic statements |
-| 6.1 | TransitionSystems, TransitionEncoding, EncodingTheorems | Usual bisimulation, ranked decoding, generated ranked bisimilarity, encoding and equivalence statements |
+| 6.1 | TransitionSystems, TransitionEncoding, EncodingTheorems, RankedBisimulation, BisimulationQuotient, RankedLifting | Ranked encoding and both directions of bisimulation equivalence proved through a common finite quotient and direction duplication |
 | 6.2 | MonadicSecondOrder, MSORecognition | Full MSO syntax/semantics and the recognition statement |
 | 6.3 | UnfoldAutomata, AlgebraToAutomaton | Finite type sets, parity word condition, runs/branches, recognition statement |
 | 6.4 | BisimAutomata, BisimAutomatonTheorem, ModalMuCalculus, AlgebraToMuCalculus, MuCalculusTheorems, FiniteBisimulationTheorem | Full mu-calculus syntax/semantics, algebra-to-mu statement, standard reverse-direction dependencies, main equivalence |
 
-One hundred and eighty-five statements now have Archive proofs using background axioms
+One hundred and ninety-two statements now have Archive proofs using background axioms
 only, including the complete boundary-preserving automaton-property
 argument. Its algebraic decomposition, extremal choice, both Delta
 inequalities, and boundary and unary-piece comparisons are proved.
@@ -31,8 +31,8 @@ reduction and the main logical equivalence. Syntactic rankwise finiteness
 is now proved without paper-statement assumptions.
 Acceptance, yields of sums, and syntactic recognition conditional on a
 syntactic algebra are now ground as well. All four independent source
-diagnostics in `audit/` are kernel-checked. There are 196 declared statements:
-187 have Archive proofs (185 ground and two relative), and 9 have no proof.
+diagnostics in `audit/` are kernel-checked. There are 202 declared statements:
+194 have Archive proofs (192 ground and two relative), and 8 have no proof.
 
 The literal flattening associativity lemma fails with intermediate
 reachability pruning. The user authorized a repair. FinitePresentations, FiniteContexts,
@@ -102,6 +102,10 @@ record containing the unverified continuity requirement.
    its context acceptance lemma under an explicit set-algebra automaton
    property. Constructing its word condition and the full recognition
    equivalence remain outstanding.
+   Section 6.1 is now ground: EncodingBisimulation proves the full ranked
+   versus ordinary bisimulation equivalence. The main logical proof now
+   uses ground encoding and mu-calculus support, with only MSO recognition
+   and algebra-to-mu remaining as its two explicit assumptions.
    Continue the regular-word
    acceptance and finite parity-game facts used in Sections 6.3–6.4;
    expose substantial dependencies as separate concepts.
@@ -147,3 +151,19 @@ Run `lax build .` for both packages and all Archive inspections. Run the
 standalone context-decomposition audit separately. On completion, inspect
 all proof axiom sets and the complete transitive proof network. A passing
 concept build alone is not evidence that a paper theorem has been proved.
+
+## Additional logic foundations
+
+The encoding/bisimulation equivalence is now a ground proof in both
+directions. Finite bisimulation quotients and ranked morphism liftings
+supply the reverse direction. Boolean closure, inverse relabelling, the
+nonempty powerset algebra, existential projection, and the initial-label
+algebra are proved. The translation from mixed MSO syntax to pure
+second-order syntax is proved, including singleton definability. The
+recognition induction has explicit atomic-language hypotheses, all of
+which are now discharged using initial-label and finite path-summary
+algebras. MSORecognition.mso_recognizable is a ground proof. The main
+logical equivalence now depends only on algebra_to_mu; that theorem still
+depends on the two bisim-automaton construction/translation statements.
+The 2026-09-18 replay checks 94 concepts, 214 Archive proofs (212 ground),
+and 221 statements, leaving seven statements without proofs.
