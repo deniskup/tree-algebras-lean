@@ -1,0 +1,40 @@
+import Lax369799Proofs.SupportedAlgebras
+import Lax369799Proofs.SupportEvaluation
+import Lax369799Proofs.SupportPorts
+import Lax369799Proofs.SupportedCompletion
+
+-- Every endpoint must use only propext, Classical.choice, and Quot.sound.
+#print axioms Lax369799Proofs.SupportCompaction.rename_set_injective
+#print axioms Lax369799Proofs.SupportCompaction.rename_system_injective
+#print axioms Lax369799Proofs.SupportCompaction.support_image
+#print axioms Lax369799Proofs.SupportCompaction.compact_unique
+#print axioms Lax369799Proofs.SupportedAlgebras.restrict_invariant
+#print axioms Lax369799Proofs.SupportedAlgebras.legacy_recognizable
+#print axioms Lax369799Proofs.SupportedAlgebras.rename_evaluation
+#print axioms Lax369799Proofs.SupportEvaluation.profile_nonempty
+#print axioms Lax369799Proofs.SupportEvaluation.finite_observations
+#print axioms Lax369799Proofs.SupportEvaluation.finite_carrier
+#print axioms Lax369799Proofs.SupportEvaluation.equivalent_iff
+#print axioms Lax369799Proofs.SupportEvaluation.closed_equivalent_iff
+#print axioms Lax369799Proofs.SupportEvaluation.closed_carrier
+#print axioms Lax369799Proofs.SupportPorts.flatten_iso
+#print axioms Lax369799Proofs.SupportPorts.restricted_system
+#print axioms Lax369799Proofs.SupportIsomorphism.compact_along
+#print axioms Lax369799Proofs.SupportIsomorphism.reflect_morphism
+#print axioms Lax369799Proofs.SupportIsomorphism.occurs_isomorphic
+#print axioms Lax369799Proofs.SupportIsomorphism.profile_isomorphic
+#print axioms Lax369799Proofs.SupportIsomorphism.profile_injective_rename
+#print axioms Lax369799Proofs.SystemIsomorphisms.injective_isomorphic
+#print axioms Lax369799Proofs.SystemIsomorphisms.iso_symm
+#print axioms Lax369799Proofs.SystemIsomorphisms.iso_trans
+#print axioms Lax369799Proofs.SystemIsomorphisms.trim_isomorphic
+#print axioms Lax369799Proofs.SystemIsomorphisms.flatten_output_rename
+#print axioms Lax369799Proofs.SystemIsomorphisms.flatten_from_trim
+#print axioms Lax369799Proofs.SubstitutionProfiles.pointwise_congruence
+#print axioms Lax369799Proofs.SystemMonad.outer_unit
+#print axioms Lax369799Proofs.SystemMonad.inner_unit
+#print axioms Lax369799Proofs.SystemMonad.associative
+#print axioms Lax369799Proofs.SystemMonad.flatten_isomorphic
+#print axioms Lax369799Proofs.SupportedCompletion.algebra
+#print axioms Lax369799Proofs.SupportedCompletion.legacy_recognizable
+#print axioms Lax369799Proofs.SupportedCompletion.recognizable_iff

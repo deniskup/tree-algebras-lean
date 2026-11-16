@@ -53,6 +53,11 @@ structure UnfoldAutomaton (A : RankedSet) where
 abbrev Rank {A : RankedSet} {n : ℕ} (S : System A n) (v : S.val.Vertex) :=
   (S.val.graph.label v).1
 
+/-- An assignment of branch types, before imposing transition constraints. -/
+structure Labelling {A : RankedSet} (u z : ℕ) (S : System A 0) where
+  edgeType : ∀ v, Fin (Rank S v) → Fin u
+  leafType : ∀ v, Rank S v = 0 → Fin z
+
 structure Run {A : RankedSet} (M : UnfoldAutomaton A) (S : System A 0) where
   edgeType : ∀ v, Fin (Rank S v) → Fin M.unary
   leafType : ∀ v, Rank S v = 0 → Fin M.nullary
@@ -61,6 +66,17 @@ structure Run {A : RankedSet} (M : UnfoldAutomaton A) (S : System A 0) where
       M.transition k (h ▸ (S.val.graph.label v).2)
   leaves : ∀ v (h : Rank S v = 0),
     leafType v h ∈ M.leafTransition (h ▸ (S.val.graph.label v).2)
+
+abbrev Run.toLabelling {A : RankedSet} {M : UnfoldAutomaton A} {S : System A 0}
+    (r : Run M S) : Labelling M.unary M.nullary S := ⟨r.edgeType, r.leafType⟩
+
+/-- The automaton imposing only the branch condition. -/
+def unrestricted {A : RankedSet} {u z : ℕ} (D : WordCondition u z) : UnfoldAutomaton A :=
+  ⟨u, z, fun _ _ => Set.univ, fun _ => Set.univ, D⟩
+
+def Labelling.asRun {A : RankedSet} {u z : ℕ} {S : System A 0}
+    (r : Labelling u z S) (D : WordCondition u z) : Run (unrestricted D) S :=
+  ⟨r.edgeType, r.leafType, fun _ _ _ => trivial, fun _ _ => trivial⟩
 
 structure FiniteBranch {A : RankedSet} (S : System A 0) (length : ℕ) where
   vertex : Fin (length + 1) → S.val.Vertex
@@ -82,6 +98,9 @@ def Run.Accepting {A : RankedSet} {M : UnfoldAutomaton A} {S : System A 0}
     (r.leafType (b.vertex (Fin.last k)) b.ends)) ∧
   (∀ b : InfiniteBranch S, M.condition.AcceptsInfinite
     (fun i => r.edgeType (b.vertex i) (b.direction i)))
+
+def Labelling.Accepting {A : RankedSet} {u z : ℕ} {S : System A 0}
+    (r : Labelling u z S) (D : WordCondition u z) : Prop := (r.asRun D).Accepting
 
 def Accepts {A : RankedSet} (M : UnfoldAutomaton A) (S : System A 0) : Prop :=
   ∃ T : System A 0, UnfoldEquivalent S.val T.val ∧ ∃ r : Run M T, r.Accepting

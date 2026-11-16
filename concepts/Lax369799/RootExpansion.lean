@@ -36,4 +36,9 @@ axiom expansion_cover {A : RankedSet} {n : ℕ} {V : Type}
     Nonempty (PresentationCovers.Cover (flattenPresentation (pattern P))
       (startAtRoots (flattenPresentation P)))
 
+axiom expansion_folding {A : RankedSet} {n : ℕ} {V : Type}
+    (P : Presentation (FiniteSystem A) n V) :
+    ∃ f : PresentationCovers.Cover (flattenPresentation (pattern P))
+      (startAtRoots (flattenPresentation P)), Function.Surjective f.toFun
+
 end Lax369799.RootExpansion

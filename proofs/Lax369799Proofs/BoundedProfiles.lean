@@ -9,7 +9,7 @@ open Lax369799.RankedSystems Lax369799.Morphisms Lax369799.Resolutions
 open Lax369799.FiniteProfiles
 open Lax369799.FinitePresentations (FiniteSystem)
 
-private theorem small_rank_bound {bound m n : ℕ}
+theorem small_rank_bound {bound m n : ℕ}
     (σ : Fin m → Fin n) (h : ∀ j, Nat.card {i // σ i = j} ≤ bound) : m ≤ n * bound := by
   classical
   calc
@@ -19,10 +19,10 @@ private theorem small_rank_bound {bound m n : ℕ}
     _ ≤ ∑ _j : Fin n, bound := Finset.sum_le_sum (fun j _ => h j)
     _ = n * bound := by simp
 
-private abbrev BoundedEntry (B : RankedSet) (bound n : ℕ) :=
+abbrev BoundedEntry (B : RankedSet) (bound n : ℕ) :=
   {e : ProfileEntry B n // ∀ j, Nat.card {i // e.2.2 i = j} ≤ bound}
 
-private theorem small_entry_finite {B : RankedSet} (hB : RankwiseFinite B) (bound n : ℕ) :
+theorem small_entry_finite {B : RankedSet} (hB : RankwiseFinite B) (bound n : ℕ) :
     Finite (BoundedEntry B bound n) := by
   let : ∀ m, Finite (B m) := hB
   let K := n * bound
@@ -35,12 +35,12 @@ private theorem small_entry_finite {B : RankedSet} (hB : RankwiseFinite B) (boun
     (⟨x.1.val, x.2⟩ : ProfileEntry B n)) h
   exact hh
 
-private def profileCode {A B : RankedSet} (bound : ℕ) (ρ : ∀ n, System A n → B n)
+def profileCode {A B : RankedSet} (bound : ℕ) (ρ : ∀ n, System A n → B n)
     {n : ℕ} (S : FiniteSystem A n) : Set (BoundedEntry B bound n) × Set (BoundedEntry B bound n) :=
   (fun e => e.val ∈ Profile ρ (trim S.graph),
     fun e => e.val ∈ Profile ρ (uproot (trim S.graph)))
 
-private theorem code_eq_iff {A B : RankedSet} (bound : ℕ) (ρ : ∀ n, System A n → B n)
+theorem code_eq_iff {A B : RankedSet} (bound : ℕ) (ρ : ∀ n, System A n → B n)
     {n : ℕ} (S T : FiniteSystem A n) :
     profileCode bound ρ S = profileCode bound ρ T ↔ BoundedProfileEquivalent bound ρ S T := by
   have one (S T : SetSystem A n) :

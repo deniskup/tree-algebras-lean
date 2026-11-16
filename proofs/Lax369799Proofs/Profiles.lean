@@ -8,14 +8,14 @@ namespace Lax369799Proofs.Profiles
 open Lax369799.RankedSystems Lax369799.Morphisms Lax369799.Resolutions
 
 private theorem small_rank_bound {B : RankedSet} {m n : ℕ}
-    (σ : Fin m → Fin n) (h : SmallMap B σ) : m ≤ n * Nat.card (B 1) := by
+    (σ : Fin m → Fin n) (h : SmallMap B σ) : m ≤ n * SmallBound B := by
   classical
   calc
     m = Nat.card (Fin m) := by simp
     _ = Nat.card (Σ j : Fin n, {i // σ i = j}) := (Nat.card_congr (Equiv.sigmaFiberEquiv σ)).symm
     _ = ∑ j : Fin n, Nat.card {i // σ i = j} := Nat.card_sigma
-    _ ≤ ∑ _j : Fin n, Nat.card (B 1) := Finset.sum_le_sum (fun j _ => h j)
-    _ = n * Nat.card (B 1) := by simp
+    _ ≤ ∑ _j : Fin n, SmallBound B := Finset.sum_le_sum (fun j _ => h j)
+    _ = n * SmallBound B := by simp
 
 private abbrev SmallEntry (B : RankedSet) (n : ℕ) :=
   {e : ProfileEntry B n // SmallMap B e.2.2}
@@ -23,7 +23,7 @@ private abbrev SmallEntry (B : RankedSet) (n : ℕ) :=
 private theorem small_entry_finite {B : RankedSet} (hB : RankwiseFinite B) (n : ℕ) :
     Finite (SmallEntry B n) := by
   let : ∀ m, Finite (B m) := hB
-  let K := n * Nat.card (B 1)
+  let K := n * SmallBound B
   let f : SmallEntry B n → (m : Fin (K + 1)) × B m.val × (Fin m.val → Fin n) :=
     fun e => ⟨⟨e.val.1, Nat.lt_succ_of_le (small_rank_bound e.val.2.2 e.property)⟩, e.val.2⟩
   apply Finite.of_injective f
@@ -70,7 +70,7 @@ private theorem code_eq_iff {A B : RankedSet} (ρ : ∀ n, System A n → B n)
 conclusion: Lax369799.SyntacticAlgebraTheorems.small_profile_finite
 ---
 A small variable map into n variables has domain size at most n times
-the size of the unary sort. Thus the possible small entries form a finite
+the small-map bound. Thus the possible small entries form a finite
 set, and initial/root profiles range over two finite powersets.
 -/
 theorem small_profile_finite {A B : RankedSet} (hB : RankwiseFinite B)

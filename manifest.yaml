@@ -3,8 +3,29 @@ id: lax-369799
 leanVersion: "v4.33.0"
 mathlibVersion: "db584cd6d46c92f209a44c0f1c829460d327499d"
 title: "Tree algebras and bisimulation-invariant MSO on finite graphs"
-authors: []
+authors:
+  - name: Denis Kuperberg
+  - name: Codex 6
+  - name: Codex 6.1
 bibEntries:
+  - |
+    @misc{BojanczykCasaresMantheParys2026,
+      author = {Mikołaj Bojańczyk and Antonio Casares and Sven Manthe and Paweł Parys},
+      title = {Automata for MSO over Infinite Trees with Quantification over Borel Sets of Branches},
+      year = {2026},
+      eprint = {2611.10136},
+      archivePrefix = {arXiv},
+      version = {1},
+      note = {Lean ancillary proofs of word-automaton determinization and finite parity-game determinacy},
+      url = {https://arxiv.org/abs/2611.10136v1}
+    }
+  - |
+    @unpublished{ColcombetDoumaneKuperbergRevised2026,
+      author = {Thomas Colcombet and Amina Doumane and Denis Kuperberg},
+      title = {Tree algebras and bisimulation-invariant MSO on finite graphs},
+      year = {2026},
+      note = {Revised manuscript dated 13 November 2026; local source: main_tree_algebra_longversion.pdf}
+    }
   - |
     @misc{ColcombetDoumaneKuperberg2026,
       author = {Thomas Colcombet and Amina Doumane and Denis Kuperberg},
@@ -16,3 +37,6 @@ bibEntries:
       version = {6},
       url = {https://arxiv.org/abs/2407.12677v6}
     }
+issue:
+  repositoryId: 1320232165
+  number: 228

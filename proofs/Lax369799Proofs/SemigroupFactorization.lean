@@ -10,7 +10,7 @@ private theorem coe_fold {M : Type} [Semigroup M] (l : List M) (a : M) :
   | nil => simp
   | cons b l ih => simp only [List.foldl_cons, ih, WithOne.coe_mul, List.map_cons, List.prod_cons, mul_assoc]
 
-private theorem coe_block {M : Type} [Semigroup M] (w : ℕ → M) {i j : ℕ} (h : i < j) :
+theorem coe_block {M : Type} [Semigroup M] (w : ℕ → M) {i j : ℕ} (h : i < j) :
     (↑(block w i j) : WithOne M) = Lax369799.WordFactorization.block (fun k => (w k : WithOne M)) i j := by
   have hj : j - i = (j - i - 1) + 1 := by omega
   rw [block, coe_fold, Lax369799.WordFactorization.block, hj, List.range'_succ]

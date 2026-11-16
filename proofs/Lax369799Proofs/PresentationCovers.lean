@@ -62,4 +62,34 @@ theorem trim_cover {A : RankedSet} {n : ℕ} {V : Type} [Fintype V]
         simpa only [g, Equiv.symm_apply_apply, Sum.map_inl] using he
     | inr i => exact ⟨Sum.inr i, hs, he⟩
 
+namespace PresentationCovers
+
+/--
+---
+conclusion: Lax369799.PresentationCovers.surjective_of_reachable
+---
+Lift a path from an initial vertex or a root to each target vertex.
+-/
+theorem surjective_of_reachable {A : RankedSet} {n : ℕ} {V W : Type}
+    {S : Presentation A n V} {T : Presentation A n W} (f : Cover S T)
+    (hT : ∀ w, T.Reachable w) : Function.Surjective f.toFun := by
+  intro w
+  obtain ⟨r, hr, hp⟩ := hT w
+  have hbase : ∃ v, f.toFun v = r := by
+    rcases hr with hr | hr
+    · obtain ⟨v, _, hv⟩ := f.initial_lift r hr
+      exact ⟨v, hv⟩
+    · obtain ⟨v, _, hv⟩ := f.root_lift r hr
+      exact ⟨v, hv⟩
+  induction hp with
+  | refl => exact hbase
+  | @tail y z _ hyz ih =>
+    obtain ⟨v, rfl⟩ := ih
+    obtain ⟨d, hd⟩ := hyz
+    obtain ⟨s, _, hs⟩ := f.edge_lift v d (.inl z) hd
+    cases s with
+    | inl u => exact ⟨u, Sum.inl.inj hs⟩
+    | inr j => cases hs
+
+end PresentationCovers
 end Lax369799Proofs

@@ -28,6 +28,10 @@ structure Cover {A : RankedSet} {n : ℕ} {V W : Type}
   edge_lift : ∀ v d t, T.edge (toFun v) d t →
     ∃ s, S.edge v d s ∧ Sum.map toFun id s = t
 
+axiom surjective_of_reachable {A : RankedSet} {n : ℕ} {V W : Type}
+    {S : Presentation A n V} {T : Presentation A n W} (f : Cover S T)
+    (hT : ∀ w, T.Reachable w) : Function.Surjective f.toFun
+
 axiom trim_cover {A : RankedSet} {n : ℕ} {V : Type} [Fintype V]
     (S : Presentation A n V) (T : SetSystem A n) (f : Cover S T.graph) :
     UnfoldsTo T (trim S)

@@ -1,5 +1,14 @@
 # Source review: arXiv:2407.12677v6
 
+These are historical diagnostics of arXiv v6. The submission now targets
+the revised local manuscript of 13 November 2026, recorded in
+[paper-version.json](paper-version.json). Theorem 2, its proof dependencies,
+and effectivity are complete; references below to open principal theorems,
+global soundness, or infinite-word obligations describe earlier checkpoints.
+Current coverage is in [PLAN.md](PLAN.md) and [paper-coverage.json](paper-coverage.json).
+
+Paper revisions are tracked in [PAPER_CHANGES.md](PAPER_CHANGES.md), including proved replacements and open downstream changes.
+
 ## Context decomposition loses an initial hole
 
 The definitions immediately preceding `lemma:context-decomposition` in
@@ -250,8 +259,9 @@ The intended syntactic interpretation can distinguish them: substitute
 leaves with two different marks and consider the unfolding-invariant
 language “all children of the initial vertex have the same mark.” Every
 yield on the right satisfies it; a mixed yield on the left does not.
-This last closed-context explanation is mathematical, rather than a
-separate kernel-checked closed-language counterexample.
+The closed-context separation and the resulting impossibility of the
+original syntactic set-algebra are now kernel-checked; see the final
+section below.
 
 The question is how continuity or the unary normal-form argument should
 be adjusted to account for split-variable resolutions. The unpruned
@@ -259,3 +269,211 @@ quotient does not assert continuity, so its existing proofs remain valid;
 its automaton-property theorem cannot yet be combined with the original
 continuity-based unary normal-form theorem. This issue does not affect the
 completed MSO recognition or encoding/bisimulation proofs.
+
+
+## Corollary 46 and expanded representatives
+
+The user authorized following the expanded-representative route and
+pointed out that the finite-family step is Corollary 46 of v6
+(`corollary:yield-continuous` in `systems.tex`). Its statement is
+
+```
+Yields(C[S]) = ⋃ { Yields(C[Σ F]) | F ⊆ Yields(S), F finite }.
+```
+
+The finite sum remains inside the context. Different occurrences may
+therefore choose different members of F; replacing this by a union over
+single outer yields would lose precisely the mixed choices discussed
+above. Corollary 46 supplies the finite approximation for the expanded
+base-letter representative. It does not by itself prove the separate
+inclusion (*) for atomic algebra labels.
+
+`FiniteResolutionApproximation.direct_approximation` formalizes the
+central flattening step in the proof of the preceding lemma: factor a
+direct resolution, collect the finitely many renamed inner resolutions
+over each outer vertex, and retain their variable maps when reassembling
+the flatten-resolution. `ContextResolutionApproximation` now proves the context version for
+initial and root resolutions. `RootResolutionApproximation` retains the
+entry flags in the finite support of root observations.
+`YieldContinuity.continuity` proves Corollary 46 for arbitrary finite
+families of yields, including both directions and root yields. Finite
+indexed families may repeat a summand; their disjoint sum is the
+corresponding finite sum in the statement. The converse combines
+unfolding witnesses into a cover of the proposed sum.
+
+`ResolutionFamilies` and `FiniteResolutionNormalForms` also prove finite
+families of actual resolutions preserving bounded profiles, and hence
+contextual equivalence for a language recognized by a finite
+unfolding-invariant algebra. `ExpandedContinuity` proves that evaluation
+is represented by expansion, and that acceptance of all expanded yields
+in every context is independent of the chosen representatives. These
+statements do not assert the original atomic-label continuity axiom or
+its unary normal-form consequence.
+
+
+The extension to unpruned contexts is also proved, in
+`FiniteYieldContinuity`. `FiniteContinuityOrder.order_approximation`
+characterizes comparison with a base presentation by comparison with
+all finite sums of its yields. `ExpandedContinuity.finite_approximation`
+identifies the same criterion for evaluation after expansion. Thus the
+expanded route now has a checked finite-approximation law, independent
+of (*); the distinction from atomic-label continuity remains explicit.
+
+
+`FiniteYieldMeets.finite_meet` proves that finite sums, including the
+empty sum, are meets in the contextual order. Consequently,
+`FiniteYieldMeets.yield_lower_bound` and
+`ExpandedContinuity.yield_lower_bound` give the lower-bound form of
+continuity: being below an evaluated expansion is equivalent to being
+below the class of every base-alphabet yield of that expansion. This
+proves the expanded-representative route through Corollary 46 without
+using (*). It still does not turn an atomic unary algebra label into a
+base-alphabet unary system: its representative may branch and repeat a
+variable. Section 5.1's unary normal-form argument needs a separate
+replacement before the repaired quotient can feed the original
+unfold-automaton construction.
+
+
+## Original continuity cannot be added to the original syntactic quotient
+
+The attempted bridge now has a checked counterexample, not merely a
+failure of equality of open yield sets. The namespace
+`OriginalContinuityBridgeAudit` in `audit/NonlinearSubstitution.lean`
+uses the ranked alphabet with Boolean labels in each rank. The witness
+itself uses only one binary symbol a and two nullary symbols p and q,
+whose Boolean labels differ. Its language consists of systems whose
+initial vertex's children all have the same Boolean label.
+
+The theorem `language_unfold` proves that this language is invariant
+under unfolding, so it satisfies the hypothesis of the original
+`syntactic_algebra_exists` statement. No recognizability hypothesis is
+required by that statement.
+
+Let b be represented by a(x,x). The two rank-two presentations are
+
+```
+expanded         = expand(b(x₀ + x₁))
+expandedParallel = expand(b(x₀) + b(x₁)).
+```
+
+The context `closing` substitutes p for x₀ and q for x₁. Theorems
+`parallel_accepted` and `expanded_rejected` prove that the second closed
+presentation is accepted and the first is rejected. The first has the
+mixed yield a(p,q); all yields of the second have uniformly labelled
+children. The proof checks the actual context substitution using covers,
+including all initial and root yields. These witnesses are acyclic and
+root-free, so this issue is separate from the intermediate-pruning and
+hole-boundary issues.
+
+`distinct_classes` therefore proves that the two presentations have
+different classes in the original reachable yield-syntactic quotient.
+On the other hand, original continuity forces
+
+```
+eval(b(x₀ + x₁)) = eval(b(x₀) + b(x₁)).
+```
+
+The quotient-evaluation law identifies these values with the two
+classes above. The theorem `no_original_syntactic_algebra` concludes
+
+```
+¬ Nonempty (SyntacticOrder.SyntacticAlgebra language).
+```
+
+Lean checks this theorem using only `propext`, `Classical.choice`, and
+`Quot.sound`; it does not use any unproved paper statement. The audit was
+checked with `lake env lean ../audit/NonlinearSubstitution.lean` from
+`proofs/`. Thus the original `syntactic_algebra_exists` statement, with
+the current definitions, is refuted by this audit and must not be used
+as a bridge. Corollary 46 remains valid, including over Y, and the
+expanded continuity results remain proved. This does not refute the
+paper's main logical theorem or rule out a repair that changes the
+algebra interface or the syntactic semantics; such a repair must avoid
+forcing the two separated classes to coincide.
+
+
+## Expanded interface adopted (2026-09-18)
+
+`ExpandedSyntacticAlgebra` now packages quotient substitution with expanded
+continuity, proves existence and representative availability, and supplies
+recognition, expanded yield order, finite resolution normal forms for
+evaluations, and the syntactic automaton-property corollary. The original
+continuity-bearing existence declarations were removed from the active
+concept statements. The original generic set-algebra remains an explicitly
+conditional interface. See PAPER_CHANGES.md for the replacement formulas
+and the remaining transition-construction obligation.
+
+
+## Revised §6.3: global branch soundness (2026-09-18)
+
+The split extremal construction resolves local transition selection.
+The checked run and observation theorems give
+
+- language membership ⇒ a legal run with accepted algebraic value;
+- accepted algebraic run value ⇒ accepted finite and regular branch observations;
+- accepted algebraic run value ⇒ language membership.
+
+The missing implication is from accepted branch observations to language
+membership (or, more strongly, to accepted algebraic run value), for the
+chosen legal transitions. Expanded continuity checks whole expanded
+yields. In `b(c₀(x₀)+c₁(x₁))`, a representative of the unary type `b` can
+repeat its sole variable and admit a mixed expansion. The separate branch
+words do not directly test that mixed expansion. The already checked
+nonlinear-substitution example explains why a generic unary distributivity
+argument is unavailable; it is **not** a counterexample to the implication
+restricted to legal runs.
+
+Question sent to the author: do the legal-transition inequalities yield a
+further global soundness lemma, or should the selected unary types satisfy
+a stronger restriction? A unary component having only one successor index
+is distinct from every resolution using that successor at most once.
+No stronger restriction is assumed in the current development.
+
+The author clarified that one branch takes only one of the cᵢ successors.
+This is correct: the concern is a whole expanded yield with different
+choices on different branches, not two choices on one branch. For example,
+with b represented by a(x,x), the mixed yield is a(c₀(x₀),c₁(x₁)); the
+separate type-word expansions give a(c₀(x₀),c₀(x₀)) and
+a(c₁(x₁),c₁(x₁)). A proof may establish input-language membership directly,
+without asserting the stronger acceptance of every expanded run yield.
+
+
+### Author-directed restriction on final unary types
+
+The author confirms that hidden branching choices must be absent from
+final unary elements; choices belong in the explicit selection of
+deterministic elements. `ChoicePreservingUnary` now states the binary
+choice law as a predicate on eligible unary types, and proves finite
+branch testing under that predicate. This does not redefine all unary
+quotient values as eligible. The rank-one bypass in parallel replacement
+has been removed; all positive ranks now use extremal selection.
+
+The construction question is now resolved. A second extremal selection,
+at rank one, refines each component below its original value while
+retaining acceptance in its current context. Its principal normal-context
+test proves binary choice preservation on closed continuations. Finite
+iteration refines a whole parallel tuple and retains its transition
+inequality. The legal transition definition and its existence proof now
+both require these selected components. No extra distributivity or
+completeness assumption is used. See PAPER_CHANGES.md, item 15.
+
+The remaining global soundness and infinite-word obligations are separate;
+no completed proof of §6.3 is claimed from this binary law alone.
+
+
+### Cyclic splitting now established
+
+The restriction on selected unary types now yields a stronger, checked
+result than binary distribution over closed continuations. Outgoing
+choices at a unary hole can be split in arbitrary cyclic contexts, with
+acceptance equivalent to the conjunction of the restricted tests.
+Finite iteration reduces a legal run's algebraic acceptance to its
+admissible functional restrictions. This uses the exact normal-data test
+and a cover that folds duplicate graph copies; it does not invoke the
+false inclusion (*) from the original continuity proof.
+
+The remaining observation bridge must retain unmarked components of
+functional restrictions, since expansion of their labels can contribute
+roots. Finite branch graph evaluation has meanwhile been identified with
+the encoded finite-word evaluator. Full §6.3 soundness and the algebraic
+infinite-word parity construction are still not claimed complete.

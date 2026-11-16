@@ -1,0 +1,113 @@
+{
+  "source": "https://arxiv.org/src/2611.10136v1",
+  "paper": "https://arxiv.org/abs/2611.10136v1",
+  "title": "Automata for MSO over Infinite Trees with Quantification over Borel Sets of Branches",
+  "authors": [
+    "Mikołaj Bojańczyk",
+    "Antonio Casares",
+    "Sven Manthe",
+    "Paweł Parys"
+  ],
+  "source_archive_sha256": "87b733d3647697af9691bb3dd20f579a993fe92dda72b089d6aa9168908b190a",
+  "source_toolchain": "leanprover/lean4:v4.28.0",
+  "permission": "User explicitly authorized incorporation with citation on 2026-11-13.",
+  "files": [
+    {
+      "source_file": "BorelMSO/Basic/Prioritized.lean",
+      "source_sha256": "a39fb8972e25bb1a2e6d53c88b61fbb31fa095b74fb208216db4bdb0c30185f3",
+      "destination": "proofs/Lax369799Proofs/PrioritizedGameDefinitions.lean",
+      "destination_sha256": "a992d0e5df0e961ca64ae379489f66bc831f691dcf0bd695f954303c206d0a54"
+    },
+    {
+      "source_file": "BorelMSO/Automata/DetMuller.lean",
+      "source_sha256": "2388f1dcc547c56a5cbae06ac6a810b24449158aaaf60a36b6d996dadef73bc3",
+      "destination": "proofs/Lax369799Proofs/MullerWordAutomata.lean",
+      "destination_sha256": "18cfed3ed01ff0a5f73a36116a329b6be3f34930df4676395762ee0c1e412b0f"
+    },
+    {
+      "source_file": "BorelMSO/Automata/OmegaAut.lean",
+      "source_sha256": "1ea8338230ca4d92126b8804d247849ffccaa6db10200d2e001aa08357361af2",
+      "destination": "proofs/Lax369799Proofs/NondeterministicWordAutomata.lean",
+      "destination_sha256": "dad1a56211d50fdfd22d174e371aead3f3dd237f6bb408edb3a2835045afb88c"
+    },
+    {
+      "source_file": "BorelMSO/Automata/MullerToBuchi.lean",
+      "source_sha256": "64dc1987c098ca2c6a94d291b243bdee83ef11829a2ba5fab53e0de8315dad96",
+      "destination": "proofs/Lax369799Proofs/BuchiWordAutomata.lean",
+      "destination_sha256": "3bef3150d0308d0932c9f54ee0fd02b6696f150b48159836c952cd9a3904d689"
+    },
+    {
+      "source_file": "BorelMSO/Safra/Tree.lean",
+      "source_sha256": "eac7d2932c80535c0d74394a5273503eb3d15bf313c539c8b058b4d43a965a21",
+      "destination": "proofs/Lax369799Proofs/SafraTrees.lean",
+      "destination_sha256": "9dcd6b4fb33e3d015b55016b0ecbf33b17a8059f9101d8665988bfe3e43188d6"
+    },
+    {
+      "source_file": "BorelMSO/Safra/Run.lean",
+      "source_sha256": "8dc21cf5b671986cd5a9fee061c416d9ad50815b716f2ca5e4a568be470d4ce7",
+      "destination": "proofs/Lax369799Proofs/SafraRuns.lean",
+      "destination_sha256": "bfa9cb3c8d94843bf810e454942827f852281273c80a30304ada23d7ba402a68"
+    },
+    {
+      "source_file": "BorelMSO/Safra/Sound.lean",
+      "source_sha256": "98ffeff6a9e4b60cf51d2b4e84671ef1d01f665471bae6e8c6c55e815a8f4080",
+      "destination": "proofs/Lax369799Proofs/SafraSoundness.lean",
+      "destination_sha256": "e3fe6f61cec5a17ed6eb1f9c81e5e4d15bbe70ad68c8a9f7f04bfa6902a98a23"
+    },
+    {
+      "source_file": "BorelMSO/Safra/Complete.lean",
+      "source_sha256": "a73edbbd398680a0f72069371e7f9cad26ff056338bc717332ad15cb301adad9",
+      "destination": "proofs/Lax369799Proofs/SafraCompleteness.lean",
+      "destination_sha256": "df0802b11735a7c64aefbae921ebdf29903ca78111a3539dc8294307de9c6807"
+    },
+    {
+      "source_file": "BorelMSO/Safra/Main.lean",
+      "source_sha256": "f2ee3d5627dc7a19db28d34a20558ffb7e4e2d5bbbb9b937a6444f3ead214412",
+      "destination": "proofs/Lax369799Proofs/SafraDeterminization.lean",
+      "destination_sha256": "9f8cdc4f53912048f9fe567192d8cefb81102f0309c493f502e1e5906a2415e0"
+    },
+    {
+      "source_file": "BorelMSO/Basic/LAR.lean",
+      "source_sha256": "18fc99441cbd75006f6f1cbadd0f5574085e7281b9321ed15f236291c8aa120d",
+      "destination": "proofs/Lax369799Proofs/AppearanceRecords.lean",
+      "destination_sha256": "9271768b31616e2100a6e51937ed0571ff9be2611a9be9652a9569e957e54d2b"
+    },
+    {
+      "source_file": "BorelMSO/Emptiness/FinGame.lean",
+      "source_sha256": "f1c46ea5a3f4751a96512302d8cc4cb60bfa9b5227d71f8121af3b65718f6882",
+      "destination": "proofs/Lax369799Proofs/ParityGames.lean",
+      "destination_sha256": "465a649d1223fd7be1c1cedb6295b1cca90f4657ee25ce8b3433c531141c70dd"
+    },
+    {
+      "source_file": "BorelMSO/Emptiness/Attractor.lean",
+      "source_sha256": "6e93309e4e51e81ab4f785e58b668ad1ddeb44a4b90c999f32aebdfd82085ced",
+      "destination": "proofs/Lax369799Proofs/ParityAttractors.lean",
+      "destination_sha256": "a7992ff68a6d69519bb2a99317dbb77ba6e1e630e6413ef41b50b19bba66da0c"
+    },
+    {
+      "source_file": "BorelMSO/Emptiness/Zielonka.lean",
+      "source_sha256": "6700a6c0be845fc947ec1b846bb7673aa12967040362f1fa96925f9c81738257",
+      "destination": "proofs/Lax369799Proofs/ParityDeterminacy.lean",
+      "destination_sha256": "363248961dd1e82fbd1309b25d9a6285249f4b5120ef48d86fcd5ca056245220"
+    },
+    {
+      "source_file": "BorelMSO/Emptiness/LARSeq.lean",
+      "source_sha256": "e2fa9aecbf2449c594e8e0a23e5d1666d4320d02e1ff34adba882aad3127264a",
+      "destination": "proofs/Lax369799Proofs/AppearanceSequences.lean",
+      "destination_sha256": "c06c42140e5646063987acfdd43c40baefcbe16dba1bef129da01beed208fe6d"
+    },
+    {
+      "source_file": "BorelMSO/Basic/Konig.lean",
+      "source_sha256": "d4b786de46b64993d8932d46e9f4e9bfa4ae849d76c631eb09434c920fd3f580",
+      "destination": "proofs/Lax369799Proofs/WordCompactness.lean",
+      "destination_sha256": "6af7b3d331108485d07201e0744e41bb893f8a1b9751af55a1b30e06b8d65446"
+    }
+  ],
+  "adaptations": [
+    "Module paths and namespaces changed to the submission prefix.",
+    "Ported from Lean 4.28.0 to the pinned Lean 4.33.0 and mathlib revision.",
+    "Only the word-automaton and finite-parity-game dependencies are retained; unrelated tree automata and tree games are omitted.",
+    "MullerWordAutomata and PrioritizedGameDefinitions retain only the definitions used by these dependencies."
+  ],
+  "source_root": "anc/lean-formalization"
+}

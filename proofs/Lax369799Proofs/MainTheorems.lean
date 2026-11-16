@@ -1,3 +1,5 @@
+import Lax369799Proofs.EffectiveFiniteTranslation
+import Lax369799Proofs.CloneNormalization
 import Lax369799.FiniteBisimulationTheorem
 import Lax369799Proofs.MSORecognition
 import Lax369799.EncodingTheorems
@@ -8,6 +10,7 @@ import Lax369799Proofs.Encoding
 import Lax369799Proofs.RankedBisimulation
 import Lax369799Proofs.MuToMSO
 import Lax369799Proofs.MuBisimulation
+import Lax369799Proofs.BisimAutomatonTheorem
 
 namespace Lax369799Proofs.MainTheorems
 open Lax369799
@@ -16,17 +19,14 @@ open RankedSystems Algebras TransitionEncoding TransitionSystems
 /--
 ---
 conclusion: Lax369799.AlgebraToMuCalculus.algebra_to_mu
-assumptions:
-  - Lax369799.BisimAutomatonTheorem.bisim_automaton_exists
-  - Lax369799.BisimAutomatonTheorem.bisim_automaton_to_mu
 ---
-Choose a recognising bisim-automaton, then apply its modal translation.
+Use the proved clone normalization, then apply its modal translation.
 -/
 theorem algebra_to_mu {P : Type} [Finite P] (L : Language (TransitionAlphabet P))
     (hL : ∀ S T, RankedBisimilar S T → (S ∈ L ↔ T ∈ L))
-    (hA : Recognizable L) :
+    (hA : SupportedAlgebras.Recognizable L) :
     ∃ φ : ModalMuCalculus.Sentence P, ∀ S, S ∈ L ↔ ModalMuCalculus.Models (decode S) φ := by
-  obtain ⟨M, hM, hrec⟩ := BisimAutomatonTheorem.bisim_automaton_exists L hL hA
+  obtain ⟨M, hM, hrec⟩ := CloneNormalization.bisim_automaton_exists L hL hA
   have hinv : ∀ S T, RankedBisimilar S T → (UnfoldAutomata.Accepts M S ↔ UnfoldAutomata.Accepts M T) := by
     intro S T h
     exact (hrec S).symm.trans ((hL S T h).trans (hrec T))
@@ -36,8 +36,6 @@ theorem algebra_to_mu {P : Type} [Finite P] (L : Language (TransitionAlphabet P)
 /--
 ---
 conclusion: Lax369799.FiniteBisimulationTheorem.finite_bisimulation_invariant_mso
-assumptions:
-  - Lax369799.AlgebraToMuCalculus.algebra_to_mu
 ---
 Encode finite transition systems as ranked systems, apply MSO recognition
 and the algebraic modal translation, and decode. The converse combines
@@ -55,7 +53,7 @@ theorem finite_bisimulation_invariant_mso {P : Type} [Finite P]
       exact (hφ (decode S)).symm.trans
         ((hinv (decode S) (decode T) (Lax369799Proofs.RankedBisimulation.ranked_forward S T h)).trans
           (hφ (decode T)))
-    obtain ⟨ψ, hψ⟩ := AlgebraToMuCalculus.algebra_to_mu K hK (Lax369799Proofs.MSORecognition.mso_recognizable φ)
+    obtain ⟨ψ, hψ⟩ := algebra_to_mu K hK (SupportedAlgebras.legacy_recognizable K (Lax369799Proofs.MSORecognition.mso_recognizable φ))
     refine ⟨ψ, ?_⟩
     intro S
     obtain ⟨T, rfl⟩ := Encoding.encoding_exists S
@@ -65,5 +63,21 @@ theorem finite_bisimulation_invariant_mso {P : Type} [Finite P]
     refine ⟨⟨ψ, fun S => (hφ S).trans (hψ S)⟩, ?_⟩
     intro S T h
     exact (hφ S).trans ((MuBisimulation.mu_bisimulation_invariant φ S T h).trans (hφ T).symm)
+
+/--
+---
+conclusion: Lax369799.FiniteBisimulationTheorem.effective_finite_bisimulation_invariant_mso
+---
+Apply the verified total finite-search compiler. Its bounded table list
+contains an equivalent sentence under the invariance promise, and its
+finite comparison bound separates every inequivalent candidate pair.
+-/
+theorem effective_finite_bisimulation_invariant_mso {P : Type}
+    [Fintype P] [Encodable P] [DecidableEq P]
+    (φ : MonadicSecondOrder.Sentence P)
+    (hφ : BisimulationInvariant {S | MonadicSecondOrder.Models S φ}) :
+    ∀ S : TransitionSystem P, MonadicSecondOrder.Models S φ ↔
+      ModalMuCalculus.Models S (EffectiveFiniteTranslation.compile φ) :=
+  EffectiveFiniteTranslation.compile_correct φ hφ
 
 end Lax369799Proofs.MainTheorems

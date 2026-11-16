@@ -6,7 +6,7 @@ open Lax369799.RankedSystems (RankedSet Symbol)
 open Lax369799.FinitePresentations Lax369799.FiniteMorphisms
 open Lax369799Proofs.Pullbacks
 
-private def castVertex {A : RankedSet} {a b : Symbol (FiniteSystem A)} (h : a = b)
+def castVertex {A : RankedSet} {a b : Symbol (FiniteSystem A)} (h : a = b)
     (v : a.2.Vertex) : b.2.Vertex := h ▸ v
 
 private theorem cast_label {A : RankedSet} {a b : Symbol (FiniteSystem A)} (h : a = b)
@@ -31,7 +31,7 @@ private theorem cast_edge {A : RankedSet} {a b : Symbol (FiniteSystem A)} (h : a
   cases h
   cases t <;> exact ht
 
-private def flattenMap {A : RankedSet} {n : ℕ} {V W : Type}
+def flattenMap {A : RankedSet} {n : ℕ} {V W : Type}
     {S : Lax369799.RankedSystems.Presentation (FiniteSystem A) n V}
     {T : Lax369799.RankedSystems.Presentation (FiniteSystem A) n W}
     (f : Map S T) : Map (flattenPresentation S) (flattenPresentation T) where
@@ -51,7 +51,7 @@ private def flattenMap {A : RankedSet} {n : ℕ} {V W : Type}
           f.edge v.1 i.val (.inl w.1) hw, cast_initial (f.label w.1).symm hi', rfl⟩
       · exact Or.inr ⟨k, f.edge v.1 i.val (.inr k) hk, rfl⟩
 
-private theorem cast_roundtrip {A : RankedSet} {a b : Symbol (FiniteSystem A)} (h : a = b)
+theorem cast_roundtrip {A : RankedSet} {a b : Symbol (FiniteSystem A)} (h : a = b)
     (v : a.2.Vertex) : castVertex h.symm (castVertex h v) = v := by
   cases h
   rfl

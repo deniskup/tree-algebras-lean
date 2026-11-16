@@ -6,7 +6,7 @@ set_option backward.isDefEq.respectTransparency false
 namespace Lax369799Proofs.RecognitionClosure
 open Lax369799.RankedSystems Lax369799.Algebras Lax369799.Morphisms Lax369799.Flattening
 
-private def product {B C : RankedSet} (E : Algebra B) (F : Algebra C) : Algebra (fun n => B n × C n) where
+def product {B C : RankedSet} (E : Algebra B) (F : Algebra C) : Algebra (fun n => B n × C n) where
   eval := fun n S => (E.eval n (relabelSystem (fun _ => Prod.fst) S),
     F.eval n (relabelSystem (fun _ => Prod.snd) S))
   isomorphic := by
@@ -26,7 +26,7 @@ private def product {B C : RankedSet} (E : Algebra B) (F : Algebra C) : Algebra 
       (E.associative n _ _ (projection (fun _ => Prod.fst)))
       (F.associative n _ _ (projection (fun _ => Prod.snd)))
 
-private theorem product_finite {B C : RankedSet} (hB : RankwiseFinite B) (hC : RankwiseFinite C) :
+theorem product_finite {B C : RankedSet} (hB : RankwiseFinite B) (hC : RankwiseFinite C) :
     RankwiseFinite (fun n => B n × C n) := by
   intro n
   let : Finite (B n) := hB n

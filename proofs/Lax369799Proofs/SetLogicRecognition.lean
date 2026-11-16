@@ -10,10 +10,10 @@ open Lax369799.RankedSystems Lax369799.Algebras Lax369799.PolynomialContexts
 open Lax369799.SetLogic Lax369799.SetLogicRecognition Lax369799.TransitionEncoding
 open Lax369799.RecognitionProjection
 
-private def forget {P X : Type} : RankedMap (Alphabet P (Option X)) (Alphabet P X) :=
+def forget {P X : Type} : RankedMap (Alphabet P (Option X)) (Alphabet P X) :=
   fun _ a => (a.1, fun x => a.2 (some x))
 
-private theorem projection_language {P X : Type} (φ : Formula P (Option X)) :
+theorem projection_language {P X : Type} (φ : Formula P (Option X)) :
     language (.existsSet φ) = Projected forget (language φ) := by
   ext S
   change (∃ U, φ.eval (decode (relabelSystem (fun _ a => a.1) S))

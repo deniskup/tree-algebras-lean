@@ -1,3 +1,4 @@
+import Lax369799.SupportedAlgebras
 import Lax369799.UnfoldAutomata
 
 /-!
@@ -15,7 +16,7 @@ namespace Lax369799.AlgebraToAutomaton
 open RankedSystems Algebras UnfoldAutomata
 
 axiom algebra_to_automaton {A : RankedSet} (L : Language A)
-    (hL : UnfoldInvariantLanguage L) (hA : Recognizable L) :
+    (hL : UnfoldInvariantLanguage L) (hA : SupportedAlgebras.Recognizable L) :
     ∃ M : UnfoldAutomaton A, UnfoldAutomata.Recognizes M L
 
 end Lax369799.AlgebraToAutomaton

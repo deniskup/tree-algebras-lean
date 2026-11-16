@@ -1,0 +1,46 @@
+Command: PATH=/home/denis/.elan/bin:$PATH lax build . --replay
+
+Building lax-369799
+
+  ✓ Checked the layout
+  ✓ Resolved dependencies     mathlib
+  ✓ Compiled concepts
+  ✓ Compiled proofs           1m26s
+  ✓ Replayed the kernel proofs 3m32s
+  ✓ Inspected the statements  213 concepts · 566 proofs 4s
+
+  Built lax-369799 in 5m04s
+
+Retained helper warnings: 39 generated structure lemmas, 37 attributed ancillary lemmas,
+and one shared simplification lemma used during proof elaboration.
+
+Standalone audits (run from proofs with lake env lean ../audit/FILE):
+  PASS ContextDecomposition.lean
+  PASS EffectiveFiniteTranslation.lean
+  PASS FlatteningAssociativity.lean
+  PASS NonlinearSubstitution.lean
+  PASS PriorityCompilation.lean
+  PASS RevisedStructure.lean
+  PASS SupportedAlgebras.lean
+  PASS WordAutomataDependencies.lean
+  PASS YieldSubstitution.lean
+
+Executable audit: lake env lean ../audit/EffectiveFiniteTranslation.lean
+
+true
+true
+false
+true
+true
+false
+4
+false
+true
+'Lax369799.EffectiveFiniteTranslation.compile' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Lax369799Proofs.EffectiveFiniteTranslation.compile_correct' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Lax369799Proofs.MainTheorems.finite_bisimulation_invariant_mso' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Lax369799Proofs.MainTheorems.effective_finite_bisimulation_invariant_mso' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

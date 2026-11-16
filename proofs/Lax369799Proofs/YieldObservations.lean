@@ -20,7 +20,7 @@ private theorem obs_map {A : RankedSet} {n : ℕ} {V : Type} [Fintype V]
   · rintro ⟨D, ⟨d⟩, hd⟩
     exact ⟨D, ⟨lift d⟩, hd⟩
 
-private theorem obs_cover {A : RankedSet} {n : ℕ} {V W : Type} [Fintype V] [Fintype W]
+theorem obs_cover {A : RankedSet} {n : ℕ} {V W : Type} [Fintype V] [Fintype W]
     {G : Presentation A n V} {H : Presentation A n W} (f : Cover G H) (U : System A n) :
     Obs G U ↔ Obs H U := by
   let g : Map G H := ⟨f.toFun, f.initial, f.root, f.label, f.edge⟩

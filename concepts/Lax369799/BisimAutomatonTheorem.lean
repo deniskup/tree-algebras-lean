@@ -1,13 +1,14 @@
+import Lax369799.SupportedAlgebras
 import Lax369799.BisimAutomata
 import Lax369799.ModalMuCalculus
 
 /-!
 ---
-title: Bisim-automaton normal form and modal translation
+title: Clone-automaton normal form and modal translation
 type: theorem
 ---
 A bisimulation-invariant language recognised by a rankwise-finite algebra
-has a recognising bisim-automaton (`lemma:bisim-aut`, Section 6.4).
+has a recognising clone-automaton (Lemma 108, Section 6.4).
 The modal translation identifies the acceptance of such an automaton with
 a mu-calculus sentence when its recognised language is bisimulation-invariant.
 The latter hypothesis is explicit: the duplication condition alone does
@@ -20,9 +21,18 @@ open RankedSystems Algebras UnfoldAutomata TransitionEncoding BisimAutomata
 axiom bisim_automaton_exists {P : Type} [Finite P]
     (L : Language (TransitionAlphabet P))
     (hL : ∀ S T, RankedBisimilar S T → (S ∈ L ↔ T ∈ L))
-    (hA : Recognizable L) :
+    (hA : SupportedAlgebras.Recognizable L) :
     ∃ M : UnfoldAutomaton (TransitionAlphabet P),
       IsBisimAutomaton M ∧ UnfoldAutomata.Recognizes M L
+
+/-- The clone automaton admits an accepting run on each accepted presentation. -/
+axiom bisim_automaton_runs {P : Type} [Finite P]
+    (L : Language (TransitionAlphabet P))
+    (hL : ∀ S T, RankedBisimilar S T → (S ∈ L ↔ T ∈ L))
+    (hA : SupportedAlgebras.Recognizable L) :
+    ∃ M : UnfoldAutomaton (TransitionAlphabet P),
+      IsBisimAutomaton M ∧ UnfoldAutomata.Recognizes M L ∧
+        ∀ S ∈ L, ∃ r : Run M S, r.Accepting
 
 axiom bisim_automaton_to_mu {P : Type} [Finite P]
     (M : UnfoldAutomaton (TransitionAlphabet P)) (hM : IsBisimAutomaton M)

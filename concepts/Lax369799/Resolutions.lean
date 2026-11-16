@@ -12,9 +12,11 @@ A flatten-resolution resolves both the outer pattern and its labels,
 keeping track of a separate variable map at each vertex (Section 2.9).
 
 For a recognising evaluation, a profile records the values and variable
-maps of resolutions. A map is small when each fibre has at most as many
-elements as the unary sort of the algebra. Small profiles and small root
-profiles are the finite summaries used in Section 4.3.
+maps of resolutions. A map is small when each fibre has at most
+`|B₀| + |B₁| + 1` elements, accounting for closed continuations, unary
+continuations, and the immediate exit. This is the bound b_A in the
+revised Section 4.3. Small profiles and small root profiles are the finite
+summaries used there.
 -/
 
 namespace Lax369799.Resolutions
@@ -55,8 +57,10 @@ structure FlattenResolution {A : RankedSet} {n : ℕ}
 
 abbrev ProfileEntry (B : RankedSet) (n : ℕ) := (m : ℕ) × B m × (Fin m → Fin n)
 
+noncomputable def SmallBound (B : RankedSet) : ℕ := Nat.card (B 0) + Nat.card (B 1) + 1
+
 def SmallMap (B : RankedSet) {m n : ℕ} (σ : Fin m → Fin n) : Prop :=
-  ∀ j, Nat.card {i // σ i = j} ≤ Nat.card (B 1)
+  ∀ j, Nat.card {i // σ i = j} ≤ SmallBound B
 
 def Profile {A B : RankedSet} (ρ : ∀ n, System A n → B n) {n : ℕ}
     (S : SetSystem A n) : Set (ProfileEntry B n) :=

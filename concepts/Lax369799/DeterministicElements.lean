@@ -8,8 +8,10 @@ type: theorem
 ---
 In a set-algebra, every deterministic element of positive rank is a
 parallel family of unary values, one at each variable. This is the
-characterization in Section 5.1. The set-algebra hypothesis includes
+characterization in the earlier draft. The set-algebra hypothesis includes
 continuity; it is not implicit in an arbitrary substitution algebra.
+DirectionProjections proves the revised canonical decomposition for
+extremal elements without that continuity hypothesis.
 -/
 namespace Lax369799.DeterministicElements
 open RankedSystems SetAlgebras AutomatonProperty

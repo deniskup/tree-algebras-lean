@@ -1,3 +1,4 @@
+import Lax369799.SupportedAlgebras
 import Lax369799.Algebras
 import Lax369799.ModalMuCalculus
 import Lax369799.TransitionEncoding
@@ -17,7 +18,7 @@ open RankedSystems Algebras TransitionEncoding
 
 axiom algebra_to_mu {P : Type} [Finite P] (L : Language (TransitionAlphabet P))
     (hL : ∀ S T, RankedBisimilar S T → (S ∈ L ↔ T ∈ L))
-    (hA : Recognizable L) :
+    (hA : SupportedAlgebras.Recognizable L) :
     ∃ φ : ModalMuCalculus.Sentence P, ∀ S, S ∈ L ↔ ModalMuCalculus.Models (decode S) φ
 
 end Lax369799.AlgebraToMuCalculus

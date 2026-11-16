@@ -65,4 +65,17 @@ theorem expansion_cover {A : RankedSet} {n : ℕ} {V : Type}
     Nonempty (Cover (flattenPresentation (pattern P))
       (startAtRoots (flattenPresentation P))) := ⟨expansionCover P⟩
 
+/--
+---
+conclusion: Lax369799.RootExpansion.expansion_folding
+---
+Every target vertex has its ordinary-copy preimage, whether reachable or
+unreachable. Thus the root-expansion cover is a folding (Lemma 38).
+-/
+theorem expansion_folding {A : RankedSet} {n : ℕ} {V : Type}
+    (P : Presentation (FiniteSystem A) n V) :
+    ∃ f : Cover (flattenPresentation (pattern P))
+      (startAtRoots (flattenPresentation P)), Function.Surjective f.toFun :=
+  ⟨expansionCover P,fun w => ⟨⟨(false,w.1),w.2⟩,rfl⟩⟩
+
 end Lax369799Proofs.RootExpansion

@@ -10,11 +10,11 @@ open Lax369799.RankedSystems Lax369799.Algebras Lax369799.FiniteProfiles
 open Lax369799.FinitePresentations Lax369799.PresentationObservations
 open Lax369799.RootExpansion Lax369799.RootlessFlattening
 
-private def replace {A : RankedSet} {n : ℕ} {V : Type}
+def replace {A : RankedSet} {n : ℕ} {V : Type}
     (P : Presentation (FiniteSystem A) n V) (Q : ∀ v, FiniteSystem A (P.label v).1) :
     Presentation (FiniteSystem A) n V := { P with label := fun v => ⟨(P.label v).1, Q v⟩ }
 
-private theorem transfer {A B : RankedSet} (E : Algebra B) (hE : UnfoldInvariant E)
+theorem transfer {A B : RankedSet} (E : Algebra B) (hE : UnfoldInvariant E)
     [Finite (B 1)] (η : RankedMap A B) {V : Type} [Fintype V]
     (P : Presentation (FiniteSystem A) 0 V) (Q : ∀ v, FiniteSystem A (P.label v).1)
     (h : ∀ v, BoundedProfileEquivalent (Nat.card (B 1) + 1)

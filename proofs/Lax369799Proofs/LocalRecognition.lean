@@ -18,12 +18,12 @@ private theorem reachable {A : RankedSet} {n : ℕ} (S : System A n) (v : S.val.
   · rw [S.property.2.1] at hr
     exact False.elim hr
 
-private def occurrenceLetter {A : RankedSet} (p : ∀ n, A n → Prop) : RankedMap A (Carrier Unit) :=
+def occurrenceLetter {A : RankedSet} (p : ∀ n, A n → Prop) : RankedMap A (Carrier Unit) :=
   fun n a _ out => match out with
     | .inl _ => p n a
     | .inr _ => True
 
-private theorem occurrence_iff {A : RankedSet} (p : ∀ n, A n → Prop) (S : System A 0) :
+theorem occurrence_iff {A : RankedSet} (p : ∀ n, A n → Prop) (S : System A 0) :
     Run (relabelSystem (occurrenceLetter p) S).val.graph (initial S) () (.inl ()) ↔
       ∃ v, p _ (S.val.graph.label v).2 := by
   constructor
@@ -61,7 +61,7 @@ theorem occurrence {A : RankedSet} (p : ∀ n, A n → Prop) :
   rw [he]
   exact (occurrence_iff p S).symm
 
-private def edgeLetter {A : RankedSet} (p q : ∀ n, A n → Prop) : RankedMap A (Carrier Bool) :=
+def edgeLetter {A : RankedSet} (p q : ∀ n, A n → Prop) : RankedMap A (Carrier Bool) :=
   fun n a b out => match out with
     | .inl _ => b = true ∧ q n a
     | .inr (_, r) => b = false ∧ (r = false ∨ (r = true ∧ p n a))
@@ -74,7 +74,7 @@ private theorem true_run {A : RankedSet} (p q : ∀ n, A n → Prop) (S : System
   | exit d h he => obtain ⟨i, hi, hh⟩ := h; cases hh.1
   | step d h he ht => obtain ⟨i, hi, hh⟩ := h; cases hh.1
 
-private theorem edge_iff {A : RankedSet} (p q : ∀ n, A n → Prop) (S : System A 0) :
+theorem edge_iff {A : RankedSet} (p q : ∀ n, A n → Prop) (S : System A 0) :
     Run (relabelSystem (edgeLetter p q) S).val.graph (initial S) false (.inl true) ↔
       ∃ v w d, p _ (S.val.graph.label v).2 ∧ q _ (S.val.graph.label w).2 ∧
         S.val.graph.edge v d (.inl w) := by

@@ -1,0 +1,944 @@
+{
+  "submission": "lax-369799",
+  "validated_at": "2026-11-16T12:08:43.261888+00:00",
+  "paper": {
+    "file": "main_tree_algebra_longversion.pdf",
+    "sha256": "09ffc3269d3548b28b92a913c3f1335156fa5fa3a2eeaebe1421e984e6699ff3",
+    "date": "2026-11-13",
+    "pages": 56,
+    "title": "Tree algebras and bisimulation-invariant MSO on finite graphs",
+    "source": "User-provided local revised manuscript; no arXiv version inferred.",
+    "previous_source": "arXiv:2407.12677v6"
+  },
+  "command": "PATH=/home/denis/.elan/bin:$PATH lax build . --replay",
+  "result": "passed",
+  "concepts": 213,
+  "proof_modules": 244,
+  "declared_statements": 566,
+  "ground_proofs": 566,
+  "relative_proofs": 0,
+  "unproved_declared_statements": [],
+  "unused_helper_warnings": 77,
+  "source_digest_sha256": "e8b04b7fe4dbe1460c255975e6e48ac6a8391953ca63e6772599b5664f06179b",
+  "build_output_sha256": "194d41f7206685e94768663f021158b6cdec84d6fc02d1e36fa0a6c8ea1c7b0a",
+  "audited_endpoints": {
+    "Lax369799Proofs.WordAutomata.buchiDeterminization": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.WordAutomata.FinGame.Arena.determined": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.OmegaDeterminization.determinization": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.FiniteParityGames.positional_determinacy": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.AlgebraicOmegaWords.regular": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.AlgebraicBranchCondition.exists_condition": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.UnaryChains.word_evaluation": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.UnaryGraphEvaluation.agreement": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.UnarySystemEvaluation.agreement": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.RunAcceptance.evaluated_run_iff": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.AlgebraToAutomaton.algebra_to_automaton": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.CloneTransitions.clone_automaton": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.CloneTransitions.uniform_stabilization": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.DirectionReindexing.decode_isomorphic": [
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.CloneNormalization.bisim_automaton_exists": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.RunAcceptance.labelling_accepting": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.BranchMonotonicity.infinite_mono": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.CloneRunRefinement.run_refinement": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.CloneNormalization.bisim_automaton_runs": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.FiniteMuEquations.solve_correct": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.ModalTransitions.eval_transition": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.ModalTransitions.run_marking": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.MainTheorems.algebra_to_mu": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.MainTheorems.finite_bisimulation_invariant_mso": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.ClosedExtremal.witness_value": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.ClosedExtremal.normal_test": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.ExtremalSituations.normal_test": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.ExtendedContexts.normal_test": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.ParityWinningRegions.predecessor": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.ModalAcceptanceGame.predecessor": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.ModalAcceptanceGame.reverse_parity": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.ModalAcceptanceGame.terminal_winning": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.ModalAcceptanceGame.winning_equation": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.ParityFixedPoints.greatest": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.ParityFixedPoints.least": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.ParityGameEquations.winning": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.ModalAcceptanceGame.winning_nested": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.FixedPointRetraction.least": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.FixedPointRetraction.greatest": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.ModalGameEquations.winning": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.ModalGameTranslation.game_to_mu": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.AutomatonRunGame.run_winning": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.CloneGameRun.winning_run": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.BisimAutomatonTheorem.bisim_automaton_to_mu": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.SupportCompaction.compact_exists": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.PriorityCompilation.compile_correct": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.PriorityCompilation.sentence_correct": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.SupportCompaction.rename_supported_iff": [],
+    "Lax369799Proofs.SupportCompaction.rename_set_injective": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.SupportCompaction.rename_system_injective": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.SupportCompaction.compact_unique": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.SupportedAlgebras.restrict_invariant": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.SupportedAlgebras.legacy_recognizable": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.SupportedAlgebras.rename_evaluation": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.SupportEvaluation.profile_nonempty": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.SupportEvaluation.finite_observations": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.SupportEvaluation.finite_carrier": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.SupportEvaluation.equivalent_iff": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.SupportEvaluation.closed_equivalent_iff": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.SupportEvaluation.closed_carrier": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.SupportPorts.flatten_iso": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.SupportPorts.restricted_system": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.SupportIsomorphism.compact_along": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.SupportIsomorphism.reflect_morphism": [
+      "propext"
+    ],
+    "Lax369799Proofs.SupportIsomorphism.profile_isomorphic": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.SupportIsomorphism.profile_injective_rename": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.SystemIsomorphisms.iso_symm": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.SystemIsomorphisms.trim_isomorphic": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.SystemIsomorphisms.flatten_output_rename": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.SystemIsomorphisms.flatten_from_trim": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.SubstitutionProfiles.pointwise_congruence": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.SystemMonad.outer_unit": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.SystemMonad.inner_unit": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.SystemMonad.associative": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.SystemMonad.flatten_isomorphic": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.SupportedCompletion.algebra": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.SupportedCompletion.legacy_recognizable": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.SupportedCompletion.recognizable_iff": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.SupportCompaction.support_image": [],
+    "Lax369799Proofs.SupportIsomorphism.occurs_isomorphic": [],
+    "Lax369799Proofs.SystemIsomorphisms.injective_isomorphic": [],
+    "Lax369799Proofs.SystemIsomorphisms.iso_trans": [],
+    "Lax369799Proofs.UnrestrictedLogic.finite_mu": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.UnrestrictedLogic.finite_mso": [
+      "propext"
+    ],
+    "Lax369799Proofs.UnrestrictedLogic.eval_monotone": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.UnrestrictedLogic.translate_correct": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.UnrestrictedLogic.mu_to_mso": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.UnrestrictedLogic.mu_bisimulation_invariant": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.UnrestrictedLogic.mu_definable_implies_mso_invariant": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.UnrestrictedLogic.finite_bisimulation": [],
+    "Lax369799Proofs.UnrestrictedLogic.finite_mu_models": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.UnrestrictedLogic.finite_mso_models": [
+      "propext"
+    ],
+    "Lax369799Proofs.FiniteStructureTheorems.composition": [],
+    "Lax369799Proofs.FiniteStructureTheorems.pullback": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.FiniteStructureTheorems.unfold_equivalence": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.SupportedMorphisms.system_folding": [],
+    "Lax369799Proofs.SupportedMorphisms.system_selection": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.SupportedMorphisms.common_system_unfolding": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.SupportedMorphisms.system_pullback": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.SupportedMorphisms.rename_lift": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.FiniteFlatteningMorphisms.inner": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.FiniteFlatteningMorphisms.outer": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.FiniteFlatteningMorphisms.outer_congruence": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.FiniteFlatteningMorphisms.inner_congruence": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.FiniteRenaming.adjunction": [],
+    "Lax369799Proofs.FiniteRenaming.push_morphism": [],
+    "Lax369799Proofs.FiniteRenaming.pull_morphism": [],
+    "Lax369799Proofs.SupportedYields.unfold_invariance": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.SupportedYields.morphism_yields": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.SupportedYields.unfold_yields": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.SupportedYields.system_yield_equivalence": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.FiniteContextCongruence.context_iff_substitution": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.SupportedRecognition.language_invariant": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.SupportedRecognition.complement": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.SupportedRecognition.intersection": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.SupportedRecognition.union": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.SupportedRecognition.inverse_relabel": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.SupportedRecognition.projection": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.SupportedRecognition.syntactic_rankwise_finite": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.RootExpansion.expansion_folding": [],
+    "Lax369799Proofs.SupportedCompletion.profile_morphism": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.SupportedCompletion.profile_unfold": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.SupportedCompletion.eval_letters": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.SupportedCompletion.regular_completion": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.SupportedCompletion.unary_card_bound": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.SupportedProfiles.full_completion": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.SupportedProfiles.small_completion": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.SupportedProfiles.full_refines": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.SupportedProfiles.small_refines": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.SupportedProfiles.yield_profile": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.SupportedProfiles.closed_small_profile": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.SupportedProfiles.small_profile_finite": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.SupportedProfiles.closed_congruence": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.UnboundedSubstitution.transfer_resolution": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.UnboundedSubstitution.transfer_value": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.UnboundedSubstitution.transfer_initial_value": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.UnboundedSubstitution.transfer_root_value": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.FiniteRenaming.pull_flatten": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.SupportedProfiles.congruence": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.SupportedMorphisms.source_support": [],
+    "Lax369799Proofs.SupportedYieldComparison.initial_yield": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.SupportedYieldComparison.root_yield": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.SupportedYieldComparison.legacy_below": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.SupportedYieldComparison.context_mono": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.SupportedYieldComparison.yield_order": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.SupportedYieldComparison.flatten_mono": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.SupportedYieldComparison.flatten_congruence": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.SupportedYieldContinuity.initial_continuity": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.SupportedYieldContinuity.root_continuity": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.ContextPorts.resize_exists": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.ContextPorts.plug_resize": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.SupportedContextSmallification.smallification": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.SupportedResolutions.sound": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.SupportedResolutions.small_resolution": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.QuantitativeRecognition.mso_bound": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.QuantitativeProfiles.syntactic_bound": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.FiniteModelChecking.mso_correct": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.FiniteModelChecking.mu_correct": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.QuantitativeDeterminization.determinization_bound": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.QuantitativeWordConditions.exists_condition": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.QuantitativeAutomata.automaton_bound": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.ParityGameSimulation.winning": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.ModalSmallModels.small_model": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.QuantitativeFiniteTheorem.modal_certificate": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.QuantitativeFiniteTheorem.nonempty_bound": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.FiniteModalData.exists_table": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.FiniteTesting.test_correct": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.EffectiveFiniteTranslation.mu_translation_correct": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.EffectiveFiniteTranslation.compile_correct": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799.EffectiveFiniteTranslation.compile": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Lax369799Proofs.MainTheorems.effective_finite_bisimulation_invariant_mso": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "ancillary_files_verified": 15,
+  "executable_compiler_audit": "audit/EffectiveFiniteTranslation.lean; finite reachability, both model checkers, complete table enumeration, modal compilation, and one/two-vertex separating tests executed.",
+  "complete_declared_proof_network": true,
+  "complete_manuscript_coverage": false,
+  "remaining_manuscript_obligations": [
+    "The reverse implication is proved on arbitrary state spaces. The unrestricted MSO-to-mu implication is not formalized in this submission.",
+    "Generic set-system clause is proved, with explicit isomorphism compatibility. The separately stated systems-only clause is not yet exposed.",
+    "Legacy direct-resolution factorization is ground. General explicit output-map factorization with full support still needs a direct endpoint."
+  ],
+  "published_or_registered": false,
+  "supported_algebra_audit": "audit/SupportedAlgebras.lean",
+  "supported_algebra_completion": "proved, including substitution congruence, unit and associativity, recognition equivalence, and removal of unnecessary unfolding-invariance hypotheses",
+  "revised_supported_algebra_hypotheses": true,
+  "source_digest_method": "Lax capture.digest",
+  "paper_coverage_inventory": "paper-coverage.json",
+  "numbered_paper_claims": 62,
+  "numbered_paper_alignment": {
+    "partial": 3,
+    "matched": 59
+  },
+  "revised_structure_audit": "audit/RevisedStructure.lean",
+  "complete_requested_scope": true,
+  "requested_scope": "Theorem 2, end-to-end effectivity, and their complete transitive proof dependencies.",
+  "main_endpoints": [
+    "Lax369799Proofs.MainTheorems.finite_bisimulation_invariant_mso",
+    "Lax369799Proofs.MainTheorems.effective_finite_bisimulation_invariant_mso"
+  ],
+  "executable_translation": "Lax369799.EffectiveFiniteTranslation.compile",
+  "executable_vocabulary": "An explicitly encoded finite proposition type: Fintype P, Encodable P, DecidableEq P.",
+  "executable_audit_expected_outputs": [
+    "true",
+    "true",
+    "false",
+    "true",
+    "true",
+    "false",
+    "4",
+    "false",
+    "true"
+  ],
+  "replay_log": "/tmp/tree-algebras-presubmission-final-replay.log",
+  "remaining_requested_scope_obligations": [],
+  "remaining_manuscript_obligations_scope": "Outside the user-clarified target; retained for the full numbered inventory.",
+  "replay_summary": "audit/Theorem2EffectivityResults.txt",
+  "presubmission_review": {
+    "date": "2026-11-16",
+    "result": "passed within the documented Theorem 2 and effectivity scope",
+    "duplicate_archive_conclusions": [],
+    "duplicate_printed_statement_types": [],
+    "duplicate_concept_titles": [],
+    "unrenderable_statement_signatures": [],
+    "captured_source_hashes_verified": 463,
+    "submission_input_files": 466,
+    "submission_input_digest_sha256": "e570ba669030ac54613c00840a5720c4ec116ee47da6d90b9ef7ea288f5437f8",
+    "submission_input_digest_method": "SHA-256 of compact JSON sorted (path, SHA-256 of contents) pairs for captured package sources plus manifest.yaml, abstract.md and LICENSE",
+    "ancillary_destination_hashes_verified": 15,
+    "numbered_alignment": {
+      "partial": 3,
+      "matched": 59
+    },
+    "standalone_audits": [
+      {
+        "file": "audit/ContextDecomposition.lean",
+        "exit_code": 0
+      },
+      {
+        "file": "audit/EffectiveFiniteTranslation.lean",
+        "exit_code": 0
+      },
+      {
+        "file": "audit/FlatteningAssociativity.lean",
+        "exit_code": 0
+      },
+      {
+        "file": "audit/NonlinearSubstitution.lean",
+        "exit_code": 0
+      },
+      {
+        "file": "audit/PriorityCompilation.lean",
+        "exit_code": 0
+      },
+      {
+        "file": "audit/RevisedStructure.lean",
+        "exit_code": 0
+      },
+      {
+        "file": "audit/SupportedAlgebras.lean",
+        "exit_code": 0
+      },
+      {
+        "file": "audit/WordAutomataDependencies.lean",
+        "exit_code": 0
+      },
+      {
+        "file": "audit/YieldSubstitution.lean",
+        "exit_code": 0
+      }
+    ],
+    "retained_helper_warnings": {
+      "generated_structure_lemmas": 39,
+      "attributed_ancillary_lemmas": 37,
+      "proof_elaboration_simplification_lemma": [
+        "Lax369799Proofs.UnaryComposition.cases_one"
+      ],
+      "note": "These are helpers, not Archive proof registrations. The shared simplification lemma is used in source-level simp calls even though kernel reference traversal does not retain it."
+    },
+    "changes": [
+      "Updated manifest authors to the current record format.",
+      "Removed the duplicate compiler-correctness Archive statement; retained the reusable proof helper and main effective endpoint.",
+      "Removed four unused local lemmas and consolidated three copies of the Fin.cases simplification lemma into one.",
+      "Named the flattened-vertex type to render two dependent signatures successfully without changing their mathematical types.",
+      "Marked old repair notes as historical, corrected old/new corollary numbering, and aligned the abstract and proof counts with the submission scope."
+    ],
+    "submission_sent": false
+  },
+  "submission_preparation": {
+    "prepared_at": "2026-11-16T14:41:37.044003+00:00",
+    "source_repository": "https://github.com/deniskup/tree-algebras-lean",
+    "reviewed_package_files_unchanged": 463,
+    "authors": [
+      "Denis Kuperberg",
+      "Codex 6",
+      "Codex 6.1"
+    ],
+    "archive_control_issue": {
+      "repositoryId": 1320232165,
+      "number": 228
+    },
+    "manuscript_pdf_published": false,
+    "note": "The preceding replay record describes the reviewed proof sources. Subsequent changes update author credits, bind the Archive issue, and prepare public source documentation; all 463 captured package files remain unchanged. The revised manuscript PDF remains local."
+  }
+}

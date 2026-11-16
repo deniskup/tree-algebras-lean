@@ -1,0 +1,135 @@
+import Lax369799Proofs.EffectiveFiniteTranslation
+import Lax369799Proofs.FiniteTesting
+import Lax369799Proofs.FiniteModalData
+import Lax369799Proofs.QuantitativeFiniteTheorem
+import Lax369799Proofs.ModalSmallModels
+import Lax369799Proofs.ParityGameSimulation
+import Lax369799Proofs.QuantitativeAutomata
+import Lax369799Proofs.QuantitativeWordConditions
+import Lax369799Proofs.QuantitativeDeterminization
+import Lax369799Proofs.FiniteModelChecking
+import Lax369799Proofs.QuantitativeProfiles
+import Lax369799Proofs.QuantitativeRecognition
+import Lax369799Proofs.SupportedOptimalResolutions
+import Lax369799Proofs.UnrestrictedLogic
+import Lax369799Proofs.FiniteStructureTheorems
+import Lax369799Proofs.SupportedMorphisms
+import Lax369799Proofs.FiniteFlatteningMorphisms
+import Lax369799Proofs.FiniteRenaming
+import Lax369799Proofs.SupportedYields
+import Lax369799Proofs.FiniteContextCongruence
+import Lax369799Proofs.SupportedProfileCongruence
+import Lax369799Proofs.SupportedYieldContinuity
+import Lax369799Proofs.SupportedYieldComparison
+import Lax369799Proofs.SupportedContextSmallification
+import Lax369799Proofs.SupportedResolutions
+import Lax369799Proofs.SupportedProfiles
+import Lax369799Proofs.SupportedRecognition
+import Lax369799Proofs.SupportedCompletionProperties
+import Lax369799Proofs.RootExpansion
+import Lax369799Proofs.MainTheorems
+
+#print axioms Lax369799Proofs.UnrestrictedLogic.finite_mu
+#print axioms Lax369799Proofs.UnrestrictedLogic.finite_mso
+#print axioms Lax369799Proofs.UnrestrictedLogic.eval_monotone
+#print axioms Lax369799Proofs.UnrestrictedLogic.translate_correct
+#print axioms Lax369799Proofs.UnrestrictedLogic.mu_to_mso
+#print axioms Lax369799Proofs.UnrestrictedLogic.mu_bisimulation_invariant
+#print axioms Lax369799Proofs.UnrestrictedLogic.mu_definable_implies_mso_invariant
+#print axioms Lax369799Proofs.UnrestrictedLogic.finite_bisimulation
+#print axioms Lax369799Proofs.UnrestrictedLogic.finite_mu_models
+#print axioms Lax369799Proofs.UnrestrictedLogic.finite_mso_models
+#print axioms Lax369799Proofs.FiniteStructureTheorems.composition
+#print axioms Lax369799Proofs.FiniteStructureTheorems.pullback
+#print axioms Lax369799Proofs.FiniteStructureTheorems.unfold_equivalence
+#print axioms Lax369799Proofs.SupportedMorphisms.system_folding
+#print axioms Lax369799Proofs.SupportedMorphisms.system_selection
+#print axioms Lax369799Proofs.SupportedMorphisms.common_system_unfolding
+#print axioms Lax369799Proofs.SupportedMorphisms.system_pullback
+#print axioms Lax369799Proofs.SupportedMorphisms.rename_lift
+#print axioms Lax369799Proofs.FiniteFlatteningMorphisms.inner
+#print axioms Lax369799Proofs.FiniteFlatteningMorphisms.outer
+#print axioms Lax369799Proofs.FiniteFlatteningMorphisms.outer_congruence
+#print axioms Lax369799Proofs.FiniteFlatteningMorphisms.inner_congruence
+#print axioms Lax369799Proofs.FiniteRenaming.adjunction
+#print axioms Lax369799Proofs.FiniteRenaming.push_morphism
+#print axioms Lax369799Proofs.FiniteRenaming.pull_morphism
+#print axioms Lax369799Proofs.SupportedYields.unfold_invariance
+#print axioms Lax369799Proofs.SupportedYields.morphism_yields
+#print axioms Lax369799Proofs.SupportedYields.unfold_yields
+#print axioms Lax369799Proofs.SupportedYields.system_yield_equivalence
+#print axioms Lax369799Proofs.FiniteContextCongruence.context_iff_substitution
+#print axioms Lax369799Proofs.SupportedRecognition.language_invariant
+#print axioms Lax369799Proofs.SupportedRecognition.complement
+#print axioms Lax369799Proofs.SupportedRecognition.intersection
+#print axioms Lax369799Proofs.SupportedRecognition.union
+#print axioms Lax369799Proofs.SupportedRecognition.inverse_relabel
+#print axioms Lax369799Proofs.SupportedRecognition.projection
+#print axioms Lax369799Proofs.SupportedRecognition.syntactic_rankwise_finite
+#print axioms Lax369799Proofs.RootExpansion.expansion_folding
+#print axioms Lax369799Proofs.MainTheorems.finite_bisimulation_invariant_mso
+#print axioms Lax369799Proofs.SupportedCompletion.profile_morphism
+#print axioms Lax369799Proofs.SupportedCompletion.profile_unfold
+#print axioms Lax369799Proofs.SupportedCompletion.eval_letters
+#print axioms Lax369799Proofs.SupportedCompletion.regular_completion
+#print axioms Lax369799Proofs.SupportedCompletion.unary_card_bound
+#print axioms Lax369799Proofs.SupportedProfiles.full_completion
+#print axioms Lax369799Proofs.SupportedProfiles.small_completion
+#print axioms Lax369799Proofs.SupportedProfiles.full_refines
+#print axioms Lax369799Proofs.SupportedProfiles.small_refines
+#print axioms Lax369799Proofs.SupportedProfiles.yield_profile
+#print axioms Lax369799Proofs.SupportedProfiles.closed_small_profile
+#print axioms Lax369799Proofs.SupportedProfiles.small_profile_finite
+#print axioms Lax369799Proofs.SupportedProfiles.closed_congruence
+#print axioms Lax369799Proofs.UnboundedSubstitution.transfer_resolution
+#print axioms Lax369799Proofs.UnboundedSubstitution.transfer_value
+#print axioms Lax369799Proofs.UnboundedSubstitution.transfer_initial_value
+#print axioms Lax369799Proofs.UnboundedSubstitution.transfer_root_value
+#print axioms Lax369799Proofs.FiniteRenaming.pull_flatten
+#print axioms Lax369799Proofs.SupportedProfiles.congruence
+#print axioms Lax369799Proofs.SupportedMorphisms.source_support
+#print axioms Lax369799Proofs.SupportedYieldComparison.initial_yield
+#print axioms Lax369799Proofs.SupportedYieldComparison.root_yield
+#print axioms Lax369799Proofs.SupportedYieldComparison.legacy_below
+#print axioms Lax369799Proofs.SupportedYieldComparison.context_mono
+#print axioms Lax369799Proofs.SupportedYieldComparison.yield_order
+#print axioms Lax369799Proofs.SupportedYieldComparison.flatten_mono
+#print axioms Lax369799Proofs.SupportedYieldComparison.flatten_congruence
+#print axioms Lax369799Proofs.SupportedYieldContinuity.initial_continuity
+#print axioms Lax369799Proofs.SupportedYieldContinuity.root_continuity
+#print axioms Lax369799Proofs.ContextPorts.resize_exists
+#print axioms Lax369799Proofs.ContextPorts.plug_resize
+#print axioms Lax369799Proofs.SupportedContextSmallification.smallification
+#print axioms Lax369799Proofs.SupportedResolutions.sound
+
+#print axioms Lax369799Proofs.SupportedResolutions.small_resolution
+
+#print axioms Lax369799Proofs.QuantitativeRecognition.mso_bound
+
+#print axioms Lax369799Proofs.QuantitativeProfiles.syntactic_bound
+
+#print axioms Lax369799Proofs.FiniteModelChecking.mso_correct
+#print axioms Lax369799Proofs.FiniteModelChecking.mu_correct
+
+#print axioms Lax369799Proofs.QuantitativeDeterminization.determinization_bound
+
+#print axioms Lax369799Proofs.QuantitativeWordConditions.exists_condition
+
+#print axioms Lax369799Proofs.QuantitativeAutomata.automaton_bound
+
+#print axioms Lax369799Proofs.ParityGameSimulation.winning
+
+#print axioms Lax369799Proofs.ModalSmallModels.small_model
+
+#print axioms Lax369799Proofs.QuantitativeFiniteTheorem.modal_certificate
+#print axioms Lax369799Proofs.QuantitativeFiniteTheorem.nonempty_bound
+
+#print axioms Lax369799Proofs.FiniteModalData.exists_table
+
+#print axioms Lax369799Proofs.FiniteTesting.test_correct
+
+#print axioms Lax369799Proofs.EffectiveFiniteTranslation.mu_translation_correct
+#print axioms Lax369799Proofs.EffectiveFiniteTranslation.compile_correct
+#print axioms Lax369799.EffectiveFiniteTranslation.compile
+
+#print axioms Lax369799Proofs.MainTheorems.effective_finite_bisimulation_invariant_mso

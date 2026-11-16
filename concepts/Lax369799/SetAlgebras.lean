@@ -2,15 +2,19 @@ import Lax369799.Algebras
 
 /-!
 ---
-title: Set-algebras
+title: The earlier continuity-bearing set-algebra interface
 type: definition
 ---
 A set-algebra evaluates set-systems and satisfies the unit, flattening,
-unfold-invariance, morphism, and continuity axioms of Definition 4.1.
+unfold-invariance, morphism, and continuity axioms of the earlier draft.
 The disjoint union of atomic systems defines meet; the induced order has
 `a ≤ b` exactly when `a ∧ b = a`. Morphisms reverse this order, while
 continuity says that a common lower bound for all yields is a lower bound
 for the original set-system. Both initial and root yields occur here.
+This original interface is retained for conditional results. The syntactic
+quotient instead uses ExpandedSyntacticAlgebra and expanded continuity.
+The revised Definition 63 is represented in SetSystemAlgebras, using
+unpruned finite presentations and no continuity field.
 -/
 
 namespace Lax369799.SetAlgebras

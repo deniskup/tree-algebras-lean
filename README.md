@@ -1,119 +1,110 @@
 # Tree algebras and bisimulation-invariant MSO on finite graphs
 
-Local Lax submission **lax-369799**, based on **arXiv:2407.12677v6**.
+Lax submission **lax-369799**, targeting the revised manuscript of
+13 November 2026. [paper-version.json](paper-version.json) records its hash.
+The revised manuscript PDF is retained locally; this repository publishes
+the formalization and its validation records.
 
-## Current status
+The requested scope is **Theorem 2, its supporting proof network, and
+end-to-end effectivity**. Both implications of Theorem 2 and a total
+executable translation are proved in Lean. The final validation results
+are recorded in [validation-report.json](validation-report.json): **213 concepts,
+566 ground proofs, zero unproved declarations and zero relative proofs**.
+The main proofs use only `propext`, `Classical.choice`, and `Quot.sound`.
 
-This is a **concept draft**, not a completed formalization. The principal
-statements and substantial supporting definitions have been written in
-Lean. Two hundred and thirteen supporting statements have proofs using only background
-axioms; two further proofs have explicit unresolved dependencies. The
-two main results remain open. A successful build checks the definitions, statement types, proof
-terms, and Archive format; it does not discharge unproved statement
-obligations. The concepts are not frozen or signed off.
+## Main entry points
 
-Validation: `lax build tree-algebras --replay` passed on 2026-09-18.
-The current development has 95 concepts and 215 Archive proofs: 213 use
-background axioms only and two have explicit paper-statement dependencies.
-The reverse direction of the logical equivalence is proved, as are all
-six morphism/yield results, the set-algebra order laws, and the repaired
-automaton-property theorem. Seven
-statement obligations have no proof yet. The independent context-decomposition, flattening-associativity,
-yield-substitution, and nonlinear-substitution audits also pass with background axioms only. Lax reports six unused
-helper warnings for automatically generated constructor lemmas of the
-presentation-map and Ramsey-row structures; these generated lemmas are retained intentionally.
+Import `Lax369799Proofs.MainTheorems` from the `proofs` package.
 
-The substitution repair addresses a second source issue: intermediate reachability
-pruning breaks the literal flattening associativity lemma. The checked
-counterexample is in [audit/FlatteningAssociativity.lean](audit/FlatteningAssociativity.lean),
-with its mathematical description in [REVIEW_ISSUES.md](REVIEW_ISSUES.md).
-The user authorized choosing a repair. The finite-presentation construction
-now has proved monad laws, context composition, contextual congruence, and
-quotient evaluation and recognition. Its substitution algebra has a partial order, monotone evaluation, and
-binary meet given by disjoint union. Acceptance is an upward-closed meet
-filter, and recognition is proved on the original reachable deterministic
-systems. The boundary-preserving normal form and complete extremal argument now
-prove the automaton property for this quotient when its unary sort is finite,
-without yield continuity. Rankwise finiteness is now proved for unfold-invariant languages recognized
-by any rankwise-finite algebra. GeneratedAlgebra, PolynomialQuotient, and
-Regularization provide an unfolding-invariant recognizing algebra without
-changing the language. The remaining automata constructions still need development.
-MSO recognition is now proved in full: finite path-summary algebras handle
-atomic predicates, and nonempty powersets handle existential projection.
-The translation to set-only syntax and its recognition induction are
-checked, as is the equivalence of ranked and ordinary bisimulation.
-The finite main theorem now has only algebra-to-mu-calculus as an
-unresolved paper-statement dependency.
-The paper’s full yield-continuity axiom has not been carried over. See
-[REPAIR_PLAN.md](REPAIR_PLAN.md).
+- [Theorem 2 and effective theorem](proofs/Lax369799Proofs/MainTheorems.lean):
+  `finite_bisimulation_invariant_mso` and
+  `effective_finite_bisimulation_invariant_mso`.
+- [Executable translation](concepts/Lax369799/EffectiveFiniteTranslation.lean):
+  `EffectiveFiniteTranslation.compile`.
+- [Compiler correctness](proofs/Lax369799Proofs/EffectiveFiniteTranslation.lean):
+  `EffectiveFiniteTranslation.compile_correct`, the helper used by the
+  main effective theorem (registered once with the Archive).
+- [Statement signatures](concepts/Lax369799/FiniteBisimulationTheorem.lean).
 
-The intended scope remains both main results of the paper and their
-transitive proof dependencies. Technical constructions and external
-automata/game-theoretic dependencies still need development. See
-[PLAN.md](PLAN.md) for coverage and [REVIEW_ISSUES.md](REVIEW_ISSUES.md) for a
-kernel-checked boundary case in the paper's context-decomposition lemma.
+The existence theorem assumes a finite proposition alphabet. The executable
+compiler receives an explicitly encoded finite alphabet (`Fintype`,
+`Encodable`, and `DecidableEq`), including every vocabulary `Fin n`.
+It returns a sentence for every MSO input. Correctness assumes that the
+input defines a bisimulation-invariant property over finite reachable
+transition systems. The compiler does not decide this promise.
 
-The algebraic normal form and the complete extremal-context argument now
-have proofs using background axioms only, including both Delta inequalities.
-The correction preserves the hole’s initial/root marks and self-loops.
+## Effective construction
 
-## Review entry points
+The construction follows the finite-search argument on page 54 of the
+revised paper. It computes bounds from the input syntax, enumerates finite
+Boolean modal tables, compiles their sentences, and tests them on all
+reachable graph codes within a pair-separation bound. It is an exhaustive
+algorithm establishing effectivity; the bounds are intentionally generous.
 
-- [Decomposition preserving all hole marks and self-loops](concepts/Lax369799/ContextDecomposition.lean),
-  with [its proofs](proofs/Lax369799Proofs/ContextDecomposition.lean)
+| Step | Checked implementation |
+| --- | --- |
+| Recognizing-algebra sort bounds | `QuantitativeRecognition` |
+| Small-profile quotient bounds | `QuantitativeProfiles` |
+| Safra and parity state/priority bounds | `QuantitativeDeterminization`, `QuantitativeWordConditions` |
+| Bounded clone automaton | `QuantitativeAutomata` |
+| Finite game simulation and small models | `ParityGameSimulation`, `ModalSmallModels` |
+| Model bound under finite invariance | `QuantitativeFiniteTheorem` |
+| Executable Boolean model checking | `FiniteModelChecking` |
+| Finite modal tables and scalar compilation | `FiniteModalData`, `PriorityCompilation` |
+| Bounded graph comparison and selection | `FiniteTesting`, `EffectiveFiniteTranslation` |
 
-- [Acceptance and syntactic recognition](proofs/Lax369799Proofs/SyntacticRecognition.lean),
-  including [yields of disjoint unions](proofs/Lax369799Proofs/SumYields.lean)
-- [Morphism and yield proofs](proofs/Lax369799Proofs/Yields.lean),
-  [pullbacks](proofs/Lax369799Proofs/Pullbacks.lean), and
-  [flattening proofs](proofs/Lax369799Proofs/Flattening.lean)
-- [Mu-calculus to MSO translation](proofs/Lax369799Proofs/MuToMSO.lean) and
-  [bisimulation invariance](proofs/Lax369799Proofs/MuBisimulation.lean)
-- [Finite MSO/bisimulation theorem](concepts/Lax369799/FiniteBisimulationTheorem.lean)
-- [MSO syntax and semantics](concepts/Lax369799/MonadicSecondOrder.lean)
-- [Mu-calculus syntax and semantics](concepts/Lax369799/ModalMuCalculus.lean)
-- [Systems](concepts/Lax369799/RankedSystems.lean),
-  [morphisms and yields](concepts/Lax369799/Morphisms.lean), and
-  [flattening](concepts/Lax369799/Flattening.lean)
-- [Algebras](concepts/Lax369799/Algebras.lean) and
-  [set-algebras](concepts/Lax369799/SetAlgebras.lean)
-- [Algebra-to-automaton theorem](concepts/Lax369799/AlgebraToAutomaton.lean)
-- [Algebra-to-mu-calculus theorem](concepts/Lax369799/AlgebraToMuCalculus.lean)
+The model bound is derived from the bounded modal certificate and positional
+strategies: a winning model can use at most one vertex per word state.
+Applying this to the MSO translation of the difference of two modal
+candidates supplies the finite comparison bound. This uses the proved
+finite construction and introduces no assumed small-model theorem.
 
-## Representation choices
+## Paper interfaces and coverage
 
-Finite vertex sets are enumerated by `Fin size`. This makes systems a
-ranked set in the same universe as their labels, so iterated systems and
-flattening have ordinary Lean types. Isomorphism invariance removes any
-mathematical dependence on the enumeration. The original system constructions restrict finite presentations to their
-reachable parts. The repaired finite-presentation constructions retain all
-vertices through substitution and restrict only for final yield observation. Directions
-and variables use zero-based indices.
+`FinitePresentations` retains unreachable vertices during substitution.
+`SupportedSystems` and `SupportedAlgebras` implement the output reachability
+of Definition 6. `SupportedCompletion` proves the bridge to the intermediate
+algebra interface. The algebra-to-automaton and modal theorems state the
+revised supported-algebra hypothesis.
 
-MSO and the modal mu-calculus are syntactic inductive types with explicit
-semantics, not uninterpreted predicates. The main theorem quantifies over
-finite reachable transition systems and a finite proposition alphabet.
-The mu-calculus uses positive fixed-point variables in negation normal
-form and the standard least/greatest fixed-point semantics.
+[PLAN.md](PLAN.md) maps the proof route to the manuscript.
+[paper-coverage.json](paper-coverage.json) retains the broader inventory of
+all 62 numbered results. It records 59 matching statements and three partial
+alignments: unrestricted Theorem 1 and the separate exact formulations of
+Lemmas 42 and 47. The requested Theorem 2 and effectivity use a completely
+proved dependency route. Exhaustive coverage of the broader inventory is
+not claimed. [PAPER_CHANGES.md](PAPER_CHANGES.md) preserves the revision history.
 
-Unfold-automaton runs may choose another finite representative of the
-same regular tree. Their acceptance checks every finite maximal branch
-and every infinite branch. A deterministic parity word automaton supplies
-the regular branch condition; equivalence with the paper's arbitrary
-omega-regular conditions is a dependency to prove, not an assumption
-hidden in a definition.
+## Validation
 
-## Commands
+From the repository root:
 
 ```sh
-lax build .
-# Kernel check of the independent source diagnostic:
-(cd concepts && lake env lean ../audit/ContextDecomposition.lean)
-(cd proofs && lake env lean ../audit/FlatteningAssociativity.lean)
+PATH=/home/denis/.elan/bin:$PATH lax build . --replay
 ```
 
-`reference/` contains the exact downloaded source archive, its SHA-256
-provenance, and extracted TeX. It is ignored by Git and is not a declared
-Archive paper. The Lean submission is Apache-2.0; upstream source material
-retains its original notices. The author list is left empty for review.
-Nothing has been submitted to or registered with the public Archive.
+Additional audits:
+
+```sh
+cd proofs
+lake env lean ../audit/RevisedStructure.lean
+lake env lean ../audit/EffectiveFiniteTranslation.lean
+```
+
+The executable audit checks reachability, both model checkers, finite table
+enumeration, and modal compilation. It also checks that a self-loop MSO
+sentence and the infinite-path modal sentence agree on one-vertex models
+but are separated by a two-vertex model.
+
+## Attribution
+
+Safra determinization, appearance records, and finite parity-game proofs
+are adapted from the ancillary Lean development of Bojańczyk, Casares,
+Manthe and Parys, [arXiv:2611.10136v1](https://arxiv.org/abs/2611.10136v1),
+with incorporation authorized by the user. [external-proofs.json](external-proofs.json)
+records source and destination hashes; [manifest.yaml](manifest.yaml) contains
+the citation. The pinned toolchain is Lean 4.33.0 with mathlib
+`db584cd6d46c92f209a44c0f1c829460d327499d`.
+
+`lax submit .` sends the committed source as a replaceable draft.
+Permanent registration is a separate step with `lax register .`.

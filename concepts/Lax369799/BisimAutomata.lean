@@ -4,16 +4,18 @@ import Mathlib.Data.Fin.Basic
 
 /-!
 ---
-title: Bisim-automata
+title: Clone-automata
 type: definition
 ---
-An unfold-automaton over the transition alphabet is a bisim-automaton when
+An unfold-automaton over the transition alphabet is a clone-automaton when
 its transitions are closed under uniformly duplicating every component a
 positive number of times. Thus a transition of arity n with types
 (b₁,…,bₙ) entails a transition of arity nm with m consecutive copies of
 each bᵢ. Nullary transitions are unchanged. This is the duplication
 condition of Section 6.4; it is distinct from invariance of the recognised
 language.
+The identifier IsBisimAutomaton is retained from the earlier development;
+it expresses the clone condition of the revised Section 6.4.
 -/
 
 namespace Lax369799.BisimAutomata

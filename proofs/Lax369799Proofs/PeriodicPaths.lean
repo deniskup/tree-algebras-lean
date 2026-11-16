@@ -4,22 +4,22 @@ import Lax369799Proofs.WordParity
 namespace Lax369799Proofs.PeriodicPaths
 open Lax369799.PeriodicPaths Lax369799.WordParity
 
-private def index (i j n : ℕ) : ℕ := if n < i then n else i + (n - i) % (j - i)
+def index (i j n : ℕ) : ℕ := if n < i then n else i + (n - i) % (j - i)
 
-private theorem index_zero (i j : ℕ) : index i j 0 = 0 := by
+theorem index_zero (i j : ℕ) : index i j 0 = 0 := by
   by_cases hi : 0 < i
   · simp [index, hi]
   · have hi : i = 0 := by omega
     simp [index, hi]
 
-private theorem index_bounds {i j n : ℕ} (hij : i < j) (hn : i ≤ n) :
+theorem index_bounds {i j n : ℕ} (hij : i < j) (hn : i ≤ n) :
     i ≤ index i j n ∧ index i j n < j := by
   have hp : 0 < j - i := by omega
   have hm := Nat.mod_lt (n - i) hp
   simp only [index, if_neg (by omega : ¬n < i)]
   omega
 
-private theorem index_succ {i j : ℕ} (hij : i < j) (n : ℕ) :
+theorem index_succ {i j : ℕ} (hij : i < j) (n : ℕ) :
     index i j (n + 1) = index i j n + 1 ∨
       index i j n + 1 = j ∧ index i j (n + 1) = i := by
   by_cases hn : n < i

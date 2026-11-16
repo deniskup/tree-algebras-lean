@@ -53,7 +53,7 @@ theorem contextual_iso {A : RankedSet} (F : ClosedProperty A) (hF : IsoInvariant
     | inr eq => obtain ⟨he⟩ := eq; subst r; exact h
   exact ⟨fun C => (hF _ _ (hc C)).mp, fun C => (hF _ _ (hc C)).mpr⟩
 
-private noncomputable def drill {A B : RankedSet} {n : ℕ} (P : FiniteSystem B n)
+noncomputable def drill {A B : RankedSet} {n : ℕ} (P : FiniteSystem B n)
     (q : ∀ v : P.Vertex, FiniteSystem A (P.graph.label v).1) (v : P.Vertex) :
     Context (FiniteSystem A) (P.graph.label v).1 n := by
   classical
@@ -80,7 +80,7 @@ private noncomputable def drill {A B : RankedSet} {n : ℕ} (P : FiniteSystem B 
         obtain ⟨eq, he⟩ := h
         cases he
 
-private theorem interpret_drill {A B : RankedSet} {n : ℕ} (P : FiniteSystem B n)
+theorem interpret_drill {A B : RankedSet} {n : ℕ} (P : FiniteSystem B n)
     (q r : ∀ v : P.Vertex, FiniteSystem A (P.graph.label v).1) (v : P.Vertex)
     (h : ∀ w, w ≠ v → q w = r w) :
     relabel (interpretation (fun _ a => a) (r v)) (drill P q v).system = withLabels P r := by

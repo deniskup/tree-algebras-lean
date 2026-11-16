@@ -2,14 +2,16 @@ import Lax369799.SyntacticOrder
 
 /-!
 ---
-title: Deterministic elements and the automaton property
+title: Deterministic elements and the earlier replacement property
 type: definition
 ---
 An element is deterministic if it is the value of a set-system using only
 letters of ranks zero and one. Given a rank-zero element f, the automaton
 property says that an element in an accepting context can be replaced by
 a deterministic element below it while preserving acceptance above f.
-This is the property used in Section 5.
+This is the earlier replacement interface. The revised manuscript's
+Definition 90 requires canonical direction decomposition and regular-branch
+acceptance as well; its syntactic instance is in ExtremalPaths.
 -/
 
 namespace Lax369799.AutomatonProperty

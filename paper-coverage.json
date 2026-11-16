@@ -1,0 +1,738 @@
+{
+  "paper": {
+    "file": "main_tree_algebra_longversion.pdf",
+    "sha256": "09ffc3269d3548b28b92a913c3f1335156fa5fa3a2eeaebe1421e984e6699ff3",
+    "date": "2026-11-13",
+    "pages": 56,
+    "title": "Tree algebras and bisimulation-invariant MSO on finite graphs",
+    "source": "User-provided local revised manuscript; no arXiv version inferred.",
+    "previous_source": "arXiv:2407.12677v6"
+  },
+  "inventory_scope": "All numbered Theorem, Lemma, and Corollary statements in the supplied PDF. Definitions, remarks, examples, and unnumbered effectivity are separate.",
+  "numbered_claims": [
+    {
+      "kind": "Theorem",
+      "number": 1,
+      "pdf_page": 2,
+      "excerpt": "\u00a7 Theorem 1 (Janin-Walukiewicz). For a property of transition systems, the following state- ments are equivalent:",
+      "alignment": "partial",
+      "concept_endpoints": [
+        "Lax369799.UnrestrictedLogic.mu_definable_implies_mso_invariant"
+      ],
+      "note": "The reverse implication is proved on arbitrary state spaces. The unrestricted MSO-to-mu implication is not formalized in this submission."
+    },
+    {
+      "kind": "Theorem",
+      "number": 2,
+      "pdf_page": 2,
+      "excerpt": "\u00a7 Theorem 2. For a property of finite transition systems, the following statements are equivalent:",
+      "alignment": "matched",
+      "concept_endpoints": [
+        "Lax369799.FiniteBisimulationTheorem.finite_bisimulation_invariant_mso"
+      ],
+      "note": "Finite reachable transition systems, with finite proposition vocabulary."
+    },
+    {
+      "kind": "Lemma",
+      "number": 9,
+      "pdf_page": 9,
+      "excerpt": "\u00a7 Lemma 9 (composition). If \u03b7 is a morphism of set-systems from S to S 1 , and \u03b7 1 is a morphism of set-systems from S 1 to S 2 , then \u03b7 1 \u02dd \u03b7 is a morphism of set-systems from S to S 2 . If \u03b7 and \u03b7 1 are locally surjective (resp. foldings), then \u03b7 1 \u02dd \u03b7 is also locally surjective (resp. a folding).",
+      "alignment": "matched",
+      "concept_endpoints": [
+        "Lax369799.FiniteStructureTheorems.composition"
+      ],
+      "note": "Retains all vertices and includes local-surjectivity and folding clauses."
+    },
+    {
+      "kind": "Lemma",
+      "number": 11,
+      "pdf_page": 9,
+      "excerpt": "\u00a7 Lemma 11 (system selection). Let \u03b7 : S T be a locally surjective morphism from a set-system to a system. There is a system U with an inclusion morphism \u03b9 : U S such that \u03b7 \u02dd \u03b9 : U T is a folding.",
+      "alignment": "matched",
+      "concept_endpoints": [
+        "Lax369799.SupportedMorphisms.system_selection"
+      ],
+      "note": "Injective selection from an unpruned source; chosen system has full support."
+    },
+    {
+      "kind": "Lemma",
+      "number": 14,
+      "pdf_page": 9,
+      "excerpt": "\u00a7 Lemma 14 (pullbacks). Let S, S 1 , T be \u03a3-set-systems, and \u03b7 : S T , \u03b71 : S 1 T be morphisms. There exist a \u03a3-set-system P and morphisms \u03c0 : P S and \u03c0 1 : P S1 such that \u03b7 \u02dd \u03c0 \u201c \u03b7 1 \u02dd \u03c0 1 , and P is universal with this property, i.e., for all \u03a3-set-systems U and morphisms \u03c4 : U S and \u03c4 1 : U S 1 , if \u03b7 \u02dd \u03c4 \u201c \u03b7 1 \u02dd \u03c4 1 , then there exists a unique morphism \u03b8 : U P such that \u03c4 \u201c \u03c0 \u02dd \u03b8 and \u03c4 1 \u201c \u03c0 1 \u02dd \u03b8.",
+      "alignment": "matched",
+      "concept_endpoints": [
+        "Lax369799.FiniteStructureTheorems.pullback"
+      ],
+      "note": "Full unpruned pullback, unique factorization, both local and global-surjectivity clauses."
+    },
+    {
+      "kind": "Lemma",
+      "number": 15,
+      "pdf_page": 10,
+      "excerpt": "\u00a7 Lemma 15 (pullbacks of systems). Let S, S 1 , T be \u03a3-systems, let \u03b7 : S T and \u03b7 1 : S 1 T be morphisms, and let P be their pullback constructed in Lemma 14. The restriction Preach of P to the vertices reachable from its unique initial vertex is a system, that folds to S and S 1 via the restrictions of the foldings from P . Thus, the pullback property is still valid when restricted to systems.",
+      "alignment": "matched",
+      "concept_endpoints": [
+        "Lax369799.SupportedMorphisms.system_pullback"
+      ],
+      "note": "Pullback in the category of fully supported systems, including unique factorization."
+    },
+    {
+      "kind": "Lemma",
+      "number": 17,
+      "pdf_page": 11,
+      "excerpt": "\u00a7 Lemma 17. Given a set-system S of rank m, a set-system S 1 of rank n, and a map \u03c3 : rms \u00d1 rns, then, for a map \u03c1 from vertices of S to vertices of S 1 , the following properties are equivalent ppSq to S 1 , and \u03c1 is a morphism from \u03c3 \u00b41 pS 1 q. \u03c1 is a morphism from S to \u03c3y",
+      "alignment": "matched",
+      "concept_endpoints": [
+        "Lax369799.FiniteRenaming.adjunction"
+      ],
+      "note": "The same vertex map, direct and inverse variable renaming."
+    },
+    {
+      "kind": "Lemma",
+      "number": 19,
+      "pdf_page": 11,
+      "excerpt": "\u00a7 Lemma 19. The binary unfold-equivalence relation between \u03a3-set-systems is indeed an equivalence relation.",
+      "alignment": "matched",
+      "concept_endpoints": [
+        "Lax369799.FiniteStructureTheorems.unfold_equivalence"
+      ],
+      "note": "Common foldings include global vertex surjectivity."
+    },
+    {
+      "kind": "Lemma",
+      "number": 20,
+      "pdf_page": 12,
+      "excerpt": "\u00a7 Lemma 20 (common system unfolding). If two \u03a3-systems T, T 1 are unfold-equivalent, then there exists a \u03a3-system U that is an unfolding of both.",
+      "alignment": "matched",
+      "concept_endpoints": [
+        "Lax369799.SupportedMorphisms.common_system_unfolding"
+      ],
+      "note": "Common unfolding is fully supported."
+    },
+    {
+      "kind": "Lemma",
+      "number": 24,
+      "pdf_page": 12,
+      "excerpt": "\u00a7 Lemma 24. Let \u03c3 : rms \u00d1 rns be surjective. Let T be a system of rank m and T 1 be a ppT q. There exists an unfolding T 2 of T such that system of rank n which is an unfolding of \u03c3 2 1 \u03c3 ppT q \u201c T .",
+      "alignment": "matched",
+      "concept_endpoints": [
+        "Lax369799.SupportedMorphisms.rename_lift"
+      ],
+      "note": "Surjective output renaming, restored system fully supported, exact equality after renaming."
+    },
+    {
+      "kind": "Lemma",
+      "number": 26,
+      "pdf_page": 14,
+      "excerpt": "\u00a7 Lemma 26 (unfold-invariance of yields). Both families of yields are closed under unfold- equivalence of the system component, with the variable map \u03c3 fixed.",
+      "alignment": "matched",
+      "concept_endpoints": [
+        "Lax369799.SupportedYields.unfold_invariance"
+      ],
+      "note": "Initial and root yields with the variable map explicitly fixed."
+    },
+    {
+      "kind": "Lemma",
+      "number": 27,
+      "pdf_page": 14,
+      "excerpt": "\u00a7 Lemma 27. If there is a morphism of \u03a3-set-systems from S to S 1 , then S \u010eyields S 1 . If furthermore it is locally surjective then S \u201cyields S 1 .",
+      "alignment": "matched",
+      "concept_endpoints": [
+        "Lax369799.SupportedYields.morphism_yields"
+      ],
+      "note": "Unpruned sources, full-support yield witnesses, arbitrary variable maps."
+    },
+    {
+      "kind": "Corollary",
+      "number": 28,
+      "pdf_page": 15,
+      "excerpt": "\u00a7 Corollary 28. Set-systems that are unfold-equivalent are yield-equivalent.",
+      "alignment": "matched",
+      "concept_endpoints": [
+        "Lax369799.SupportedYields.unfold_yields"
+      ],
+      "note": "Both yield families preserved under common full foldings."
+    },
+    {
+      "kind": "Lemma",
+      "number": 29,
+      "pdf_page": 15,
+      "excerpt": "\u00a7 Lemma 29. Two systems of the same rank are unfold-equivalent if and only if they are yield-equivalent.",
+      "alignment": "matched",
+      "concept_endpoints": [
+        "Lax369799.SupportedYields.system_yield_equivalence"
+      ],
+      "note": "Fully supported systems and both yield families with explicit variable maps."
+    },
+    {
+      "kind": "Lemma",
+      "number": 33,
+      "pdf_page": 16,
+      "excerpt": "\u00a7 Lemma 33. The flattening of a (\u03a3-system)-system is a \u03a3-system.",
+      "alignment": "matched",
+      "concept_endpoints": [
+        "Lax369799.SupportedSystems.flatten_reachable",
+        "Lax369799.SupportedSystems.flatten_system"
+      ],
+      "note": "All flattened vertices and outputs remain reachable."
+    },
+    {
+      "kind": "Lemma",
+      "number": 34,
+      "pdf_page": 16,
+      "excerpt": "\u00a7 Lemma 34. Let S, S 1 be two (\u03a3-set-system)-set-systems of same shape such that there is a set-system morphism \u03b7v from Spvq to S 1 pvq for all v P V S . Then \u03b7 defined as \u03b7pv, wq \u201c pv, \u03b7v pwqq is a morphism from flattenpSq to flattenpS 1 q. Furthermore, if \u03b7v is locally surjective (resp. a folding) for all v, then \u03b7 is locally surjective (resp. a folding).",
+      "alignment": "matched",
+      "concept_endpoints": [
+        "Lax369799.FiniteFlatteningMorphisms.inner"
+      ],
+      "note": "Componentwise morphisms, local surjectivity, and foldings retain all vertices."
+    },
+    {
+      "kind": "Lemma",
+      "number": 35,
+      "pdf_page": 17,
+      "excerpt": "\u00a7 Lemma 35. Let S, S 1 be two (\u03a3-set-system)-set-systems, and \u03b7 be a morphism from S to S 1 , then \u03b7 1 defined by \u03b7 1 pv, wq \u201c p\u03b7pvq, wq is a morphism from flattenpSq to flattenpS 1 q. Furthermore, if \u03b7 is a folding, then \u03b7 1 is a folding.",
+      "alignment": "matched",
+      "concept_endpoints": [
+        "Lax369799.FiniteFlatteningMorphisms.outer"
+      ],
+      "note": "Outer morphism and folding lift through unpruned flattening."
+    },
+    {
+      "kind": "Lemma",
+      "number": 36,
+      "pdf_page": 17,
+      "excerpt": "\u00a7 Lemma 36. For any ((\u03a3-set-system)-set-system)-set-system S3 and \u03a3-set-system S1 , we have",
+      "alignment": "matched",
+      "concept_endpoints": [
+        "Lax369799.FinitePresentations.flatten_associative",
+        "Lax369799.FinitePresentations.outer_atomic",
+        "Lax369799.FinitePresentations.inner_atomic"
+      ],
+      "note": "Equalities are represented by explicit presentation isomorphisms."
+    },
+    {
+      "kind": "Lemma",
+      "number": 38,
+      "pdf_page": 18,
+      "excerpt": "\u00a7 Lemma 38. For all (set-system)-set-system S, there exists a folding from flattenpfuprootpSqq to uprootpflattenpSqq.",
+      "alignment": "matched",
+      "concept_endpoints": [
+        "Lax369799.RootExpansion.expansion_folding"
+      ],
+      "note": "The root-expansion projection is locally and globally surjective."
+    },
+    {
+      "kind": "Lemma",
+      "number": 39,
+      "pdf_page": 18,
+      "excerpt": "\u00a7 Lemma 39. Let S, S 1 be unfold-equivalent (\u03a3-set-system)-set-systems, then flattenpSq and flattenpS 1 q are unfold-equivalent.",
+      "alignment": "matched",
+      "concept_endpoints": [
+        "Lax369799.FiniteFlatteningMorphisms.outer_congruence"
+      ],
+      "note": "Full folding-based unfold-equivalence."
+    },
+    {
+      "kind": "Lemma",
+      "number": 40,
+      "pdf_page": 18,
+      "excerpt": "\u00a7 Lemma 40. Let S, S 1 be (\u03a3-set-system)-set-systems of same shape such that Spsq is unfold- equivalent to S 1 psq for all vertices s, then flattenpSq and flattenpS 1 q are unfold-equivalent.",
+      "alignment": "matched",
+      "concept_endpoints": [
+        "Lax369799.FiniteFlatteningMorphisms.inner_congruence"
+      ],
+      "note": "Full folding-based unfold-equivalence."
+    },
+    {
+      "kind": "Lemma",
+      "number": 42,
+      "pdf_page": 19,
+      "excerpt": "\u00a7 Lemma 42. For all reflexive relations R between set-systems of same rank, and all reflexive and transitive relations R1 between set-systems of same rank, the following assertions are equivalent: For all set-contexts Cr\u02ddm s, and all S, S 1 set-systems of rank m such that S R S 1 , we have CrSs R1 CrS 1 s. For all (set-system)-set-systems S, S 1 of the same shape such that Spsq R S 1 psq for all vertices s P V S , we have flattenpSq R1 flattenpS 1 q. The same holds for contexts and systems instead of set-contexts and set-systems.",
+      "alignment": "partial",
+      "concept_endpoints": [
+        "Lax369799.FiniteContextCongruence.context_iff_substitution"
+      ],
+      "note": "Generic set-system clause is proved, with explicit isomorphism compatibility. The separately stated systems-only clause is not yet exposed."
+    },
+    {
+      "kind": "Lemma",
+      "number": 44,
+      "pdf_page": 20,
+      "excerpt": "\u00a7 Lemma 44 (decomposition and recomposition of set-contexts). Let pP0 , P1 , . . . , Pn q be the pieces of a closed set-context Cr\u02ddn s, then C and ContextpP0 , P1 , . . . , Pn q are unfold-equivalent.",
+      "alignment": "matched",
+      "concept_endpoints": [
+        "Lax369799.FiniteDecomposition.decomposition_cover"
+      ],
+      "note": "Unpruned recomposition supplies a full folding onto the original context, retaining boundary markers."
+    },
+    {
+      "kind": "Lemma",
+      "number": 46,
+      "pdf_page": 21,
+      "excerpt": "\u00a7 Lemma 46 (composition of yields). Let S be a (\u03a3-set-system)-set-system of rank n, let T be a (\u03a3-system)-system of rank m, and let \u03c4 : rms \u00d1 rns. Suppose there is a map \u03b4 : V T \u00d1 V S and there are maps \u03c3t : rrkpT ptqqs \u00d1 rrkpSp\u03b4ptqqqs such that:",
+      "alignment": "matched",
+      "concept_endpoints": [
+        "Lax369799.SupportedResolutions.sound"
+      ],
+      "note": "The four conditions use fully supported inner and outer systems, local yield maps, an arbitrary global output map, and an unpruned target. Their supported flattening is a yield with the prescribed map."
+    },
+    {
+      "kind": "Lemma",
+      "number": 47,
+      "pdf_page": 22,
+      "excerpt": "\u00a7 Lemma 47 (decomposition of yields). Let S be a (\u03a3-set-system)-set-system of rank n and pR, \u03c4 q P InitYieldspflattenpSqq, where \u03c4 : rms \u00d1 rns. There are a (\u03a3-system)-system T of rank m, a map \u03b4, and maps p\u03c3t qt satisfying the four conditions of Lemma 46, to- gether with a folding flattenpT q R. Moreover, for every t, the witness for pT ptq, \u03c3t q P InitYieldspSp\u03b4ptqqq is pT ptq, \u03c3t q itself, i.e. there is a morphism \u03c3pt pT ptqq Sp\u03b4ptqq.",
+      "alignment": "partial",
+      "concept_endpoints": [
+        "Lax369799.FlatteningTheorems.resolution_to_flatten_resolution"
+      ],
+      "note": "Legacy direct-resolution factorization is ground. General explicit output-map factorization with full support still needs a direct endpoint."
+    },
+    {
+      "kind": "Corollary",
+      "number": 48,
+      "pdf_page": 23,
+      "excerpt": "\u00a7 Corollary 48 (yield-equivalence is a congruence for the flattening functor). Let S, S 1 be (\u03a3-set- system)-set-systems of the same shape such that Spsq \u010eyields S 1 psq (resp. Spsq \u201cyields S 1 psq) for every s. Then flattenpSq \u010eyields flattenpS 1 q (resp. flattenpSq \u201cyields flattenpS 1 q).",
+      "alignment": "matched",
+      "concept_endpoints": [
+        "Lax369799.SupportedYieldComparison.flatten_mono",
+        "Lax369799.SupportedYieldComparison.flatten_congruence"
+      ],
+      "note": "Inclusion and equivalence under unpruned flattening, with fully supported yield witnesses and explicit variable maps."
+    },
+    {
+      "kind": "Corollary",
+      "number": 50,
+      "pdf_page": 23,
+      "excerpt": "\u00a7 Corollary 50. For every set-context Cr\u02ddn s and set-system S of rank n, \u010f \u00b4 \u201d\u00ff \u0131\u00af YieldspCrSsq \u201c Yields C sspqq , qPF F \u010eYieldspSq F finite",
+      "alignment": "matched",
+      "concept_endpoints": [
+        "Lax369799.SupportedYieldContinuity.initial_continuity",
+        "Lax369799.SupportedYieldContinuity.root_continuity"
+      ],
+      "note": "Finite families of supported yield witnesses, with explicit output maps and initial/root tags, suffice in every unpruned context. Both target-yield families retain their map."
+    },
+    {
+      "kind": "Lemma",
+      "number": 56,
+      "pdf_page": 25,
+      "excerpt": "\u00a7 Lemma 56. The languages of systems recognised by unfold-invariant algebras are languages of regular-trees.",
+      "alignment": "matched",
+      "concept_endpoints": [
+        "Lax369799.SupportedRecognition.language_invariant"
+      ],
+      "note": "Recognizers evaluate fully supported systems as in Definition 6."
+    },
+    {
+      "kind": "Lemma",
+      "number": 62,
+      "pdf_page": 27,
+      "excerpt": "\u00a7 Lemma 62. Languages recognisable by rankwise-finite algebras are closed under boolean connectives, cylindrification, and projection.",
+      "alignment": "matched",
+      "concept_endpoints": [
+        "Lax369799.SupportedRecognition.complement",
+        "Lax369799.SupportedRecognition.intersection",
+        "Lax369799.SupportedRecognition.union",
+        "Lax369799.SupportedRecognition.inverse_relabel",
+        "Lax369799.SupportedRecognition.projection"
+      ],
+      "note": "Boolean, cylindrification, and projection closure under revised supported-algebra recognition."
+    },
+    {
+      "kind": "Lemma",
+      "number": 64,
+      "pdf_page": 28,
+      "excerpt": "\u00a7 Lemma 64. The operation [ is associative, commutative, and idempotent. The relation \u010e is an order, and [ computes the infimum with respect to \u010e.",
+      "alignment": "matched",
+      "concept_endpoints": [
+        "Lax369799.SetSystemAlgebras.meet_laws",
+        "Lax369799.SetSystemAlgebras.order_laws"
+      ],
+      "note": "Generic revised set-algebra interface, with no continuity axiom."
+    },
+    {
+      "kind": "Lemma",
+      "number": 66,
+      "pdf_page": 29,
+      "excerpt": "\u00a7 Lemma 66. Let P0 , . . . , Pk be rank-1 extended set-systems over Y , and let a P Yk . With the interpretation of extended values as pieces from Definition 65, ` \u02d8 ` \u02d8 eval ContextpP0 , . . . , Pk qras \u201c eval Contextpeval` pP0 q, . . . , eval` pPk qqras .",
+      "alignment": "matched",
+      "concept_endpoints": [
+        "Lax369799.ExtendedSetAlgebras.pieces_evaluation"
+      ],
+      "note": "Generic marker-preserving extended pieces."
+    },
+    {
+      "kind": "Lemma",
+      "number": 70,
+      "pdf_page": 31,
+      "excerpt": "\u00a7 Lemma 70. S \u010eyield L S 1 ` S 2 holds if and only if both S \u010eyield L S 1 and S \u010eyield L S 2 hold.",
+      "alignment": "matched",
+      "concept_endpoints": [
+        "Lax369799.FiniteMorphisms.sum_meet"
+      ],
+      "note": "Unpruned contextual preorder."
+    },
+    {
+      "kind": "Lemma",
+      "number": 71,
+      "pdf_page": 31,
+      "excerpt": "\u00a7 Lemma 71. For S, S 1 (\u03a3-set-system)-set-systems of the same shape such that Spvq \u010eyield L S 1 pvq for all vertices v of S, then flattenpSq \u010eyield L flattenpS 1 q.",
+      "alignment": "matched",
+      "concept_endpoints": [
+        "Lax369799.FiniteContextualOrder.flatten_monotone"
+      ],
+      "note": "Unpruned contextual preorder, arbitrary finite outer shape."
+    },
+    {
+      "kind": "Lemma",
+      "number": 72,
+      "pdf_page": 31,
+      "excerpt": "\u00a7 Lemma 72. Given a language of \u03a3-regular-trees L, pSyntyield L , flattenL q is a set-algebra for which \u010e coincides with \u010eyield L . 32 Tree algebras and bisimulation-invariant MSO on finite graphs",
+      "alignment": "matched",
+      "concept_endpoints": [
+        "Lax369799.SetSystemAlgebras.syntactic_structure",
+        "Lax369799.SetSystemAlgebras.syntactic_order"
+      ],
+      "note": "Revised set-algebra axioms and equality of the contextual and sum-induced orders."
+    },
+    {
+      "kind": "Lemma",
+      "number": 73,
+      "pdf_page": 32,
+      "excerpt": "\u00a7 Lemma 73. For \u03a3-set-systems S, S 1 of the same rank, S \u010eyields S 1 implies S 1 \u010eyield L S, and 1 yield yield hence rS sL \u010e rSsL .",
+      "alignment": "matched",
+      "concept_endpoints": [
+        "Lax369799.SupportedYieldComparison.yield_order"
+      ],
+      "note": "Explicit-map yield inclusion reverses the unpruned contextual order. Canonical covers handle unreachable vertices."
+    },
+    {
+      "kind": "Lemma",
+      "number": 74,
+      "pdf_page": 32,
+      "excerpt": "\u00a7 Lemma 74. For L a language of \u03a3-regular-trees, the algebra Y Synt L recognises L. Moreover, the corresponding accepting set P \u010e pSyntyield L q0 is \u010e-upward closed and closed under [.",
+      "alignment": "matched",
+      "concept_endpoints": [
+        "Lax369799.ExpandedSyntacticAlgebra.recognition",
+        "Lax369799.FiniteSyntacticAlgebra.accepting_classes",
+        "Lax369799.FiniteSyntacticAlgebra.accepting_sum_value"
+      ],
+      "note": "Syntactic recognition, upward closure, and closure under meet."
+    },
+    {
+      "kind": "Lemma",
+      "number": 75,
+      "pdf_page": 32,
+      "excerpt": "\u00a7 Lemma 75. If a language of regular-trees L is recognised by an unfold-invariant rankwise- finite algebra, then its syntactic set-algebra is also rankwise-finite. T. Colcombet, A. Doumane and D. Kuperberg 33",
+      "alignment": "matched",
+      "concept_endpoints": [
+        "Lax369799.SupportedRecognition.syntactic_rankwise_finite"
+      ],
+      "note": "Finite supported recognition implies rankwise finiteness of the unpruned syntactic carrier."
+    },
+    {
+      "kind": "Lemma",
+      "number": 78,
+      "pdf_page": 33,
+      "excerpt": "\u00a7 Lemma 78 (profile-equivalence is a congruence). If S, S 1 are (\u03a3-set-system)-set-systems of the same shape, with profile-equivalent labels at every vertex, then flattenpSq and flattenpS 1 q are profile-equivalent.",
+      "alignment": "matched",
+      "concept_endpoints": [
+        "Lax369799.SupportedProfiles.congruence"
+      ],
+      "note": "Full supported profiles, explicit variable maps, unpruned finite presentations, every output rank, and both initial/root components."
+    },
+    {
+      "kind": "Corollary",
+      "number": 79,
+      "pdf_page": 34,
+      "excerpt": "\u00a7 Corollary 79. Profile-equivalence refines the yield-syntactic equivalence.",
+      "alignment": "matched",
+      "concept_endpoints": [
+        "Lax369799.SupportedProfiles.full_refines"
+      ],
+      "note": "Profiles use fully supported witnesses in the original algebra. Completion transfers them to the checked contextual refinement."
+    },
+    {
+      "kind": "Lemma",
+      "number": 81,
+      "pdf_page": 34,
+      "excerpt": "\u00a7 Lemma 81. Let T be a \u03a3-system of rank m, let Cr\u02ddm s be a closed \u03a3-context, and let \u03c3 : rms \u00d1 rns. There exists m1 \u010f m and a surjection \u03c4 : rms \u00d1 rm1 s together with an injection \u03c4 1 : rm1 s \u00d1 rms such that \u03c3 \u02dd \u03c4 1 \u02dd \u03c4 \u201c \u03c3, the map \u03c3 \u02dd \u03c4 1 is small, and",
+      "alignment": "matched",
+      "concept_endpoints": [
+        "Lax369799.SupportedContextSmallification.smallification",
+        "Lax369799.ContextPorts.resize_exists",
+        "Lax369799.ContextPorts.plug_resize"
+      ],
+      "note": "Original supported algebra and exact bound |B0| + |B1| + 1; surjective quotient, injective section, fully supported renamed argument, explicitly resized and trimmed context, and equality of closed values."
+    },
+    {
+      "kind": "Lemma",
+      "number": 82,
+      "pdf_page": 34,
+      "excerpt": "\u00a7 Lemma 82. Let S be a closed (\u03a3-set-system)-set-system, and let T, \u03b4, p\u03c3t qt satisfy the four conditions of Lemma 46, with \u03c4 being the empty map. There are T 1 , \u03b4 1 , p\u03c3t1 qt satisfying the same conditions for S, with every \u03c3t1 small and \u03c1pflattenpT 1 qq \u201c \u03c1pflattenpT qq.",
+      "alignment": "matched",
+      "concept_endpoints": [
+        "Lax369799.SupportedResolutions.small_resolution"
+      ],
+      "note": "Fully supported outer and inner systems, explicit local maps, and original supported-algebra values with bound |B\u2080| + |B\u2081| + 1. Surjective compression preserves support and decreases the finite number of oversized maps."
+    },
+    {
+      "kind": "Lemma",
+      "number": 83,
+      "pdf_page": 35,
+      "excerpt": "\u00a7 Lemma 83. If S, S 1 are closed (\u03a3-set-system)-set-systems of the same shape, with small- profile-equivalent labels at every vertex, then flattenpSq and flattenpS 1 q are profile-equivalent.",
+      "alignment": "matched",
+      "concept_endpoints": [
+        "Lax369799.SupportedProfiles.closed_congruence"
+      ],
+      "note": "Small supported-profile equality at every label implies full supported-profile equality after closed unpruned flattening."
+    },
+    {
+      "kind": "Corollary",
+      "number": 84,
+      "pdf_page": 35,
+      "excerpt": "\u00a7 Corollary 84. Small-profile-equivalence refines \u201dyield L .",
+      "alignment": "matched",
+      "concept_endpoints": [
+        "Lax369799.SupportedProfiles.small_refines",
+        "Lax369799.SupportedProfiles.small_profile_finite"
+      ],
+      "note": "Original supported algebra, exact cutoff |B0| + |B1| + 1, explicit variable maps, and unpruned contextual tests."
+    },
+    {
+      "kind": "Lemma",
+      "number": 86,
+      "pdf_page": 36,
+      "excerpt": "\u00a7 Lemma 86. Evaluation of Y -set-systems is monotone in their labels, with the shape fixed. Moreover, if Pi , Qi P Y1` satisfy Pi \u010e Qi for 0 \u010f i \u010f k, and a \u010e b in Yk , then ` \u02d8 ` \u02d8 eval ContextpP0 , . . . , Pk qras \u010e eval ContextpQ0 , . . . , Qk qrbs .",
+      "alignment": "matched",
+      "concept_endpoints": [
+        "Lax369799.SetSystemAlgebras.evaluation_monotone",
+        "Lax369799.ExtendedSetAlgebras.context_monotone"
+      ],
+      "note": "Generic set-algebra and marker-preserving extended context monotonicity."
+    },
+    {
+      "kind": "Lemma",
+      "number": 87,
+      "pdf_page": 36,
+      "excerpt": "\u00a7 Lemma 87 (choice of an extremal accepted situation). Assume Y is rankwise-finite. For every accepted tuple pP0 , . . . , Pk , aq P pY1` qk`1 \u02c6 Yk , there is an extremal accepted situation pM0 , . . . , Mk , \u03b4q such that Mi \u010e Pi for every i and \u03b4 \u010e a. T. Colcombet, A. Doumane and D. Kuperberg 37",
+      "alignment": "matched",
+      "concept_endpoints": [
+        "Lax369799.ExtendedSetAlgebras.extremal_choice"
+      ],
+      "note": "Generic finite set-algebra, minimality includes all pieces and the hole element."
+    },
+    {
+      "kind": "Lemma",
+      "number": 88,
+      "pdf_page": 37,
+      "excerpt": "\u00a7 Lemma 88 (extremal replacement). Let Y \u201c pY, evalq be a rankwise-finite set-algebra and let F \u010e Y0 be an upward-closed accepting set. For every closed Y -set-context Cr\u02ddk s and every a P Yk such that AccpCrasq, there is an extremal element \u03b4 P Yk satisfying \u03b4\u010ea and AccpCr\u03b4sq.",
+      "alignment": "matched",
+      "concept_endpoints": [
+        "Lax369799.ExtendedSetAlgebras.replacement"
+      ],
+      "note": "Generic unpruned context and fully minimal accepted situation."
+    },
+    {
+      "kind": "Corollary",
+      "number": 89,
+      "pdf_page": 37,
+      "excerpt": "\u00a7 Corollary 89 (simultaneous extremal replacements). Let Y be rankwise-finite and let F \u010e Y0 be upward closed. A closed Y -set-system S satisfies AccpSq if and only if there are extremal elements \u03b4v \u010e Spvq, one for each v P V S , such that ` \u02d8 Acc Srv{\u03b4v svPV S . Here Srv{\u03b4v svPV S has the same vertices, initial and root sets, and edges as S, and label \u03b4v at v.",
+      "alignment": "matched",
+      "concept_endpoints": [
+        "Lax369799.ExtendedSetAlgebras.simultaneous"
+      ],
+      "note": "Generic finite simultaneous replacement on all vertices."
+    },
+    {
+      "kind": "Lemma",
+      "number": 91,
+      "pdf_page": 38,
+      "excerpt": "\u00a7 Lemma 91. Let pP0 , . . . , Pk , \u03b4q be an extremal accepted situation. For all Q0 , . . . , Qk P Y1` , ` \u02d8 Acc ContextpQ0 , . . . , Qk qr\u03b4s \u00f0\u00f1 Pi \u010e Qi p0 \u010f i \u010f kq.",
+      "alignment": "matched",
+      "concept_endpoints": [
+        "Lax369799.ExtendedContexts.normal_test"
+      ],
+      "note": "All ranks, including the separate rank-zero closed witness."
+    },
+    {
+      "kind": "Lemma",
+      "number": 92,
+      "pdf_page": 40,
+      "excerpt": "\u00a7 Lemma 92. For every extremal element \u03b4 P Yk with k \u011b 1, we have",
+      "alignment": "matched",
+      "concept_endpoints": [
+        "Lax369799.DirectionProjections.extremal_decomposition"
+      ],
+      "note": "Canonical direction sum for extremal elements."
+    },
+    {
+      "kind": "Lemma",
+      "number": 93,
+      "pdf_page": 40,
+      "excerpt": "\u00a7 Lemma 93. Every direction projection of an extremal element is extremal in Y1 .",
+      "alignment": "matched",
+      "concept_endpoints": [
+        "Lax369799.DirectionProjections.extremal_direction"
+      ],
+      "note": "Every canonical direction is extremal."
+    },
+    {
+      "kind": "Lemma",
+      "number": 94,
+      "pdf_page": 41,
+      "excerpt": "\u00a7 Lemma 94 (behavior of extremal elements). Let H be a closed Y -set-system, and let v be a unary vertex with an extremal element b as its label and a nonempty set Ev of outgoing edges. For each e P Ev , let He be obtained from H by keeping only e as outgoing edge of v. If AccpHe q for every e P Ev , then AccpHq.",
+      "alignment": "matched",
+      "concept_endpoints": [
+        "Lax369799.ContextChoices.accepting_all_choices",
+        "Lax369799.ExtremalSituations.unary_selected"
+      ],
+      "note": "Choice-splitting applies to every unary extremal label via its selected witness."
+    },
+    {
+      "kind": "Lemma",
+      "number": 95,
+      "pdf_page": 42,
+      "excerpt": "\u00a7 Lemma 95 (path criterion). Let G be a closed Y\u010f1 -set-system with no root vertices, with every vertex reachable from an initial vertex, and with at least one outgoing edge at every unary vertex. Suppose every unary label is an extremal element. Then AccpGq if and only if every regular branch of G is accepted.",
+      "alignment": "matched",
+      "concept_endpoints": [
+        "Lax369799.ExtremalPaths.path_criterion"
+      ],
+      "note": "Functional restrictions retain all vertices; unmarked tails and empty graphs are handled."
+    },
+    {
+      "kind": "Corollary",
+      "number": 96,
+      "pdf_page": 42,
+      "excerpt": "\u00a7 Corollary 96. Let L be a language of \u03a3-regular-trees recognised by a rankwise-finite algebra. Then its syntactic set-algebra, with its accepting set, has the automaton property.",
+      "alignment": "matched",
+      "concept_endpoints": [
+        "Lax369799.ExtremalPaths.syntactic_automaton_property"
+      ],
+      "note": "Both conditions of revised Definition 90."
+    },
+    {
+      "kind": "Lemma",
+      "number": 97,
+      "pdf_page": 43,
+      "excerpt": "\u00a7 Lemma 97. Two closed Tr-systems are bisimilar if and only if their decodings are bisimilar in the usual sense.",
+      "alignment": "matched",
+      "concept_endpoints": [
+        "Lax369799.EncodingTheorems.bisimulation_iff"
+      ],
+      "note": "Ranked and ordinary bisimulation on closed transition encodings."
+    },
+    {
+      "kind": "Lemma",
+      "number": 99,
+      "pdf_page": 45,
+      "excerpt": "\u00a7 Lemma 99. Given an MSO-sentence \u03c6, the language of systems tS closed Tr-system | S |\u00f9 \u03c6u is recognisable by a rankwise-finite algebra.",
+      "alignment": "matched",
+      "concept_endpoints": [
+        "Lax369799.MSORecognition.mso_recognizable",
+        "Lax369799.SupportedAlgebras.legacy_recognizable"
+      ],
+      "note": "Complete MSO grammar; supported recognition follows by restriction."
+    },
+    {
+      "kind": "Lemma",
+      "number": 102,
+      "pdf_page": 48,
+      "excerpt": "\u00a7 Lemma 102 (regular branches). Let B \u201c pH, \u03a3, \u2206, \u2126q be an unfold-automaton. A run \u03c1 on a representative system S is accepting if and only if \u03c1p\u03c0q P \u2126 for every regular branch \u03c0 of S. Consequently, B accepts a closed regular-tree r if and only if there are a representative S P r and a run on S such that all regular branches are accepting.",
+      "alignment": "matched",
+      "concept_endpoints": [
+        "Lax369799.RegularBranchWords.regular_test"
+      ],
+      "note": "All finite and infinite branch conditions checked through regular branches."
+    },
+    {
+      "kind": "Theorem",
+      "number": 103,
+      "pdf_page": 48,
+      "excerpt": "\u00a7 Theorem 103. Let L be a language of regular-trees over \u03a3 recognised by a rankwise-finite algebra. Then L can be recognised by an unfold-automaton.",
+      "alignment": "matched",
+      "concept_endpoints": [
+        "Lax369799.AlgebraToAutomaton.algebra_to_automaton"
+      ],
+      "note": "Revised supported-algebra recognition hypothesis."
+    },
+    {
+      "kind": "Lemma",
+      "number": 104,
+      "pdf_page": 49,
+      "excerpt": "\u00a7 Lemma 104. If a closed regular-tree r over \u03a3 belongs to L, then B has an accepting run on every representative S P r.",
+      "alignment": "matched",
+      "concept_endpoints": [
+        "Lax369799.RunAcceptance.accepting_run_value"
+      ],
+      "note": "Accepting runs on each accepted representative of the syntactic automaton."
+    },
+    {
+      "kind": "Lemma",
+      "number": 105,
+      "pdf_page": 50,
+      "excerpt": "\u00a7 Lemma 105. If a closed regular-tree r over \u03a3 is accepted by B, then r P L.",
+      "alignment": "matched",
+      "concept_endpoints": [
+        "Lax369799.RunAcceptance.evaluated_run_iff"
+      ],
+      "note": "Run acceptance and evaluated acceptance agree."
+    },
+    {
+      "kind": "Theorem",
+      "number": 107,
+      "pdf_page": 50,
+      "excerpt": "\u00a7 Theorem 107. Let L be a bisimulation-invariant language of regular-trees recognised by a rankwise-finite algebra. Then L can be defined by a \u00b5-calculus formula.",
+      "alignment": "matched",
+      "concept_endpoints": [
+        "Lax369799.AlgebraToMuCalculus.algebra_to_mu"
+      ],
+      "note": "Revised supported-algebra recognition and language bisimulation invariance."
+    },
+    {
+      "kind": "Lemma",
+      "number": 108,
+      "pdf_page": 50,
+      "excerpt": "\u00a7 Lemma 108. There exists a clone-automaton recognising L. Moreover, it has an accepting run on every representative of each regular-tree in L.",
+      "alignment": "matched",
+      "concept_endpoints": [
+        "Lax369799.BisimAutomatonTheorem.bisim_automaton_runs"
+      ],
+      "note": "Clone automaton plus an accepting run on each accepted representative."
+    },
+    {
+      "kind": "Lemma",
+      "number": 109,
+      "pdf_page": 52,
+      "excerpt": "\u00a7 Lemma 109. For every closed Tr-system S P r, the automaton C accepts decodepSq if and only if r P L.",
+      "alignment": "matched",
+      "concept_endpoints": [
+        "Lax369799.AutomatonRunGame.run_winning",
+        "Lax369799.CloneGameRun.winning_run",
+        "Lax369799.BisimAutomatonTheorem.bisim_automaton_to_mu"
+      ],
+      "note": "Run/game correspondence and scalar modal translation, including bisimilar representatives."
+    }
+  ],
+  "complete_manuscript_coverage": false,
+  "unnumbered_obligations": [
+    {
+      "name": "Effective MSO-to-mu translation",
+      "alignment": "matched",
+      "concept_endpoints": [
+        "Lax369799.FiniteBisimulationTheorem.effective_finite_bisimulation_invariant_mso"
+      ],
+      "note": "A total executable compiler enumerates bounded Boolean modal tables and tests finite reachable graph codes. Syntax-computed algebra, profile, Safra, parity and small-model bounds prove correctness under finite bisimulation invariance. The finite proposition vocabulary is explicitly encoded."
+    }
+  ],
+  "requested_scope": {
+    "target": "Theorem 2 and end-to-end effectivity, including all transitive proof dependencies",
+    "clarified_by_user": "2026-11-14",
+    "complete": true,
+    "main_endpoints": [
+      "Lax369799.FiniteBisimulationTheorem.finite_bisimulation_invariant_mso",
+      "Lax369799.FiniteBisimulationTheorem.effective_finite_bisimulation_invariant_mso"
+    ],
+    "note": "The complete numbered inventory remains for reference. The user excluded unrestricted Theorem 1 and exhaustive side-statement coverage from the requested completion."
+  }
+}

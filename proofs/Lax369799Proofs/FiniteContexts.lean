@@ -90,14 +90,14 @@ theorem composition {A : RankedSet} {k n m : ℕ}
   rw [UntrimmedFlattening.flatten_natural]
   exact ⟨isoTrans fa fb⟩
 
-private def extendLabel {A B : RankedSet} {k : ℕ}
+def extendLabel {A B : RankedSet} {k : ℕ}
     (f : RankedMap B (FiniteSystem A)) :
     RankedMap (WithHole B k) (FiniteSystem (WithHole A k)) :=
   fun r b => match b with
     | .inl b => relabel (fun _ a => Sum.inl a) (f r b)
     | .inr h => atomic (.inr h)
 
-private theorem extension_holes {A B : RankedSet} {k : ℕ}
+theorem extension_holes {A B : RankedSet} {k : ℕ}
     (f : RankedMap B (FiniteSystem A)) (a : Symbol (WithHole B k)) :
     ((∃ u, IsHole ((extendLabel f a.1 a.2).graph.label u)) ↔ IsHole a) ∧
     (IsHole a → ∃! u, IsHole ((extendLabel f a.1 a.2).graph.label u)) := by
@@ -113,7 +113,7 @@ private theorem extension_holes {A B : RankedSet} {k : ℕ}
     intro _
     exact ⟨(0 : Fin 1), ⟨h, rfl⟩, fun _ _ => Subsingleton.elim (α := Fin 1) _ _⟩
 
-private noncomputable def extendContext {A B : RankedSet}
+noncomputable def extendContext {A B : RankedSet}
     (f : RankedMap B (FiniteSystem A)) {k n : ℕ} (C : Context B k n) : Context A k n where
   system := flatten (relabel (extendLabel f) C.system)
   one_hole := by

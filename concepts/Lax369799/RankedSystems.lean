@@ -15,7 +15,10 @@ with a direction and either a vertex or a variable as target. Every vertex
 is reachable from an initial or root vertex. A system has one initial
 vertex, no roots, and exactly one successor in every available direction.
 
-These are the objects of Section 2.2. Finite vertex sets are enumerated by
+This is the earlier reachable interface. The revised Section 2.2 allows
+unreachable vertices in set-systems (`FinitePresentations`) and requires
+all output variables of a deterministic system to be reachable
+(`SupportedSystems`). Finite vertex sets are enumerated by
 `Fin size`; directions and variables use zero-based indices. `Presentation`
 allows an arbitrary finite vertex type when constructing these objects.
 -/

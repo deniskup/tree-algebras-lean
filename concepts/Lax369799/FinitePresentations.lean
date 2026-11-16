@@ -89,9 +89,13 @@ def binary {A : RankedSet} {n : ℕ} (a b : A n) : FiniteSystem A n where
 abbrev Inner {A : RankedSet} {n : ℕ} {V : Type}
     (P : Presentation (FiniteSystem A) n V) (v : V) := (P.label v).2
 
+/-- A vertex of a flattened presentation retains its outer and inner positions. -/
+abbrev FlattenedVertex {A : RankedSet} {n : ℕ} {V : Type}
+    (P : Presentation (FiniteSystem A) n V) := (v : V) × (Inner P v).Vertex
+
 def flattenPresentation {A : RankedSet} {n : ℕ} {V : Type}
     (P : Presentation (FiniteSystem A) n V) :
-    Presentation A n ((v : V) × (Inner P v).Vertex) where
+    Presentation A n (FlattenedVertex P) where
   label := fun v => (Inner P v.1).graph.label v.2
   initial := fun v => P.initial v.1 ∧ (Inner P v.1).graph.initial v.2
   root := fun v => (Inner P v.1).graph.root v.2 ∨
